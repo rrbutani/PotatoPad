@@ -1,9 +1,9 @@
 # Mandatory settings
 
 name: JankPad
-baseurl: "JankPad" 
+# baseurl: "JankPad" 
 paginate: 25
-url: "rrbutani.github.io" # add your site url (format: http://example.com/)
+url: "rrbutani.github.io/JankPad" # add your site url (format: http://example.com/)
 blog_theme: dark # Or use light
 
 # Optional settings
