@@ -1,9 +1,8 @@
 #ifndef _SSD1289_DRIVER_
 #define _SSD1289_DRIVER_
 
-#include <stdint.h>
 #include "common.h"
 
-boolean initLCD(void);
+extern const LCD_Driver SSD1289;
 
 #endif //_SSD1289_DRIVER_

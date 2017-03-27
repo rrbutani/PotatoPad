@@ -15,8 +15,6 @@
 #include "SSD1289.h"
  
 #include <stdint.h>
-#include "common.h"
-#include "tm4c123gh6pm.h"
  
  //#define dataMode()
 
@@ -137,6 +135,7 @@ static void initIO(void)
  * Note that this method does not set the D/C lines; that is to be done
  * prior to calling this method.
  */
+inline // This function is performance critical and will be called frequently
 static void writeBus(uint16_t halfword)
 {
 	// halfword: 0beeeeeefffffaaaaa
@@ -297,15 +296,98 @@ static boolean setupLCD(void)
 		return false;
 	
 	// If device is present continue with device setup.
-	writeToRegister(OSCILLATION_CTRL, 0x0001);
-	writeToRegister(POWER_CTRL_1, 		0xA8A4);
+	writeToRegister(OSCILLATION_CTRL, 				0x0001);
+	writeToRegister(POWER_CTRL_1, 						0xA8A4);
+	writeToRegister(POWER_CTRL_2,							0x0000);
+	writeToRegister(POWER_CTRL_3,							0x080C);
+	writeToRegister(POWER_CTRL_4, 						0x2B00);
+	writeToRegister(POWER_CTRL_5, 						0x00B7);
+	writeToRegister(DRIVER_OUTPUT_CTRL,		 		0x2B3F);
+	writeToRegister(DRIVING_WAVEFORM_CTRL,		0x0600);
+	writeToRegister(SLEEP_MODE,								0x0000);
+	writeToRegister(ENTRY_MODE,								0x6070);
+	writeToRegister(COMPARE_1,								0x0000);
+	writeToRegister(COMPARE_2,								0x0000);
+	writeToRegister(HORIZONTAL_PORCH,					0xEF1C);
+	writeToRegister(VERTICAL_PORCH,						0x0003);
+	writeToRegister(DISPLAY_CTRL,							0x0233);
+	writeToRegister(FRAME_CYCLE_CTRL,					0x0000);
+	writeToRegister(GATE_SCAN_POSITION,				0x0000);
+	writeToRegister(VERTICAL_SCROLL_CTRL_1,		0x0000);
+	writeToRegister(VERTICAL_SCROLL_CTRL_2, 	0x0000);
+	writeToRegister(FRST_SCREEN_DRVNG_POS_S,	0x0000);
+	writeToRegister(FRST_SCREEN_DRVNG_POS_E,  0x013F);
+	writeToRegister(SCND_SCREEN_DRVNG_POS_S,	0x0000);
+	writeToRegister(SCND_SCREEN_DRVNG_POS_E,	0x0000);
+	writeToRegister(HORIZONTAL_RAM_ADDR_POS,	0xEF00);
+	writeToRegister(VERTICAL_RAM_ADDR_POS_S,	0x0000);
+	writeToRegister(VERTICAL_RAM_ADDR_POS_E,	0x013F);
+	writeToRegister(GAMMA_CTRL_0,							0x0707);
+	writeToRegister(GAMMA_CTRL_1,							0x0204);
+	writeToRegister(GAMMA_CTRL_2,							0x0204);
+	writeToRegister(GAMMA_CTRL_3,							0x0502);
+	writeToRegister(GAMMA_CTRL_4,							0x0507);
+	writeToRegister(GAMMA_CTRL_5,							0x0204);
+	writeToRegister(GAMMA_CTRL_6,							0x0204);
+	writeToRegister(GAMMA_CTRL_7,							0x0502);
+	writeToRegister(GAMMA_CTRL_8,							0x0302);
+	writeToRegister(GAMMA_CTRL_9,							0x0302);
+	writeToRegister(RAM_WRITE_DATA_MASK_RG,		0x0000);
+	writeToRegister(RAM_WRITE_DATA_MASK_B,		0x0000);
+	writeToRegister(FRAME_FREQUENCY_CTRL,			0x8000);
+	writeToRegister(RAM_ADDRESS_SET_Y,				0x0000);
+	writeToRegister(RAM_ADDRESS_SET_X,				0x0000);
 	
 	return true;
 }
 
-boolean initLCD(void)
+static void test(void)
+{
+	// Enter 'command' mode (essentially, set the index register; think MAR) by setting
+	// D/C Line (PC4 -> 0b00010000 -> 0x10) low.
+	GPIO_PORTC_DATA_R &= ~0x10;
+	
+	writeBus(DATA_TO_GRAM);
+	
+	GPIO_PORTC_DATA_R |=  0x10;
+	
+	for(int i = 0; i < 10000; i++)
+	{
+		writeBus((0xFC << 8) | (0x00));
+		writeBus((0x00 << 8) | (0x00));
+	}
+}
+
+static boolean initLCD(void)
 {
 	initIO();
-	return setupLCD();
-}
+	setupLCD(); // FIX
 	
+	test();  	// FIX
+	
+	return true; // FIX
+}
+
+static void setWindow(uint16_t sX, uint16_t sY, uint16_t eX, uint16_t eY)
+{
+	
+}
+
+static void setCoordinate(uint16_t X, uint16_t Y)
+{
+	
+}
+
+static void setPixel(uint8_t r, uint8_t g, uint8_t b)
+{
+	
+}
+
+
+// Expose necessary functions:
+const LCD_Driver SSD1289 = {
+	.init   			= initLCD,
+	.setWindow 			= setWindow,
+	.setCoordinate 	= setCoordinate,
+	.setPixel 			= setPixel
+};
