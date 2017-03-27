@@ -15,6 +15,7 @@
 #include "SSD1289.h"
  
 #include <stdint.h>
+#include <stdio.h> //debug
  
  //#define dataMode()
 
@@ -84,7 +85,7 @@ static void initIO(void)
 	// Start clock for Ports A, C, E, and F (0b00110101 -> 0x35)
 	SYSCTL_RCGC2_R |= (SYSCTL_RCGC2_GPIOA | SYSCTL_RCGC2_GPIOC | SYSCTL_RCGC2_GPIOE | SYSCTL_RCGC2_GPIOF); 
 	while ((SYSCTL_RCGC2_R & 0x35) != 0x35) {}		// Wait a few cycles
-	
+		
 	// Initialize PortA (A2 - A6; 0b01111100 -> 0x7C)
 	GPIO_PORTA_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
 	GPIO_PORTA_CR_R    |=  0x7C;					// Allow changes to selected pin's configuration to persist
@@ -92,8 +93,9 @@ static void initIO(void)
 	GPIO_PORTA_DEN_R   |=  0x7C;					// Enable digital on pins
 	GPIO_PORTA_AMSEL_R &= ~0x7C;					// Disable analog mode
 	GPIO_PORTA_AFSEL_R &= ~0x7C;					// Disable alternate mode
-	GPIO_PORTA_PCTL_R  &= ~0x7C;					// Disable peripherals on port/clear port control
-
+	//GPIO_PORTA_PCTL_R  &= ~0x7C;					// Disable peripherals on port/clear port control
+	// ^The above line breaks UART. Do not uncomment.
+		
 	// Initialize PortC (C4 - C7; 0b11110000 -> 0xF0)
 	GPIO_PORTC_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
 	GPIO_PORTC_CR_R    |=  0xF0;					// Allow changes to selected pin's configuration to persist
@@ -101,8 +103,9 @@ static void initIO(void)
 	GPIO_PORTC_DEN_R   |=  0xF0;					// Enable digital on pins
 	GPIO_PORTC_AMSEL_R &= ~0xF0;					// Disable analog mode
 	GPIO_PORTC_AFSEL_R &= ~0xF0;					// Disable alternate mode
-	GPIO_PORTC_PCTL_R  &= ~0xF0;					// Disable peripherals on port/clear port control
-	
+	//GPIO_PORTC_PCTL_R  &= ~0xF0;					// Disable peripherals on port/clear port control
+	// ^The above line breaks the board (requires a LM Flash wipe to fix). Do not uncomment.	
+		
 	// Initialize PortE (E0 - E5; 0b00111111 -> 0x3F)
 	GPIO_PORTE_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
 	GPIO_PORTE_CR_R    |=  0x3F;					// Allow changes to selected pin's configuration to persist
@@ -110,7 +113,8 @@ static void initIO(void)
 	GPIO_PORTE_DEN_R   |=  0x3F;					// Enable digital on pins
 	GPIO_PORTE_AMSEL_R &= ~0x3F;					// Disable analog mode
 	GPIO_PORTE_AFSEL_R &= ~0x3F;					// Disable alternate mode
-	GPIO_PORTE_PCTL_R  &= ~0x3F;					// Disable peripherals on port/clear port control
+	//GPIO_PORTE_PCTL_R  &= ~0x3F;					// Disable peripherals on port/clear port control
+	// Disabling PCTL seems like a bad idea in general.
 
 	// Initialize PortF (F0 - F4; 0b00011111 -> 0x1F)
 	GPIO_PORTF_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
@@ -119,7 +123,8 @@ static void initIO(void)
 	GPIO_PORTF_DEN_R   |=  0x1F;					// Enable digital on pins
 	GPIO_PORTF_AMSEL_R &= ~0x1F;					// Disable analog mode
 	GPIO_PORTF_AFSEL_R &= ~0x1F;					// Disable alternate mode
-	GPIO_PORTF_PCTL_R  &= ~0x1F;					// Disable peripherals on port/clear port control
+	//GPIO_PORTF_PCTL_R  &= ~0x1F;					// Disable peripherals on port/clear port control
+	// Disabling PCTL seems like a bad idea in general.
 
 	// Clear bus pins:
 	GPIO_PORTA_DATA_R  &= ~0x7C;
@@ -209,6 +214,8 @@ static uint16_t readBus(void)
 	// From here, the RD line is supposedly required to stay high for 500 ns
 	// to complete the cycle, but we won't busy wait for 500 ns because
 	// consecutive reads are unlikely and the requirement seems questionable.
+	
+	printf("bus read: %04X\n",halfword);
 	
 	return halfword;
 }
@@ -360,12 +367,14 @@ static void test(void)
 
 static boolean initLCD(void)
 {
+	boolean state;
+	
 	initIO();
-	setupLCD(); // FIX
+	state = setupLCD(); // FIX
 	
 	test();  	// FIX
 	
-	return true; // FIX
+	return state; // FIX
 }
 
 static void setWindow(uint16_t sX, uint16_t sY, uint16_t eX, uint16_t eY)

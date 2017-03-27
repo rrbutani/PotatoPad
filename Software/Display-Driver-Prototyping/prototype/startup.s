@@ -252,7 +252,7 @@ __Vectors
         EXPORT  Reset_Handler
 Reset_Handler
         ;
-        ; Enable the floating-point unit.  This must be done here to handle the
+        ; DO NOT enable the floating-point unit.  This must be done here to handle the
         ; case where main() uses floating-point and the function prologue saves
         ; floating-point registers (which will fault if floating-point is not
         ; enabled).  Any configuration of the floating-point unit using
@@ -262,11 +262,11 @@ Reset_Handler
         ; Note that this does not use DriverLib since it might not be included
         ; in this project.
         ;
-        ;MOVW    R0, #0xED88
-        ;MOVT    R0, #0xE000
-        ;LDR     R1, [R0]
-        ;ORR     R1, #0x00F00000
-        ;STR     R1, [R0]
+;        MOVW    R0, #0xED88
+;        MOVT    R0, #0xE000
+;        LDR     R1, [R0]
+;        ORR     R1, #0x00F00000
+;        STR     R1, [R0]
 
         ;
         ; Call the C library enty point that handles startup.  This will copy
