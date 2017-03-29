@@ -84,7 +84,7 @@ static void initIO(void)
 {
 	// Start clock for Ports A, C, E, and F (0b00110101 -> 0x35)
 	SYSCTL_RCGC2_R |= (SYSCTL_RCGC2_GPIOA | SYSCTL_RCGC2_GPIOC | SYSCTL_RCGC2_GPIOE | SYSCTL_RCGC2_GPIOF); 
-	while ((SYSCTL_RCGC2_R & 0x35) != 0x35) {}		// Wait a few cycles
+	//while ((SYSCTL_RCGC2_R & 0x35) != 0x35) {}		// Wait a few cycles
 		
 	// Initialize PortA (A2 - A6; 0b01111100 -> 0x7C)
 	GPIO_PORTA_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
@@ -140,7 +140,7 @@ static void initIO(void)
  * Note that this method does not set the D/C lines; that is to be done
  * prior to calling this method.
  */
-inline // This function is performance critical and will be called frequently
+__attribute__((always_inline)) // This function is performance critical and will be called frequently
 static void writeBus(uint16_t halfword)
 {
 	// halfword: 0baaaaafffffeeeeee
@@ -157,7 +157,7 @@ static void writeBus(uint16_t halfword)
 	
 	// Now write the data out to the bus:
 	GPIO_PORTE_DATA_R  = (GPIO_PORTE_DATA_R & ~0x3F) | ((halfword     )  & 0x3F); 
-	GPIO_PORTF_DATA_R  = (GPIO_PORTF_DATA_R & ~0x1F) | ((halfword >> 5)  & 0x1F);
+	GPIO_PORTF_DATA_R  = (GPIO_PORTF_DATA_R & ~0x1F) | ((halfword >> 6)  & 0x1F);
 	GPIO_PORTA_DATA_R  = (GPIO_PORTA_DATA_R & ~0x7C) | ((halfword >> 9)  & 0x7C);
 	
 	// The above values will hold for far greater than 10 ns (as per tDSH and tDHW)
@@ -203,7 +203,7 @@ static uint16_t readBus(void)
 	
 	// Now actually read the data in:
 	halfword |= ((GPIO_PORTE_DATA_R & 0x3F)      );
-	halfword |= ((GPIO_PORTF_DATA_R & 0x1F) <<  5);
+	halfword |= ((GPIO_PORTF_DATA_R & 0x1F) <<  6);
 	halfword |= ((GPIO_PORTA_DATA_R & 0x7C) <<  9);
 	
 	// It's probably been 250 ns since we started reading data by now, so the 
@@ -299,8 +299,8 @@ static boolean setupLCD(void)
 {
 	// Read from device code register to see if device is present.
 	readFromRegister(DEVICE_CODE);							// One 'dummy' read as per datasheet (p.21)
-	//if(readFromRegister(DEVICE_CODE) != 0x8989)	// Now the actual read; 0x8989 is expected value
-	//	return false;
+	if(readFromRegister(DEVICE_CODE) != 0x8989)	// Now the actual read; 0x8989 is expected value
+		return false;
 	
 	// If device is present continue with device setup.
 	writeToRegister(OSCILLATION_CTRL, 				0x0001);
@@ -312,7 +312,7 @@ static boolean setupLCD(void)
 	writeToRegister(DRIVER_OUTPUT_CTRL,		 		0x2B3F);
 	writeToRegister(DRIVING_WAVEFORM_CTRL,		0x0600);
 	writeToRegister(SLEEP_MODE,								0x0000);
-	writeToRegister(ENTRY_MODE,								0x6070);
+	writeToRegister(ENTRY_MODE,								0x4070); //TEST
 	writeToRegister(COMPARE_1,								0x0000);
 	writeToRegister(COMPARE_2,								0x0000);
 	writeToRegister(HORIZONTAL_PORCH,					0xEF1C);
@@ -359,17 +359,53 @@ static void test(void)
 	
 	GPIO_PORTC_DATA_R |=  0x10;
 	
-	for(int i = 0; i < 10000; i++)
+	while(1)
 	{
-		writeBus((0x01 << 8) | (0x01));
-		writeBus((0x00 << 8) | (0x00));
-		
-		for(int a = 0; a < 1000; a++)
-		{
-				a++;
-				a--;
-		}
+	
+		writeBus((0xF0 << 8) | (0x00));
+	for(int i = 0; i < 76800; i++)
+	{
+		GPIO_PORTC_DATA_R &= ~0xA0;
+		GPIO_PORTC_DATA_R |= 0xA0;
+		//writeBus((0x0F << 8) | (0xFF));
 	}
+	
+	for(int a = 0; a < 10000000; a++)
+	{
+		a++;
+		a--;
+	}
+
+	writeBus((0xFF << 8) | (0x00));
+
+	for(int i = 0; i < 76800; i++)
+	{
+		GPIO_PORTC_DATA_R &= ~0xA0;
+		GPIO_PORTC_DATA_R |= 0xA0;
+		//writeBus((0x0F << 8) | (0xFF));
+	}
+	
+	for(int a = 0; a < 10000000; a++)
+	{
+		a++;
+		a--;
+	}
+
+	writeBus((0xF0 << 8) | (0xF0));
+	
+	for(int i = 0; i < 76800; i++)
+	{
+		GPIO_PORTC_DATA_R &= ~0xA0;
+		GPIO_PORTC_DATA_R |= 0xA0;
+		//writeBus((0x0F << 8) | (0xFF));
+	}
+	
+	for(int a = 0; a < 10000000; a++)
+	{
+		a++;
+		a--;
+	}
+}
 }
 
 static boolean initLCD(void)
@@ -377,6 +413,17 @@ static boolean initLCD(void)
 	boolean state;
 	
 	initIO();
+	
+//	writeBus(0x0000);
+//	
+//	for(uint16_t testVal = 0x0001; testVal > 0x0000; testVal = testVal << 1)
+//	{
+//		printf("Testing %04X\n", testVal);
+//		writeBus(testVal);
+//	}
+	
+	
+	
 	state = setupLCD(); // FIX
 	
 	test();  	// FIX

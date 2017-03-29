@@ -1,13 +1,15 @@
 #include <stdio.h>
 
 #include "UART.h"
+#include "PLL.h"
 #include "graphics.h"
 
 #include "common.h"
 
 boolean setup(void)
 {
-  Output_Init();
+  PLL_Init();
+	Output_Init();
 	
 	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOF;
 	

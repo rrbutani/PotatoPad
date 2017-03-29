@@ -46,9 +46,11 @@ void UART_Init(void){
   SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
   SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A
   UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
-  UART0_IBRD_R = 8;                     // IBRD = int(16,000,000 / (16 * 115,200)) = int(8.680)
-  UART0_FBRD_R = 44;                    // FBRD = round(0.5104 * 64 ) = 33
-                                        // 8 bit word length (no parity bits, one stop bit, FIFOs)
+  UART0_IBRD_R = 43;                    // IBRD = int(80MHz / (16 * 115200)) = 43.4027778 -> 43 // IBRD = int(16,000,000 / (16 * 115,200)) = int(8.680)
+  UART0_FBRD_R = 26;                    // FBRD = ceil(0.4027778 /* from above */ * 64) // FBRD = round(0.5104 * 64 ) = 33
+                                        // ^ -> 115190.785 (is within %5 of 115200)
+																				
+																				// 8 bit word length (no parity bits, one stop bit, FIFOs)
   UART0_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
   UART0_CTL_R |= UART_CTL_UARTEN;       // enable UART
   GPIO_PORTA_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
