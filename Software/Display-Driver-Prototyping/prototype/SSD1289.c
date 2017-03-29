@@ -104,7 +104,7 @@ static void initIO(void)
 	GPIO_PORTC_AMSEL_R &= ~0xF0;					// Disable analog mode
 	GPIO_PORTC_AFSEL_R &= ~0xF0;					// Disable alternate mode
 	//GPIO_PORTC_PCTL_R  &= ~0xF0;					// Disable peripherals on port/clear port control
-	// ^The above line breaks the board (requires a LM Flash wipe to fix). Do not uncomment.	
+	// ^The above line breaks the board (requires an LM Flash wipe to fix). Do not uncomment.	
 		
 	// Initialize PortE (E0 - E5; 0b00111111 -> 0x3F)
 	GPIO_PORTE_LOCK_R   =  0x4C4F434B;		// Unlock GPIO_CR (Commit) Register
@@ -143,7 +143,7 @@ static void initIO(void)
 inline // This function is performance critical and will be called frequently
 static void writeBus(uint16_t halfword)
 {
-	// halfword: 0beeeeeefffffaaaaa
+	// halfword: 0baaaaafffffeeeeee
 	// -> PortA: 0b*aaaaa**
 	// -> PortE: 0b**eeeeee | There are no other pins on Port E and F
 	// -> PortF: 0b***fffff | so we don't really _need_ to be friendly
@@ -156,12 +156,12 @@ static void writeBus(uint16_t halfword)
 	GPIO_PORTC_DATA_R &= ~0xA0;
 	
 	// Now write the data out to the bus:
-	GPIO_PORTA_DATA_R  = (GPIO_PORTA_DATA_R & ~0x7C) | ((halfword << 2)  & 0x7C);
+	GPIO_PORTE_DATA_R  = (GPIO_PORTE_DATA_R & ~0x3F) | ((halfword     )  & 0x3F); 
 	GPIO_PORTF_DATA_R  = (GPIO_PORTF_DATA_R & ~0x1F) | ((halfword >> 5)  & 0x1F);
-	GPIO_PORTE_DATA_R  = (GPIO_PORTE_DATA_R & ~0x3F) | ((halfword >> 10) & 0x3F); 
+	GPIO_PORTA_DATA_R  = (GPIO_PORTA_DATA_R & ~0x7C) | ((halfword >> 9)  & 0x7C);
 	
 	// The above values will hold for far greater than 10 ns (as per tDSH and tDHW)
-	// since 1 cycle is 12.5 ns here so we don't need to wait.
+	// since even 1 cycle is 12.5 ns here so we don't need to wait.
 		
 	// By now we'll have satisfied the PulseWidthLow write timing (50 ns) and tCYCLE
 	// isn't really a concern (method runtime is >100 ns)
@@ -184,7 +184,7 @@ static uint16_t readBus(void)
 	// PortA: 0b*aaaaa**
 	// PortE: 0b**eeeeee
 	// PortF: 0b***fffff
-	// hword: 0beeeeeefffffaaaaa
+	// hword: 0baaaaafffffeeeeee
 	
 	uint16_t halfword = 0x00;
 	
@@ -202,9 +202,9 @@ static uint16_t readBus(void)
 	__asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
 	
 	// Now actually read the data in:
-	halfword |= ((GPIO_PORTE_DATA_R & 0x3F) << 10);
+	halfword |= ((GPIO_PORTE_DATA_R & 0x3F)      );
 	halfword |= ((GPIO_PORTF_DATA_R & 0x1F) <<  5);
-	halfword |= ((GPIO_PORTA_DATA_R & 0x7C) >>  2);
+	halfword |= ((GPIO_PORTA_DATA_R & 0x7C) <<  9);
 	
 	// It's probably been 250 ns since we started reading data by now, so the 
 	// pulse width low time for a read cycle (500 ns) should be satisfied by now.
@@ -214,8 +214,8 @@ static uint16_t readBus(void)
 	// From here, the RD line is supposedly required to stay high for 500 ns
 	// to complete the cycle, but we won't busy wait for 500 ns because
 	// consecutive reads are unlikely and the requirement seems questionable.
-	
-	printf("bus read: %04X\n",halfword);
+
+printf("bus read:: A: %04X | F: %04X | E: %04X | %08X\n", GPIO_PORTA_DATA_R, GPIO_PORTF_DATA_R, GPIO_PORTE_DATA_R, halfword);
 	
 	return halfword;
 }
@@ -299,8 +299,8 @@ static boolean setupLCD(void)
 {
 	// Read from device code register to see if device is present.
 	readFromRegister(DEVICE_CODE);							// One 'dummy' read as per datasheet (p.21)
-	if(readFromRegister(DEVICE_CODE) != 0x8989)	// Now the actual read; 0x8989 is expected value
-		return false;
+	//if(readFromRegister(DEVICE_CODE) != 0x8989)	// Now the actual read; 0x8989 is expected value
+	//	return false;
 	
 	// If device is present continue with device setup.
 	writeToRegister(OSCILLATION_CTRL, 				0x0001);
@@ -318,6 +318,7 @@ static boolean setupLCD(void)
 	writeToRegister(HORIZONTAL_PORCH,					0xEF1C);
 	writeToRegister(VERTICAL_PORCH,						0x0003);
 	writeToRegister(DISPLAY_CTRL,							0x0233);
+	//return false;
 	writeToRegister(FRAME_CYCLE_CTRL,					0x0000);
 	writeToRegister(GATE_SCAN_POSITION,				0x0000);
 	writeToRegister(VERTICAL_SCROLL_CTRL_1,		0x0000);
@@ -360,8 +361,14 @@ static void test(void)
 	
 	for(int i = 0; i < 10000; i++)
 	{
-		writeBus((0xFC << 8) | (0x00));
+		writeBus((0x01 << 8) | (0x01));
 		writeBus((0x00 << 8) | (0x00));
+		
+		for(int a = 0; a < 1000; a++)
+		{
+				a++;
+				a--;
+		}
 	}
 }
 
