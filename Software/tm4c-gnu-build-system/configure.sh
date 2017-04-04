@@ -82,7 +82,7 @@ function installDependencies
     libncurses5-dev libmpc-dev autoconf texinfo build-essential \
     libftdi-dev python-yaml zlib1g-dev libtool libc6:i386 \
     libncurses5:i386 libstdc++6:i386 libusb-1.0-0 libusb-1.0-0-dev \
-    screen 
+    screen openocd
 
     return $?
 }
@@ -166,7 +166,7 @@ installDependencies && \
 getGCCToolchain && \
 getTivaWare && \
 installLM4Flash && \
-installOpenOCD && \
+# installOpenOCD && \
 addToPath 
 
 fin $?
