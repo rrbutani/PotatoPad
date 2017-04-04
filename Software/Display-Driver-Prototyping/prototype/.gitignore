@@ -10,7 +10,7 @@
 *.map
 
 # Keil uVision Files #
-#*.uvgui
+*.uvgui*
 #*.uvopt
 
 # Log Files #
@@ -21,4 +21,5 @@
 *.lst
 *.lnp
 *.bak
+*.iex
 ~*

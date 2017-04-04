@@ -299,7 +299,7 @@ static boolean setupLCD(void)
 {
 	// Read from device code register to see if device is present.
 	readFromRegister(DEVICE_CODE);							// One 'dummy' read as per datasheet (p.21)
-	if(readFromRegister(DEVICE_CODE) != 0x8999)	// Now the actual read; 0x8989 is expected value
+	if(readFromRegister(DEVICE_CODE) != 0x8989)	// Now the actual read; 0x8989 is expected value
 		return false;
 	
 	// If device is present continue with device setup.
@@ -312,7 +312,7 @@ static boolean setupLCD(void)
 	writeToRegister(DRIVER_OUTPUT_CTRL,		 		0x2B3F);
 	writeToRegister(DRIVING_WAVEFORM_CTRL,		0x0600);
 	writeToRegister(SLEEP_MODE,								0x0000);
-	writeToRegister(ENTRY_MODE,								0x4070); //TEST
+	writeToRegister(ENTRY_MODE,								0x6070); //TEST (x6070)
 	writeToRegister(COMPARE_1,								0x0000);
 	writeToRegister(COMPARE_2,								0x0000);
 	writeToRegister(HORIZONTAL_PORCH,					0xEF1C);
@@ -351,8 +351,8 @@ static boolean setupLCD(void)
 
 static void test(void)
 {
-	// Enter 'command' mode (essentially, set the index register; think MAR) by setting
-	// D/C Line (PC4 -> 0b00010000 -> 0x10) low.
+//	// Enter 'command' mode (essentially, set the index register; think MAR) by setting
+//	// D/C Line (PC4 -> 0b00010000 -> 0x10) low.
 	GPIO_PORTC_DATA_R &= ~0x10;
 	
 	writeBus(DATA_TO_GRAM);
@@ -361,93 +361,51 @@ static void test(void)
 	
 	while(1)
 	{
-		for(int i = 0; i < 76800; i++)
-		{
-			writeBus((0xFC << 8) | (0x00)); // Red, green
-			writeBus((0x00 << 8) | (0x00)); // null, blue
-		
-//			for(int a = 0; a < 4000; a++)
-//			{
-//				a++;
-//				a--;
-//			}
-		
-		}
-		
-		for(int a = 0; a < 10000000; a++)
-		{
-			a++;
-			a--;
-		}
-		
-		for(int i = 0; i < 76800; i++)
-		{
-			writeBus((0x00 << 8) | (0xFC)); // Red, green
-			writeBus((0x00 << 8) | (0x00)); // null, blue
-			
-//			for(int a = 0; a < 4000; a++)
-//			{
-//				a++;
-//				a--;
-//			}
-			
-		}
-		
-		for(int a = 0; a < 10000000; a++)
-		{
-			a++;
-			a--;
-		}
-		
-		for(int i = 0; i < 76800; i++)
-		{
-			writeBus((0x00 << 8) | (0x00)); // Red, green
-			writeBus((0x00 << 8) | (0xFC)); // null, blue
-			
-//			for(int a = 0; a < 4000; a++)
-//			{
-//				a++;
-//				a--;
-//			}
-		}
-		
-		for(int a = 0; a < 10000000; a++)
-		{
-			a++;
-			a--;
-		}
-		
-		
+	printf("running test\n");
+		writeBus((0xF0 << 8) | (0x00));
+	for(int i = 0; i < 76800; i++)
+	{
+		GPIO_PORTC_DATA_R &= ~0xA0;
+		GPIO_PORTC_DATA_R |= 0xA0;
+		//writeBus((0x00 << 8) | (0x00)); //Red, Green
+		//writeBus((0x00 << 8) | (0x00)); //null, Blue
+	}
+	
+	for(int a = 0; a < 10000000; a++)
+	{
+		a++;
+		a--;
+	}
 
-//		writeBus((0xFF << 8) | (0x00));
+//	writeBus((0xFF << 8) | (0x00));
 
-//		for(int i = 0; i < 76800; i++)
-//		{
-//			GPIO_PORTC_DATA_R &= ~0xA0;
-//			GPIO_PORTC_DATA_R |= 0xA0;
-//			//writeBus((0x0F << 8) | (0xFF));
-//		}
-//		
-//		for(int a = 0; a < 10000000; a++)
-//		{
-//			a++;
-//			a--;
-//		}
+//	for(int i = 0; i < 76800; i++)
+//	{
+//		GPIO_PORTC_DATA_R &= ~0xA0;
+//		GPIO_PORTC_DATA_R |= 0xA0;
+//		//writeBus((0x0F << 8) | (0xFF));
+//	}
+//	
+//	for(int a = 0; a < 10000000; a++)
+//	{
+//		a++;
+//		a--;
+//	}
 
-//		writeBus((0xF0 << 8) | (0xF0));
-//		
-//		for(int i = 0; i < 76800; i++)
-//		{
-//			GPIO_PORTC_DATA_R &= ~0xA0;
-//			GPIO_PORTC_DATA_R |= 0xA0;
-//			//writeBus((0x0F << 8) | (0xFF));
-//		}
-//		
-//		for(int a = 0; a < 10000000; a++)
-//		{
-//			a++;
-//			a--;
-//		}
+//	writeBus((0xF0 << 8) | (0xF0));
+//	
+//	for(int i = 0; i < 76800; i++)
+//	{
+//		GPIO_PORTC_DATA_R &= ~0xA0;
+//		GPIO_PORTC_DATA_R |= 0xA0;
+//		//writeBus((0x0F << 8) | (0xFF));
+//	}
+//	
+//	for(int a = 0; a < 10000000; a++)
+//	{
+//		a++;
+//		a--;
+//	}
 	}
 }
 
@@ -456,7 +414,6 @@ static boolean initLCD(void)
 	boolean state;
 	
 	initIO();
-	
 	
 	state = setupLCD(); // FIX
 	
