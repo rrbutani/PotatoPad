@@ -1,33 +1,25 @@
-# Object files
+# Build Files #
+*.axf
+*.build_log
+*.crf
 *.o
-*.ko
-*.obj
-*.elf
 
-# Precompiled Headers
-*.gch
-*.pch
+# Linker Files #
+*.dep
+*.d
+*.map
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Keil uVision Files #
+*.uvgui
+*.uvopt
+*.upproj
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Log Files #
+*.htm
+*.plg
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
+# Misc #
+*.lst
+*.lnp
+*.bak
+~*
