@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tested on 64-bit Ubuntu 16.04/equivilant
+# Tested on 64-bit Ubuntu 16.04/equivalent
 # With credits to http://bit.ly/2oDU698 and http://bit.ly/2oUpD68 and http://bit.ly/2nziQhj
 
 # Global/Configuration Vars:
@@ -10,11 +10,13 @@ TIVAWARE_LINK="https://www.dropbox.com/s/bf8fvmcehhs5ao7/SW-TM4C-2.1.4.178.exe?d
 TIVAWARE_TEMP="/tmp/tivaware.zip"
 GENERAL_TEMP="/tmp/"
 
-INSTALL_LOC="~/TM4C-GNU"
+INSTALL_LOC=~/TM4C-GNU
+
+GCC_FOLDER_NAME="gcc-arm-none-eabi-5_4-2016q3" # Must match version in gcc link
+
+username=""
 
 output="true"
-
-
 
 # Colours:
 BOLD='\033[0;1m' #(OR USE 31)
@@ -74,9 +76,30 @@ function checkForSudo
     fi
 }
 
+function getRealUsername
+{
+    # Ask for username:
+    print "Enter username: " $BOLD -n
+    read username
+
+    id -u "$username" > /dev/null 2>&1
+
+    if [[ "$?" != 0 ]]; then
+        print "Invalid username; please try again." $RED
+        getRealUsername
+        return $?
+    fi
+
+    print "Installing toolchain for ${username}..." $CYAN
+
+    mkdir -p "${INSTALL_LOC}"
+
+    return 0
+}
+
 function installDependencies
 {
-    print "Installing" $PURPLE
+    print "Installing needed packages.." $PURPLE
 
     apt-get install -qq flex bison libgmp3-dev libmpfr-dev \
     libncurses5-dev libmpc-dev autoconf texinfo build-essential \
@@ -89,23 +112,28 @@ function installDependencies
 
 function getGCCToolchain
 {
-    print "Downloading gcc-arm-embedded toolchain" $PURPLE
+    print "Downloading gcc-arm-embedded toolchain" $PURPLE && \
+    wget -O "${GCC_TOOLCHAIN_TEMP}" "${GCC_TOOLCHAIN_LINK}" -q --show-progress && \
 
-    wget ${GCC_TOOLCHAIN_LINK} -o ${GCC_TOOLCHAIN_TEMP} && \
-    tar -xvf ${GCC_TOOLCHAIN_TEMP} -C ${INSTALL_LOC}
+    print "Extracting..." $PURPLE && \
+    tar -xjf "${GCC_TOOLCHAIN_TEMP}" -C "${INSTALL_LOC}/"
 
     return $?
 }
 
 function getTivaWare
 {
-    print "Downloading TivaWare" $PURPLE
+    print "Downloading TivaWare..." $PURPLE && \
+    wget -O "${TIVAWARE_TEMP}" "${TIVAWARE_LINK}" -q --show-progress && \
 
-    wget ${TIVAWARE_LINK} -o ${TIVAWARE_TEMP} && \
-    mkdir ${INSTALL_LOC}"/TivaWare" && \
+    print "Extracting TivaWare..." $PURPLE && \
+    mkdir -p "${INSTALL_LOC}/TivaWare" && \
     unzip ${TIVAWARE_TEMP} -d ${INSTALL_LOC}"/TivaWare" && \
+
+    print "Building TivaWare..." $PURPLE && \
     cd ${INSTALL_LOC}"/TivaWare" && \
-    make
+    PATH=$PATH:"${INSTALL_LOC}/${GCC_FOLDER_NAME}/bin" && \
+    make -j8
 
     return $?
 }
@@ -114,9 +142,10 @@ function installLM4Flash
 {
     print "Installing LM4Flash Tool" $PURPLE
 
-    git clone https://github.com/utzig/lm4tools.git ${INSTALL_LOC}"/lm4tools" && \
-    cd ${INSTALL_LOC}"/lm4tools/lm4flash" && \
-    make
+    rm -r "${INSTALL_LOC}/lm4tools/"
+    git clone https://github.com/utzig/lm4tools.git "${INSTALL_LOC}/lm4tools" && \
+    cd "${INSTALL_LOC}/lm4tools/lm4flash" && \
+    make -j8
 
     return $?
 }
@@ -129,7 +158,7 @@ function installOpenOCD
     cd ${INSTALL_LOC}"/openocd" && \
     ./bootstrap && \
     ./configure --prefix=/usr --enable-maintainer-mode --enable-stlink --enable-ti-icdi && \
-    make && \
+    make -j8 && \
     make install
 
     return $?
@@ -137,36 +166,71 @@ function installOpenOCD
 
 function addUdevRule
 {
+    print "Adding udev rule..." $PURPLE
+
+    # Add udev rule:
+    cat << EOF > /etc/udev/rules.d/99-tiva-launchpad.rules
+ATTR{idVendor}=="15ba", ATTR{idProduct}=="0004", GROUP="plugdev", MODE="0660" # Olimex Ltd. OpenOCD JTAG TINY
+ATTR{idVendor}=="067b", ATTR{idProduct}=="2303", GROUP="plugdev", MODE="0660" # Prolific Technology, Inc. PL2303 Serial Port
+ATTR{idVendor}=="10c4", ATTR{idProduct}=="ea60", GROUP="plugdev", MODE="0660" # USB Serial
+ATTR{idVendor}=="1cbe", ATTR{idProduct}=="00fd", GROUP="plugdev", MODE="0660" # TI Stellaris Launchpad
+EOF
     
+    # Reload udev rules:
+    udevadm control --reload-rules
+
+    # Try to create plugdev group in case it doesn't already exist
+    # (we can safely ignore errors here)
+    groupadd plugdev > /dev/null 1>&2
+
+    # Add user to groups:
+    usermod -aG plugdev "$username"
+    usermod -aG dialout "$username"
+
+    return 0
 }
 
 function addToPath
 {
-    print "Add gcc toolchain, "
+    print "Add gcc toolchain and lm4flash tool to PATH?"
     select yn in "Yes" "No"; do
         case $yn in
             Yes )  break;;
             No  )  return;;
         esac
     done
+
+    # Add lm4flash to path via symlink (simpler):
+    sudo ln -s ${INSTALL_LOC}"/lm4tools/lm4flash/lm4flash" /usr/local/bin/lm4flash
+
+    # Add gcc toolchain to PATH via bashrc
+    echo '# TM4C Toolchain:' >> ~/.bashrc
+    echo "export PATH="'$PATH'":${INSTALL_LOC}/${GCC_FOLDER_NAME}/bin" >> ~/.bashrc
+
+    return $?
 }
 
 function fin
 {
-    if [ "$1" == 0 ]; then
+    chown -R "${username}:${username}" "${INSTALL_LOC}"
+
+    if [ "$1" != 0 ]; then
         print "Error occured; installation did not complete successfully." $RED
     else
-        print "installation complete. Enjoy!" $CYAN
+        print "Installation complete. Enjoy!" $CYAN
+        print "You may need to reboot for the udev rules to work properly." $CYAN
     fi
 }
 
 checkForSudo && \
+getRealUsername && \
 handleInputParams && \
 installDependencies && \
 getGCCToolchain && \
 getTivaWare && \
 installLM4Flash && \
-# installOpenOCD && \
+# installOpenOCD && \ # OpenOCD w/tm4c supoprt should be available via apt now
+addUdevRule && \
 addToPath 
 
 fin $?
@@ -174,6 +238,6 @@ fin $?
 
 ##########################
 # AUTHOR:  Rahul Butani  #
-# DATE:    April 4, 2017 #
-# VERSION: 0.0.0         #
+# DATE:    April 17, 2017 #
+# VERSION: 0.0.1         #
 ##########################
