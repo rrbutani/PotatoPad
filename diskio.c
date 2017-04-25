@@ -52,9 +52,9 @@ void SSI1_Init(uint32_t CPSDVSR){
   GPIO_PORTF_DR4R_R |= 0x0F;            // 4mA drive on outputs
   GPIO_PORTF_PUR_R |= 0x0F;             // enable weak pullup on PF0,1,2,3
   GPIO_PORTF_DEN_R |= 0x0F;             // enable digital I/O on PF0,1,2,3
-	GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFFF000)+0x00000002;	// configure PA2,4,5 as SSI
-  GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFF0FFF)+0x00000000;	// configure PA3 as GPIO
-  GPIO_PORTA_AMSEL_R &= ~0x0F;          // disable analog functionality on PF0,1,2,3
+	GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFFF000)+0x00000222;	// configure PF0,1,2 as SSI
+  GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFF0FFF)+0x00000000;	// configure PF3 as GPIO
+  GPIO_PORTF_AMSEL_R &= ~0x0F;          // disable analog functionality on PF0,1,2,3
   SDC_CS = SDC_CS_HIGH;
 	
 	// initialize SSI1
