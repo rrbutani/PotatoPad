@@ -460,6 +460,11 @@
               <FileType>1</FileType>
               <FilePath>.\UART.c</FilePath>
             </File>
+            <File>
+              <FileName>PotatoDoom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PotatoDoom.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
