@@ -850,7 +850,7 @@ void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
   }
 }
 
-void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffset, float yIncrement, const uint16_t texture[]) {
+void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffset, float yIncrement, const uint16_t texture[], uint8_t textWidth) {
 
   // Rudimentary clipping
   if((x >= _width) || (y >= _height)) return;
@@ -858,14 +858,14 @@ void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffse
   setAddrWindow(x, y, x+w-1, y);
 	//printf("yIncre %.2f\n", yIncrement);
 	//printf("xOffset %d\n", xOffset);
-	float yOffset = 0;
+	float yOffset = yIncrement * w;
 	uint16_t i = xOffset;	// Possible optimisation: use existing variable
   while (w--) {
     writedata((uint8_t)(texture[i] >> 8));
     writedata((uint8_t)(texture[i]));
-		yOffset += yIncrement;
+		yOffset -= yIncrement;
 		//yOffset = yOffset > 127 ? 0 : yOffset;
-		i = xOffset * 128 + yOffset;
+		i = xOffset * textWidth + yOffset;
 		//printf("%.2f\n", yOffset);
 		//printf("%d\n", i);
   }

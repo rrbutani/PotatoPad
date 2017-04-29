@@ -127,7 +127,7 @@ void ST7735_DrawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color);
 // Output: none
 void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
 
-void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xText, float yIncrement, const uint16_t texture[]);
+void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xText, float yIncrement, const uint16_t texture[], uint8_t textWidth);
 
 //------------ST7735_FillScreen------------
 // Fill the screen with the given color.
