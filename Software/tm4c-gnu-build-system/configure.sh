@@ -170,10 +170,14 @@ function addUdevRule
 
     # Add udev rule:
     cat << EOF > /etc/udev/rules.d/99-tiva-launchpad.rules
-ATTR{idVendor}=="15ba", ATTR{idProduct}=="0004", GROUP="plugdev", MODE="0660" # Olimex Ltd. OpenOCD JTAG TINY
-ATTR{idVendor}=="067b", ATTR{idProduct}=="2303", GROUP="plugdev", MODE="0660" # Prolific Technology, Inc. PL2303 Serial Port
-ATTR{idVendor}=="10c4", ATTR{idProduct}=="ea60", GROUP="plugdev", MODE="0660" # USB Serial
-ATTR{idVendor}=="1cbe", ATTR{idProduct}=="00fd", GROUP="plugdev", MODE="0660" # TI Stellaris Launchpad
+# Olimex Ltd. OpenOCD JTAG TINY
+ATTR{idVendor}=="15ba", ATTR{idProduct}=="0004", GROUP="plugdev", MODE="0660"
+# Prolific Technology, Inc. PL2303 Serial Port
+ATTR{idVendor}=="067b", ATTR{idProduct}=="2303", GROUP="plugdev", MODE="0660"
+# USB Serial
+ATTR{idVendor}=="10c4", ATTR{idProduct}=="ea60", GROUP="plugdev", MODE="0660"
+# TI Stellaris Launchpad
+ATTR{idVendor}=="1cbe", ATTR{idProduct}=="00fd", GROUP="plugdev", MODE="0660"
 EOF
     
     # Reload udev rules:
@@ -238,6 +242,6 @@ fin $?
 
 ##########################
 # AUTHOR:  Rahul Butani  #
-# DATE:    April 17, 2017 #
-# VERSION: 0.0.1         #
+# DATE:    April 20, 2017#
+# VERSION: 0.0.2         #
 ##########################
