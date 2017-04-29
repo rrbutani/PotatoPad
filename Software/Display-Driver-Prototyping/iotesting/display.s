@@ -1,0 +1,5 @@
+        STR R5, [R0, R4]
+        STR R2, [R0 {, #3340}]
+        STR R1, [R0, R5 {, LSL #2}]
+        STR R3, [R0]
+        STR R0, [R0, R4]
