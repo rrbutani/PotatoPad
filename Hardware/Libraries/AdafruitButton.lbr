@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="8.1.1">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="yes"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="yes" active="yes"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="yes" active="yes"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="yes" active="yes"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="yes" active="yes"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="yes" active="yes"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="yes" active="yes"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="yes" active="yes"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="yes" active="yes"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="yes" active="yes"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="yes" active="yes"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<packages>
+<package name="B3F-40XX-MOD">
+<wire x1="-1.935" y1="1.975" x2="1.875" y2="1.975" width="0.1524" layer="21"/>
+<wire x1="1.875" y1="-1.835" x2="1.875" y2="1.975" width="0.1524" layer="21"/>
+<wire x1="1.875" y1="-1.835" x2="-1.935" y2="-1.835" width="0.1524" layer="21"/>
+<wire x1="-1.935" y1="1.975" x2="-1.935" y2="-1.835" width="0.1524" layer="21"/>
+<wire x1="-1.681" y1="1.721" x2="1.621" y2="1.721" width="0.0508" layer="21"/>
+<wire x1="1.621" y1="-1.581" x2="1.621" y2="1.721" width="0.0508" layer="21"/>
+<wire x1="1.621" y1="-1.581" x2="-1.681" y2="-1.581" width="0.0508" layer="21"/>
+<wire x1="-1.681" y1="1.721" x2="-1.681" y2="-1.581" width="0.0508" layer="21"/>
+<wire x1="-1.046" y1="6.166" x2="-1.046" y2="6.547" width="0.1524" layer="21"/>
+<wire x1="-1.046" y1="6.166" x2="0.986" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="-1.046" y1="6.547" x2="0.986" y2="6.547" width="0.1524" layer="21"/>
+<wire x1="0.986" y1="6.547" x2="0.986" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="6.066" y1="5.15" x2="5.05" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="5.05" y1="6.166" x2="1.748" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="6.066" y1="5.15" x2="6.066" y2="3.88" width="0.1524" layer="21"/>
+<wire x1="6.066" y1="1.213" x2="6.066" y2="3.88" width="0.1524" layer="51"/>
+<wire x1="6.066" y1="1.213" x2="6.066" y2="-1.073" width="0.1524" layer="21"/>
+<wire x1="6.066" y1="-3.74" x2="6.066" y2="-1.073" width="0.1524" layer="51"/>
+<wire x1="5.05" y1="-6.026" x2="6.066" y2="-5.01" width="0.1524" layer="21"/>
+<wire x1="6.066" y1="-5.01" x2="6.066" y2="-3.74" width="0.1524" layer="21"/>
+<wire x1="-6.126" y1="1.213" x2="-6.126" y2="3.88" width="0.1524" layer="51"/>
+<wire x1="-6.126" y1="1.213" x2="-6.126" y2="-1.073" width="0.1524" layer="21"/>
+<wire x1="-6.126" y1="-3.74" x2="-6.126" y2="-1.073" width="0.1524" layer="51"/>
+<wire x1="-6.126" y1="-3.74" x2="-6.126" y2="-5.01" width="0.1524" layer="21"/>
+<wire x1="-6.126" y1="-5.01" x2="-5.11" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="-5.11" y1="-6.026" x2="-1.808" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="-5.11" y1="6.166" x2="-1.808" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="-5.11" y1="6.166" x2="-6.126" y2="5.15" width="0.1524" layer="21"/>
+<wire x1="-6.126" y1="5.15" x2="-6.126" y2="3.88" width="0.1524" layer="21"/>
+<wire x1="-1.046" y1="-6.407" x2="0.986" y2="-6.407" width="0.1524" layer="21"/>
+<wire x1="-1.046" y1="-6.407" x2="-1.046" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="0.986" y1="-6.026" x2="0.986" y2="-6.407" width="0.1524" layer="21"/>
+<wire x1="5.05" y1="6.166" x2="4.796" y2="6.42" width="0.1524" layer="21"/>
+<wire x1="4.796" y1="6.42" x2="1.748" y2="6.42" width="0.1524" layer="21"/>
+<wire x1="1.748" y1="6.42" x2="1.748" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="1.748" y1="6.166" x2="0.986" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="6.42" x2="-1.808" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="6.166" x2="-1.046" y2="6.166" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="6.42" x2="-4.856" y2="6.42" width="0.1524" layer="21"/>
+<wire x1="-5.11" y1="6.166" x2="-4.856" y2="6.42" width="0.1524" layer="21"/>
+<wire x1="-1.046" y1="-6.026" x2="0.986" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="0.986" y1="-6.026" x2="1.748" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="-6.026" x2="-1.808" y2="-6.28" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="-6.026" x2="-1.046" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="-1.808" y1="-6.28" x2="-4.856" y2="-6.28" width="0.1524" layer="21"/>
+<wire x1="-4.856" y1="-6.28" x2="-5.11" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="1.748" y1="-6.026" x2="1.748" y2="-6.28" width="0.1524" layer="21"/>
+<wire x1="1.748" y1="-6.026" x2="5.05" y2="-6.026" width="0.1524" layer="21"/>
+<wire x1="4.796" y1="-6.28" x2="1.748" y2="-6.28" width="0.1524" layer="21"/>
+<wire x1="5.05" y1="-6.026" x2="4.796" y2="-6.28" width="0.1524" layer="21"/>
+<wire x1="-5.11" y1="2.61" x2="-4.602" y2="2.61" width="0.1524" layer="51"/>
+<wire x1="2.891" y1="2.61" x2="5.05" y2="2.61" width="0.1524" layer="51"/>
+<wire x1="-5.11" y1="-2.47" x2="-4.602" y2="-2.47" width="0.1524" layer="51"/>
+<wire x1="2.891" y1="-2.47" x2="5.05" y2="-2.47" width="0.1524" layer="51"/>
+<wire x1="-4.602" y1="2.61" x2="-4.602" y2="0.832" width="0.1524" layer="51"/>
+<wire x1="-4.602" y1="2.61" x2="-2.951" y2="2.61" width="0.1524" layer="51"/>
+<wire x1="-4.602" y1="0.832" x2="-5.11" y2="-0.692" width="0.1524" layer="51"/>
+<wire x1="-4.602" y1="-0.692" x2="-4.602" y2="-2.47" width="0.1524" layer="51"/>
+<wire x1="-4.602" y1="-2.47" x2="-2.951" y2="-2.47" width="0.1524" layer="51"/>
+<circle x="-0.03" y="0.07" radius="3.556" width="0.1524" layer="21"/>
+<circle x="-0.03" y="0.07" radius="1.016" width="0.0508" layer="21"/>
+<circle x="-0.03" y="0.07" radius="0.762" width="0.0508" layer="21"/>
+<circle x="-4.602" y="2.61" radius="0.127" width="0.1524" layer="51"/>
+<circle x="-4.602" y="-2.47" radius="0.127" width="0.1524" layer="51"/>
+<pad name="B2" x="-6.2784" y="-2.4192" drill="1.1938" shape="long"/>
+<pad name="B1" x="6.2184" y="-2.4192" drill="1.1938" shape="long"/>
+<pad name="A2" x="-6.2784" y="2.5592" drill="1.1938" shape="long"/>
+<pad name="A1" x="6.2184" y="2.5592" drill="1.1938" shape="long"/>
+<text x="-5.11" y="7.055" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.205" y="-5.01" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-5.237" y="3.372" size="1.27" layer="21" ratio="10">1</text>
+<text x="3.907" y="3.372" size="1.27" layer="21" ratio="10">2</text>
+<text x="-5.237" y="-4.629" size="1.27" layer="21" ratio="10">3</text>
+<text x="4.034" y="-4.629" size="1.27" layer="21" ratio="10">4</text>
+<rectangle x1="6.066" y1="-2.851" x2="6.574" y2="-1.962" layer="51"/>
+<rectangle x1="6.066" y1="2.102" x2="6.574" y2="2.991" layer="51"/>
+<rectangle x1="-6.634" y1="2.102" x2="-6.126" y2="2.991" layer="51"/>
+<rectangle x1="-6.634" y1="-2.851" x2="-6.126" y2="-1.962" layer="51"/>
+<rectangle x1="2.256" y1="5.912" x2="4.415" y2="6.42" layer="21"/>
+<rectangle x1="-4.475" y1="5.912" x2="-2.316" y2="6.42" layer="21"/>
+<rectangle x1="2.256" y1="-6.28" x2="4.415" y2="-5.772" layer="21"/>
+<rectangle x1="-4.475" y1="-6.28" x2="-2.316" y2="-5.772" layer="21"/>
+<hole x="-0.03" y="-4.4258" drill="1.8034"/>
+<hole x="-0.03" y="4.5658" drill="1.8034"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TACTILEBUTTON">
+<description>Adafruit Colorful Round Tactile Button Basic Eagle Library (PID: 1009)</description>
+<wire x1="-7.62" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<pin name="A1" x="-12.7" y="2.54" length="middle"/>
+<pin name="B1" x="-12.7" y="-2.54" length="middle"/>
+<pin name="A2" x="12.7" y="2.54" length="middle" rot="R180"/>
+<pin name="B2" x="12.7" y="-2.54" length="middle" rot="R180"/>
+<text x="-7.62" y="-7.62" size="1.778" layer="94">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TACTILEBUTTON">
+<description>Basic library for Adafruit Round Colorful Tactile Button</description>
+<gates>
+<gate name="G$1" symbol="TACTILEBUTTON" x="0" y="0"/>
+</gates>
+<devices>
+<device name="THROUGHHOLE" package="B3F-40XX-MOD">
+<connects>
+<connect gate="G$1" pin="A1" pad="A1"/>
+<connect gate="G$1" pin="A2" pad="A2"/>
+<connect gate="G$1" pin="B1" pad="B1"/>
+<connect gate="G$1" pin="B2" pad="B2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
