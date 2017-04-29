@@ -171,25 +171,25 @@ static void inline setRGB(register uint8_t r, register uint8_t g, register uint8
   // STR R3 into (R0)              //PortA
   // STR R0 into (R0 + R4)         //PortC //requires 111***** register
   
-  __asm ("ADD R0, %[input_i], %[input_j]"
-    :  /* This is an empty output operand list */
-    : [input_i] "r" (i), [input_j] "r" (j)
-  );
+//  __asm ("ADD R0, %[input_i], %[input_j]"
+//    :  /* This is an empty output operand list */
+//    : [input_i] "r" (i), [input_j] "r" (j)
+//  );
+//  
+//  __asm __volatile__ (
+//        "lidt %0 \n" : : "m"(ptr) );
   
-  __asm __volatile__ (
-        "lidt %0 \n" : : "m"(ptr) );
-  
-  __asm volatile
-  (
-    "STR %[A2E_Offset], [%[PortA_Addr]], %[A2C_Offset]] \n"
-    "STR %[G], [, [%[PortA_Addr]] {, #3340}] \n"
-    "STR %[R], [%[PortA_Addr]], %[A2E_Offset] {, LSL #2}] \n"
-    "STR %[B], [%[PortA_Addr]] \n"
-    "STR %[PortA_Addr]], [%[PortA_Addr]], R4] \n"
-  :
-  : [PortA_Addr] "r" (aAddr), [A2C_Offset] "r" (a2cAddr), [A2E_Offset] "r" (a2eShiftAddr), [R] "r" (r), [G] "r" (g), [B] "r" (b)
-  //: "memory"
-  );
+//  __asm volatile
+//  (
+//    "STR %[A2E_Offset], [%[PortA_Addr]], %[A2C_Offset]] \n"
+//    "STR %[G], [, [%[PortA_Addr]] {, #3340}] \n"
+//    "STR %[R], [%[PortA_Addr]], %[A2E_Offset] {, LSL #2}] \n"
+//    "STR %[B], [%[PortA_Addr]] \n"
+//    "STR %[PortA_Addr]], [%[PortA_Addr]], R4] \n"
+//  :
+//  : [PortA_Addr] "r" (aAddr), [A2C_Offset] "r" (a2cAddr), [A2E_Offset] "r" (a2eShiftAddr), [R] "r" (r), [G] "r" (g), [B] "r" (b)
+//  //: "memory"
+//  );
 
 }
 
