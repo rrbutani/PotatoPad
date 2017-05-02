@@ -1,7 +1,7 @@
 #!/bin/python
 
-inputFile="d_e1m1.txt"
-outputFile="d_e1m1.aud"
+inputFile="WeAreTheChampions.txt"
+outputFile="QUEEN.aud"
 dacBits=11
 
 ###############################################################################
