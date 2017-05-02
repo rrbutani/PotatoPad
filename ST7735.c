@@ -26,6 +26,7 @@
 // Augmented 7/17/2014 to have a simple graphics facility
 // Tested with LaunchPadDLL.dll simulator 9/2/2014
 // Last Modified: 3/6/2015 
+
 /* This example accompanies the book
    "Embedded Systems: Real Time Interfacing to Arm Cortex M Microcontrollers",
    ISBN: 978-1463590154, Jonathan Valvano, copyright (c) 2014
@@ -566,7 +567,7 @@ static const uint8_t
     ST7735_FRMCTR1, 3      ,  //  3: Frame rate ctrl - normal mode, 3 args:
       0x01, 0x2C, 0x2D,       //     Rate = fosc/(1x2+40) * (LINE+2C+2D)
     ST7735_FRMCTR2, 3      ,  //  4: Frame rate control - idle mode, 3 args:
-      0x01, 0x2C, 0x2D,       //     Rate = fosc/(1x2+40) * (LINE+2C+2D)
+      0x01, 0x2C, 0x2D,       //     Rate = fosc/(1x2+40) * (LINE+2C+2D)	fosc=333KHZ 2C=44 2D=45
     ST7735_FRMCTR3, 6      ,  //  5: Frame rate ctrl - partial mode, 6 args:
       0x01, 0x2C, 0x2D,       //     Dot inversion mode
       0x01, 0x2C, 0x2D,       //     Line inversion mode
@@ -696,7 +697,7 @@ void static commonInit(const uint8_t *cmdList) {
                                         // clock divider for 8 MHz SSIClk (80 MHz PLL/24)
                                         // SysClk/(CPSDVSR*(1+SCR))
                                         // 80/(10*(1+0)) = 8 MHz (slower than 4 MHz)
-  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+10; // must be even number
+  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; // must be even number; originally 10
   SSI0_CR0_R &= ~(SSI_CR0_SCR_M |       // SCR = 0 (8 Mbps data rate)
                   SSI_CR0_SPH |         // SPH = 0
                   SSI_CR0_SPO);         // SPO = 0
@@ -837,7 +838,7 @@ void ST7735_DrawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color) {
 // Output: none
 void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
   uint8_t hi = color >> 8, lo = color;
-
+	x += 32;	// HUD space
   // Rudimentary clipping
   if((x >= _width) || (y >= _height)) return;
   if((x+w-1) >= _width)  w = _width-x;
@@ -846,6 +847,26 @@ void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
   while (w--) {
     writedata(hi);
     writedata(lo);
+  }
+}
+
+void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffset, 
+	uint8_t yStart, float yIncrement, const uint16_t texture[], uint8_t textWidth) {
+	x += 32;	// HUD space
+  // Rudimentary clipping
+  if((x >= _width) || (y >= _height)) return;
+  if((x+w-1) >= _width)  w = _width-x;
+  setAddrWindow(x, y, x+w-1, y);
+
+	float yOffset = yIncrement * (w + yStart) - 1;
+	//yOffset = (uint8_t)yOffset % textWidth;
+	uint16_t i;	// Possible optimisation: use existing variable
+  while (w--) {
+		i = xOffset * textWidth + yOffset;
+    writedata((uint8_t)(texture[i] >> 8));
+    writedata((uint8_t)(texture[i]));
+		yOffset -= yIncrement;
+		//yOffset = yOffset > 127 ? 0 : yOffset;	not needed because constant height
   }
 }
 
