@@ -25,7 +25,10 @@
 // September 12, 2013
 // Augmented 7/17/2014 to have a simple graphics facility
 // Tested with LaunchPadDLL.dll simulator 9/2/2014
-// Last Modified: 3/6/2015 
+// Steven Zhu
+// May 1, 2017
+// Implemented customized horizontal column to display textures
+// Last Modified: 5/1/2017
 
 /* This example accompanies the book
    "Embedded Systems: Real Time Interfacing to Arm Cortex M Microcontrollers",
@@ -838,7 +841,6 @@ void ST7735_DrawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color) {
 // Output: none
 void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
   uint8_t hi = color >> 8, lo = color;
-	x += 32;	// HUD space
   // Rudimentary clipping
   if((x >= _width) || (y >= _height)) return;
   if((x+w-1) >= _width)  w = _width-x;
@@ -852,7 +854,6 @@ void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color) {
 
 void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffset, 
 	uint8_t yStart, float yIncrement, const uint16_t texture[], uint8_t textWidth) {
-	x += 32;	// HUD space
   // Rudimentary clipping
   if((x >= _width) || (y >= _height)) return;
   if((x+w-1) >= _width)  w = _width-x;

@@ -11,75 +11,141 @@
 /
 /-------------------------------------------------------------------------*/
 // converted to TM4C123
-// Jonathan Valvano, January 13, 2015
-// Modified by Steven Zhu, April 8, 2017
-//	- Now operate independent of LCD
+// Feb 22, 2016
+// added PB0 as a choice for SDC CS
 #include <stdint.h>
+#include <stdio.h>
+//#include "../../contrib/tm4c123gh6pm.h"
 #include "tm4c123gh6pm.h"
 #include "integer.h"
 #include "diskio.h"
+#define SDC_CS_PB0 0
+#define SDC_CS_PD7 1
 
-// SDC CS is PF3
-// to change CS to another GPIO, change SDC_CS and SSI1_Init
-// *******************SDC*******************
-// 0  PF3 SDC_CS, active low to enable SDC
-// 1  PF1 MOSI SPI data from microcontroller to SDC
-// 2  PF2 Sclk SPI clock from microcontroller to SDC
-// 3  PF0 MISO SPI data from SDC to microcontroller
+// SDC CS is PD7 or PB0 , TFT CS is PA3
+// to change CS to another GPIO, change SDC_CS and CS_Init
+// **********ST7735 TFT and SDC*******************
+// ST7735
+// 1  ground
+// 2  Vcc +3.3V
+// 3  PA7 TFT reset
+// 4  PA6 TFT data/command
+// 5  PD7/PB0 SDC_CS, active low to enable SDC
+// 6  PA3 TFT_CS, active low to enable TFT
+// 7  PA5 MOSI SPI data from microcontroller to TFT or SDC
+// 8  PA2 Sclk SPI clock from microcontroller to TFT or SDC
+// 9  PA4 MOSO SPI data from SDC to microcontroller
+// 10 Light, backlight connected to +3.3 V
 
-#define SDC_CS           (*((volatile uint32_t *)0x40025020))	//	0x4002.5000 + 0x020
+// **********wide.hk ST7735R*******************
+// Silkscreen Label (SDC side up; LCD side down) - Connection
+// VCC  - +3.3 V
+// GND  - Ground
+// !SCL - PA2 Sclk SPI clock from microcontroller to TFT or SDC
+// !SDA - PA5 MOSI SPI data from microcontroller to TFT or SDC
+// DC   - PA6 TFT data/command
+// RES  - PA7 TFT reset
+// CS   - PA3 TFT_CS, active low to enable TFT
+// *CS  - PD7/PB0 SDC_CS, active low to enable SDC
+// MISO - PA4 MISO SPI data from SDC to microcontroller
+// SDA  – (NC) I2C data for ADXL345 accelerometer
+// SCL  – (NC) I2C clock for ADXL345 accelerometer
+// SDO  – (NC) I2C alternate address for ADXL345 accelerometer
+// Backlight + - Light, backlight connected to +3.3 V
+
+#define TFT_CS           (*((volatile uint32_t *)0x40004020))
+#define TFT_CS_LOW       0           // CS controlled by software PA3
+#define TFT_CS_HIGH      0x08
+#if SDC_CS_PD7
+// PD7 output used for SDC CS
+#define SDC_CS           (*((volatile uint32_t *)0x40007200))
 #define SDC_CS_LOW       0           // CS controlled by software
 #define SDC_CS_HIGH      0x80
-
-//********SSI1_Init*****************
-// Initialize SSI1 interface to SDC
+void CS_Init(void){
+  SYSCTL_RCGCGPIO_R |= 0x08;            // activate clock for Port D
+  while((SYSCTL_PRGPIO_R&0x08) == 0){}; // allow time for clock to stabilize
+  GPIO_PORTD_LOCK_R = 0x4C4F434B;       // unlock GPIO Port D
+  GPIO_PORTD_CR_R = 0xFF;               // allow changes to PD7-0
+  // only PD7 needs to be unlocked, other bits can't be locked
+  GPIO_PORTD_DIR_R |= 0x80;             // make PD7 out
+  GPIO_PORTD_AFSEL_R &= ~0x80;          // disable alt funct on PD7
+  GPIO_PORTD_DR4R_R |= 0x80;            // 4mA drive on outputs
+  GPIO_PORTD_PUR_R |= 0x80;             // enable weak pullup on PD7
+  GPIO_PORTD_DEN_R |= 0x80;             // enable digital I/O on PD7
+                                        // configure PD7 as GPIO
+  GPIO_PORTD_PCTL_R = (GPIO_PORTD_PCTL_R&0x0FFFFFFF)+0x00000000;
+  GPIO_PORTD_AMSEL_R &= ~0x80;          // disable analog functionality on PD7
+  SDC_CS = SDC_CS_HIGH;
+}
+#endif
+// PB0 output used for SDC CS
+#if SDC_CS_PB0
+#define SDC_CS           (*((volatile uint32_t *)0x40005004))
+#define SDC_CS_LOW       0           // CS controlled by software
+#define SDC_CS_HIGH      0x01
+void CS_Init(void){
+  SYSCTL_RCGCGPIO_R |= 0x02;            // activate clock for Port B
+  while((SYSCTL_PRGPIO_R&0x02) == 0){}; // allow time for clock to stabilize
+  GPIO_PORTB_DIR_R |= 0x01;             // make PB0 out
+  GPIO_PORTB_AFSEL_R &= ~0x01;          // disable alt funct on PB0
+  GPIO_PORTB_DR4R_R |= 0x01;            // 4mA drive on outputs
+  GPIO_PORTB_PUR_R |= 0x01;             // enable weak pullup on PB0
+  GPIO_PORTB_DEN_R |= 0x01;             // enable digital I/O on PB0
+                                        // configure PB0 as GPIO
+  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFFF0)+0x00000000;
+  GPIO_PORTB_AMSEL_R &= ~0x01;          // disable analog functionality on PB0
+  SDC_CS = SDC_CS_HIGH;
+}
+#endif
+//********SSI0_Init*****************
+// Initialize SSI0 interface to SDC
 // inputs:  clock divider to set clock frequency
 // outputs: none
 // SSIClk = PIOSC / (CPSDVSR * (1 + SCR)) = 16 MHz/CPSDVSR
 // 40 for   400,000 bps slow mode, used during initialization
 // 2  for 8,000,000 bps fast mode, used during disk I/O
 void Timer5_Init(void);
-void SSI1_Init(uint32_t CPSDVSR){
+void SSI0_Init(uint32_t CPSDVSR){
   Timer5_Init();                        // initialize Timer5 for 1 ms interrupts
-  // initialize Port F
-  SYSCTL_RCGCGPIO_R |= 0x20;            // activate clock for Port F
-  while((SYSCTL_PRGPIO_R&0x20) == 0){}; // allow time for clock to stabilize
-  GPIO_PORTF_LOCK_R = 0x4C4F434B;       // unlock GPIO Port F
-  GPIO_PORTF_CR_R = 0x0F;               // allow changes to PF3-0
-  GPIO_PORTF_DIR_R |= 0x08;             // make PF3 out
-  GPIO_PORTF_AFSEL_R |= 0x07;           // enable alt funct on PF0,1,2
-  GPIO_PORTF_AFSEL_R &= ~0x08;          // disable alt funct on PF3
-  GPIO_PORTF_DR4R_R |= 0x0F;            // 4mA drive on outputs
-  GPIO_PORTF_PUR_R |= 0x0F;             // enable weak pullup on PF0,1,2,3
-  GPIO_PORTF_DEN_R |= 0x0F;             // enable digital I/O on PF0,1,2,3
-	GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFFF000)+0x00000222;	// configure PF0,1,2 as SSI
-  GPIO_PORTF_PCTL_R = (GPIO_PORTF_PCTL_R&0xFFFF0FFF)+0x00000000;	// configure PF3 as GPIO
-  GPIO_PORTF_AMSEL_R &= ~0x0F;          // disable analog functionality on PF0,1,2,3
-  SDC_CS = SDC_CS_HIGH;
-	
-	// initialize SSI1
-  SYSCTL_RCGCSSI_R |= 0x02;             // activate clock for SSI1
-  while((SYSCTL_PRSSI_R&0x02) == 0){};  // allow time for clock to stabilize
-  SSI1_CR1_R &= ~SSI_CR1_SSE;           // disable SSI
-  SSI1_CR1_R &= ~SSI_CR1_MS;            // master mode
+  CS_Init();                            // initialize whichever GPIO pin is CS for the SD card
+  // initialize Port A
+  SYSCTL_RCGCGPIO_R |= 0x01;            // activate clock for Port A
+  while((SYSCTL_PRGPIO_R&0x01) == 0){}; // allow time for clock to stabilize
+  GPIO_PORTA_DIR_R |= 0x08;             // make PA3 out
+  GPIO_PORTA_AFSEL_R |= 0x34;           // enable alt funct on PA2,4,5
+  GPIO_PORTA_AFSEL_R &= ~0x08;          // disable alt funct on PA3
+  GPIO_PORTA_DR4R_R |= 0xFC;            // 4mA drive on outputs
+  GPIO_PORTA_PUR_R |= 0x3C;             // enable weak pullup on PA2,3,4,5
+  GPIO_PORTA_DEN_R |= 0x3C;             // enable digital I/O on PA2,3,4,5
+                                        // configure PA2,4,5 as SSI
+  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFF00F0FF)+0x00220200;
+                                        // configure PA3 as GPIO
+  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFF0FFF)+0x00000000;
+  GPIO_PORTA_AMSEL_R &= ~0x3C;          // disable analog functionality on PA2,3,4,5
+  TFT_CS = TFT_CS_HIGH;                 // disable LCD
+  // initialize SSI0
+  SYSCTL_RCGCSSI_R |= 0x01;             // activate clock for SSI0
+  while((SYSCTL_PRSSI_R&0x01) == 0){};  // allow time for clock to stabilize
+  SSI0_CR1_R &= ~SSI_CR1_SSE;           // disable SSI
+  SSI0_CR1_R &= ~SSI_CR1_MS;            // master mode
                                         // configure for clock from source PIOSC for baud clock source
-  SSI1_CC_R = (SSI1_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
+  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
                                         // clock divider for SSIClk (16 MHz PIOSC/CPSDVSR)
-  SSI1_CPSR_R = (SSI1_CPSR_R&~SSI_CPSR_CPSDVSR_M)+CPSDVSR;
+  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+CPSDVSR;
   // CPSDVSR must be even from 2 to 254
-  SSI1_CR0_R &= ~(SSI_CR0_SCR_M |       // SCR = 0 (16/CPSDVSR Mbps data rate)
+  SSI0_CR0_R &= ~(SSI_CR0_SCR_M |       // SCR = 0 (16/CPSDVSR Mbps data rate)
                   SSI_CR0_SPH |         // SPH = 0
                   SSI_CR0_SPO);         // SPO = 0
                                         // FRF = Freescale format
-  SSI1_CR0_R = (SSI1_CR0_R&~SSI_CR0_FRF_M)+SSI_CR0_FRF_MOTO;
+  SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_FRF_M)+SSI_CR0_FRF_MOTO;
                                         // DSS = 8-bit data
-  SSI1_CR0_R = (SSI1_CR0_R&~SSI_CR0_DSS_M)+SSI_CR0_DSS_8;
-  SSI1_CR1_R |= SSI_CR1_SSE;            // enable SSI
+  SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_DSS_M)+SSI_CR0_DSS_8;
+  SSI0_CR1_R |= SSI_CR1_SSE;            // enable SSI
 }
 //void MakeTxhigh(void){
 //  GPIO_PORTA_AFSEL_R &= ~0x10;          // disable alt funct on PA4
 //  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFF0FFFF);
-//  GPIO_PORTA_DATA_R |= 0x10;            // PA4 high 
+//  GPIO_PORTA_DATA_R |= 0x10;            // PA4 high
 //}
 //void MakeTxSSI(void){
 //  GPIO_PORTA_AFSEL_R |= 0x10;           // enable alt funct on PA4
@@ -89,8 +155,8 @@ void SSI1_Init(uint32_t CPSDVSR){
 // SSIClk = PIOSC / (CPSDVSR * (1 + SCR)) = 16 MHz/CPSDVSR
 // 40 for   400,000 bps slow mode, used during initialization
 // 2  for 8,000,000 bps fast mode, used during disk I/O
-#define FCLK_SLOW() { SSI1_CPSR_R = (SSI1_CPSR_R&~SSI_CPSR_CPSDVSR_M)+40; }  
-#define FCLK_FAST() { SSI1_CPSR_R = (SSI1_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; }
+#define FCLK_SLOW() { SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+40; }
+#define FCLK_FAST() { SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; }
 
 // de-asserts the CS pin to the card
 #define CS_HIGH()  SDC_CS = SDC_CS_HIGH;
@@ -102,7 +168,7 @@ void SSI1_Init(uint32_t CPSDVSR){
 //#define  SPIx_CR1  SPI1_CR1
 //#define  SPIx_SR    SPI1_SR
 //#define  SPIx_DR    SPI1_DR
-#define  SPIxENABLE() {SSI1_Init(40);}
+#define  SPIxENABLE() {SSI0_Init(40);}
 
 /*--------------------------------------------------------------------------
 
@@ -157,11 +223,11 @@ static void init_spi(void){
 // Outputs: byte received from SPI
 // assumes it has been selected with CS low
 static BYTE xchg_spi(BYTE dat){ BYTE volatile rcvdat;
-// wait until SSI1 not busy/transmit FIFO empty
-  while((SSI1_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
-  SSI1_DR_R = dat;                      // data out
-  while((SSI1_SR_R&SSI_SR_RNE)==0){};   // wait until response
-  rcvdat = SSI1_DR_R;                   // acknowledge response
+// wait until SSI0 not busy/transmit FIFO empty
+  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
+  SSI0_DR_R = dat;                      // data out
+  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
+  rcvdat = SSI0_DR_R;                   // acknowledge response
   return rcvdat;
 }
 
@@ -171,12 +237,12 @@ static BYTE xchg_spi(BYTE dat){ BYTE volatile rcvdat;
 // Inputs:  none
 // Outputs: byte received from SPI
 // assumes it has been selected with CS low
-static BYTE rcvr_spi(void){ 
-// wait until SSI1 not busy/transmit FIFO empty
-  while((SSI1_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
-  SSI1_DR_R = 0xFF;                     // data out, garbage
-  while((SSI1_SR_R&SSI_SR_RNE)==0){};   // wait until response
-  return (BYTE)SSI1_DR_R;               // read received data
+static BYTE rcvr_spi(void){
+// wait until SSI0 not busy/transmit FIFO empty
+  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
+  SSI0_DR_R = 0xFF;                     // data out, garbage
+  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
+  return (BYTE)SSI0_DR_R;               // read received data
 }
 
 /* Receive multiple byte */
@@ -199,9 +265,9 @@ static void rcvr_spi_multi(BYTE *buff, UINT btr){
 static void xmit_spi_multi(const BYTE *buff, UINT btx){
   BYTE volatile rcvdat;
   while(btx){
-    SSI1_DR_R = *buff;                  // data out
-    while((SSI1_SR_R&SSI_SR_RNE)==0){}; // wait until response
-    rcvdat = SSI1_DR_R;                 // acknowledge response
+    SSI0_DR_R = *buff;                  // data out
+    while((SSI0_SR_R&SSI_SR_RNE)==0){}; // wait until response
+    rcvdat = SSI0_DR_R;                 // acknowledge response
     btx--; buff++;
   }
 }
@@ -241,6 +307,7 @@ static void deselect(void){
 // Input:  none
 // Output: 1:OK, 0:Timeout in 500ms
 static int select(void){
+  TFT_CS = TFT_CS_HIGH; // make sure TFT is off
   CS_LOW();
   xchg_spi(0xFF);  /* Dummy clock (force DO enabled) */
   if(wait_ready(500)) return 1;  /* OK */
@@ -302,7 +369,7 @@ static int xmit_datablock(const BYTE *buff, BYTE token){
 /* Send a command packet to the MMC                                      */
 /*-----------------------------------------------------------------------*/
 // Inputs:  cmd Command index
-//          arg    /* Argument 
+//          arg    /* Argument
 // Outputs: R1 resp (bit7==1:Failed to send)
 static BYTE send_cmd(BYTE cmd, DWORD arg){
   BYTE n, res;
@@ -417,10 +484,10 @@ DSTATUS disk_status(BYTE drv){
 /*-----------------------------------------------------------------------*/
 /* Read sector(s)                                                        */
 /*-----------------------------------------------------------------------*/
-//Inputs:  drv    Physical drive number (0) 
-//         buff   Pointer to the data buffer to store read data 
-//         sector Start sector number (LBA) 
-//         count  Number of sectors to read (1..128) 
+//Inputs:  drv    Physical drive number (0)
+//         buff   Pointer to the data buffer to store read data
+//         sector Start sector number (LBA)
+//         count  Number of sectors to read (1..128)
 // Outputs: status (see DRESULT)
 DRESULT disk_read(BYTE drv, BYTE *buff, DWORD sector, UINT count){
   if (drv || !count) return RES_PARERR;    /* Check parameter */
@@ -454,10 +521,10 @@ DRESULT disk_read(BYTE drv, BYTE *buff, DWORD sector, UINT count){
 /*-----------------------------------------------------------------------*/
 
 #if _USE_WRITE
-//Inputs:  drv    Physical drive number (0) 
-//         buff   Pointer to the data buffer to write to disk 
-//         sector Start sector number (LBA) 
-//         count  Number of sectors to write (1..128) 
+//Inputs:  drv    Physical drive number (0)
+//         buff   Pointer to the data buffer to write to disk
+//         sector Start sector number (LBA)
+//         count  Number of sectors to write (1..128)
 // Outputs: status (see DRESULT)
 DRESULT disk_write(BYTE drv, const BYTE *buff, DWORD sector, UINT count){
   if (drv || !count) return RES_PARERR;    /* Check parameter */
@@ -492,9 +559,9 @@ DRESULT disk_write(BYTE drv, const BYTE *buff, DWORD sector, UINT count){
 /*-----------------------------------------------------------------------*/
 /* Miscellaneous drive controls other than data read/write               */
 /*-----------------------------------------------------------------------*/
-// Inputs:  drv,   Physical drive number (0) 
-//          cmd,   Control command code 
-//          buff   Pointer to the control data 
+// Inputs:  drv,   Physical drive number (0)
+//          cmd,   Control command code
+//          buff   Pointer to the control data
 // Outputs: status (see DRESULT)
 #if _USE_IOCTL
 DRESULT disk_ioctl(BYTE drv, BYTE cmd, void *buff){
@@ -620,7 +687,12 @@ void Timer5_Init(void){
   TIMER5_CTL_R = 0x00000001;       // 10) enable timer5A
 }
 // Executed every 1 ms
-void Timer5A_Handler(void){ 
+void Timer5A_Handler(void){
   TIMER5_ICR_R = 0x00000001;       // acknowledge timer5A timeout
   disk_timerproc();
+}
+
+void diskError(char *errtype, int32_t code, int32_t block)
+{
+  printf("SD Card Error: %c; Code: %d; Block %d", *errtype, code, block);
 }

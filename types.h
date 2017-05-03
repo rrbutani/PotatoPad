@@ -7,8 +7,9 @@ typedef struct {
 	int16_t x;
 	int16_t y;
 	int8_t z;
-	float	angle;	// in radians; 0 is east
 	float speed;
+	float	angle;	// in radians; 0 is east
+	float angularSpeed;
 	int8_t health;
 	int8_t armor;
 	uint16_t score;
@@ -18,6 +19,7 @@ typedef struct {
 	int16_t x;
 	int16_t y;
 	int8_t health;
+	uint8_t cooldown;
 } Enemy;
 
 typedef struct {

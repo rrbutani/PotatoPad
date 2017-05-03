@@ -1,11 +1,13 @@
 // graphic.h
 // Runs on LM4F120/TM4C123
-// graphic and collision calculation for PotatoDoom
-// Combined graphic and physics module because a lot of shared calculation
+// graphic calculation for PotatoDoom
+// Handle every graphic displayed including rendering scene and HUD
 // Steven Zhu
 
 #define W 160 
-#define H 96		// 128 - 32 = 96
+#define H 96		// 128 - 32 = 96 Height of display screen without HUD
+#define screenHeight 128
+#define HUDHeight 32
 
 #define hfov	90	// Horizontal field of view
 #define vfov	60	// Vertical field of view
@@ -28,8 +30,10 @@
 #define nodeCount 235 // sizeof(nodeList) / 28 - 1
 
 // Collision defines
+#ifndef COLLISION_DEF
 #define detectionMultiplier 5	// Increase collision detection range
 #define maxCollision	32	// number of segment to check for collision
+#endif
 
 #ifndef enemyCount
 #define enemyCount 18	// Number of enemy
@@ -39,6 +43,9 @@ extern Player player;
 extern uint8_t shooting;
 extern float pcos, psin;
 extern Enemy enemyList[];
+extern uint8_t collisionCount;
+extern Seg collisionList[];	// List of segment to check against for collision
+
 
 //*****displayEnd*****
 // Initialize LCD, HUD and gun
@@ -55,4 +62,5 @@ void displayTitle(void);
 
 //*****displayEnd*****
 // Displays the ending screen
-void displayEnd(void);
+// Input: 0 for game over, 1 for victory
+void displayEnd(uint8_t input);

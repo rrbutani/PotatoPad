@@ -416,29 +416,69 @@
               <FilePath>.\PLL.c</FilePath>
             </File>
             <File>
-              <FileName>graphic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\graphic.c</FilePath>
-            </File>
-            <File>
               <FileName>ST7735.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\driver\ST7735.c</FilePath>
+              <FilePath>.\ST7735.c</FilePath>
             </File>
             <File>
               <FileName>LCD.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\driver\LCD.s</FilePath>
+              <FilePath>.\LCD.s</FilePath>
             </File>
             <File>
               <FileName>Print.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\driver\Print.s</FilePath>
+              <FilePath>.\Print.s</FilePath>
             </File>
             <File>
               <FileName>fpu.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\fpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>graphic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\graphic.c</FilePath>
+            </File>
+            <File>
+              <FileName>physic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\physic.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>FiFo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FiFo.c</FilePath>
+            </File>
+            <File>
+              <FileName>audio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\audio.c</FilePath>
             </File>
             <File>
               <FileName>PotatoDoom.c</FileName>
