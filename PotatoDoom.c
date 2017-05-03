@@ -41,6 +41,7 @@ static void playerInit(void) {
 	player.health = 100;
 	player.armor = 100;
 	player.score = 0;
+	player.running = 1;
 	shooting = 0;
 }
 
@@ -59,7 +60,6 @@ void SysTick_Handler(void) {
 int main(void){
 	PLL_Init(); 		// Set clock to 80MHz	
 	FPULazyStackingEnable();
-	SysTickInit();
 	playerInit();
 	audioInit();
 	graphicInit();
@@ -67,7 +67,7 @@ int main(void){
 	EnableInterrupts();
 	
 	// temp debug variables
-//	speed = 3;
+	player.speed = 1;
 //	angularSpeed = -0.02;
 //	player.x = 1740;
 //	player.y = -3240;
@@ -77,10 +77,9 @@ int main(void){
 //	uint16_t counter = 0;
 
 	displayTitle();
-	ready = 0;
 	
-//	player.score = 1000;
-//	displayEnd(0);
+	SysTickInit();
+	ready = 0;
 
 	while(1) {
 		if (ready) {
@@ -92,7 +91,6 @@ int main(void){
 			movePlayer();
 			// Completion requirement
 			if (player.y < -4592) {
-				stopMusic();
 				displayEnd(1);
 				// break;	possibly use botton to restart
 			}		
@@ -105,6 +103,6 @@ int main(void){
 			drawScreen();
 		}
 		// Update player speed using joystick input
-		updateSpeed();
+//		updateSpeed();
 	}
 }

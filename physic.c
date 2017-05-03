@@ -21,8 +21,8 @@ Seg collisionList[maxCollision];	// List of segment to check against for collisi
 // If collide, rebound at normal to collided segment
 void movePlayer(void) {
 	uint8_t radius = player.speed > 0 ? collisionRange : -collisionRange;
-	int8_t pdx = (player.speed + radius) * pcos;
-	int8_t pdy = (player.speed + radius) * psin;
+	int8_t pdx = (player.speed*player.running + radius) * pcos;
+	int8_t pdy = (player.speed*player.running + radius) * psin;
 	for (uint8_t i = 0; i < collisionCount; i++) {
 		Vertex v1 = vertexList[collisionList[i].startVertex];
 		Vertex v2 = vertexList[collisionList[i].endVertex];
@@ -39,8 +39,8 @@ void movePlayer(void) {
 		}
 	}
 	
-	player.x += player.speed * pcos;
-	player.y += player.speed * psin;
+	player.x += player.speed*player.running * pcos;
+	player.y += player.speed*player.running * psin;
 }
 
 //*****updateHealth*****

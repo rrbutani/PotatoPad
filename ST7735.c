@@ -813,7 +813,7 @@ void static commonInit(const uint8_t *cmdList) {
                                         // clock divider for 8 MHz SSIClk (16 MHz PIOSC/2)
                                         // PIOSC/(CPSDVSR*(1+SCR))
                                         // 16/(2*(1+0)) = 8 MHz
-  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; // must be even number
+  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+4; // must be even number
   SSI0_CR0_R &= ~(SSI_CR0_SCR_M |       // SCR = 0 (8 Mbps data rate)
                   SSI_CR0_SPH |         // SPH = 0
                   SSI_CR0_SPO);         // SPO = 0

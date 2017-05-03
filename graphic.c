@@ -2561,6 +2561,7 @@ static uint8_t zBufferCount;
 static uint16_t zBuffer[W-1];	// Z buffer so segment behind object rendered are discarded
 static uint8_t wasShooting;
 static uint8_t playingTitle;
+static uint8_t refresh;
 
 // Menu texture
 static const unsigned short titleTexture[] = {
@@ -3920,6 +3921,12 @@ void displayTitle(void) {
 		collisionCount = 0;
 		memset(zBuffer, -1, sizeof(zBuffer));
 		navigateBSP(nodeCount);
+		if (++refresh == 60) {
+			ST7735_DrawBitmap(0,159,HUD.texture,HUD.height,HUD.width);
+			refresh = 0;
+			updateHUD();
+			ST7735_DrawBitmap((H+32-title.height)/2,W-(W-title.width)/2,title.texture,title.height,title.width);
+		}	
 	}
 	playingTitle = 0;
 	player.angle = PI/2;
@@ -3953,6 +3960,10 @@ void drawScreen(void) {
 	navigateBSP(nodeCount);
 	
 	renderEnemy();
+	if (++refresh == 60) {
+		ST7735_DrawBitmap(0,159,HUD.texture,HUD.height,HUD.width);
+		refresh = 0;
+	}
 	updateHUD();
 	// Stopped shooting
 	if (wasShooting != shooting) {

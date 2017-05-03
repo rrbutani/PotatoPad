@@ -13,6 +13,7 @@ typedef struct {
 	int8_t health;
 	int8_t armor;
 	uint16_t score;
+	uint8_t running;	// Increase speed if running
 } Player;
 
 typedef struct {

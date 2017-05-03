@@ -12,6 +12,8 @@
 #include "audio.h"
 #include "input.h"
 
+static uint8_t disabled;
+
 void inputInit(void) {
 	ADC_Init();
 	
@@ -29,12 +31,14 @@ void inputInit(void) {
 		
 	GPIO_PORTF_IM_R = 0;
 	GPIO_PORTF_IS_R &= ~0x1D;     //  Edge-sensitive
-  GPIO_PORTF_IBE_R &= ~0x1D;    //  Only one edge
-  GPIO_PORTF_IEV_R &= ~0x1D;		//	Only falling edge
+  GPIO_PORTF_IBE_R = (GPIO_PORTF_IBE_R & ~0x1C) | 0x01;    //  Only one edge for F2,F3,F4 both edge for F0
+  GPIO_PORTF_IEV_R &= ~0x1C;		//	Only falling edge
 	GPIO_PORTF_ICR_R = 0x1D;    // Reset interrupt
   GPIO_PORTF_IM_R |= 0x1D;		// Arm interrupt
 	NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | 0x00600000; // Set priority to 3
-	NVIC_EN0_R = 1 << 30;;
+	NVIC_EN0_R = 1 << 30;
+		
+	disabled = 1;
 }
 
 void updateSpeed(void) {
@@ -50,17 +54,31 @@ void updateSpeed(void) {
 		player.angularSpeed = (float)(data[1]-128) * maxAngularSpeed / 128;
 }
 
+void disableInput(void) {
+	disabled = 1;
+}
+
+void enableInput(void) {
+	disabled = 0;
+}
+
 void GPIOPortF_Handler(void) {
-	uint8_t input = GPIO_PORTF_RIS_R & 0x1D;
-	GPIO_PORTF_ICR_R = input;	// Acknowledge interrupt
-	if (input & 0x01) {
-		shooting = 1;
-//		playSound(pistol);
+	uint8_t triggered = GPIO_PORTF_RIS_R & 0x1D;
+	GPIO_PORTF_ICR_R = triggered;	// Acknowledge interrupt
+	if (disabled)	return;
+	if (triggered & 0x01) {
+		if (GPIO_PORTF_DATA_R & 0x01)
+			player.running = 1;
+		else
+			player.running = 2;
 	} 
-	if (input & 0x04) {
+	if (triggered & 0x04) {
 	}
-	if (input & 0x08) {
+	if (triggered & 0x08) {
+		shooting = 1;
+		playSound(pistol);
 	}
-	if (input & 0x10) {
+	if (triggered & 0x10) {
+		toggleMusic();
 	}
 }

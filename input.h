@@ -16,3 +16,7 @@ extern uint8_t shooting;
 void inputInit(void);
 
 void updateSpeed(void);
+
+void disableInput(void);
+
+void enableInput(void);
