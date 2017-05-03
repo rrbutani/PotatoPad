@@ -61,8 +61,8 @@ int main(void){
 	FPULazyStackingEnable();
 	SysTickInit();
 	playerInit();
+	audioInit();
 	graphicInit();
-//	audioInit();
 	inputInit();
 	EnableInterrupts();
 	
@@ -105,6 +105,6 @@ int main(void){
 			drawScreen();
 		}
 		// Update player speed using joystick input
-//		updateSpeed();
+		updateSpeed();
 	}
 }

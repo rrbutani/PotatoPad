@@ -37,7 +37,6 @@ static void initAudioBuffer()
 {
 //  printf("Audio Buffer Size: %d\n", audioBufferSize);
   
-//  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+10; // must be even number; originally 10
 	Fresult = f_open(&Handle, "d_e1m1.AUD", FA_READ);
   if(Fresult == FR_OK)
   {
@@ -52,31 +51,30 @@ static void initAudioBuffer()
   {
 //    printf("reading card didn't work...");
   }
-//	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; // must be even number; originally 10
-//	while(1){}
 }
 
 static void populateBuffer(void)
 {	
 	static uint32_t valueCount = 0;
-  
+  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
+	
   valueCount += audioBufferSize;
   
   if(valueCount > audioSize)
   {
     valueCount = 0;
-//    SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+10; // must be even number; originally 10
 		f_close(&Handle);
     initAudioBuffer();
-//		SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; // must be even number; originally 10
-  }
+	}
   else
     Fresult = f_read(&Handle, &audioBuffer, 2 * audioBufferSize, &numBytesRead);
+	
+	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
 }
 
 void audioInit(void) {
 	pwmHardwareInit();
-  
+	
   if(f_mount(&g_sFatFs, "", 0))
     printf("SD Card Mount Error.");
 	

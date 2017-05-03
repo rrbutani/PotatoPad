@@ -297,6 +297,7 @@ static int wait_ready(UINT wt){
 static void deselect(void){
   CS_HIGH();       /* CS = H */
   xchg_spi(0xFF);  /* Dummy clock (force DO hi-z for multiple slave SPI) */
+	TFT_CS = TFT_CS_LOW;
 }
 
 
