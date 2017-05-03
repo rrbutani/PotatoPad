@@ -160,46 +160,46 @@
 <packages>
 <package name="1_05X2MM">
 <description>CON-M-1X5-200</description>
-<pad name="+3.3V" x="-7.62" y="8.89" drill="0.9398" rot="R180"/>
-<pad name="PB5" x="-7.62" y="6.35" drill="0.9398" rot="R180"/>
-<pad name="PB0" x="-7.62" y="3.81" drill="0.9398" rot="R180"/>
-<pad name="PB1" x="-7.62" y="1.27" drill="0.9398" rot="R180"/>
-<pad name="PE4" x="-7.62" y="-1.27" drill="0.9398" rot="R180"/>
-<pad name="PE5" x="-7.62" y="-3.81" drill="0.9398" rot="R180"/>
-<pad name="PB4" x="-7.62" y="-6.35" drill="0.9398" rot="R180"/>
-<pad name="PA5" x="-7.62" y="-8.89" drill="0.9398" rot="R180"/>
-<pad name="PA6" x="-7.62" y="-11.43" drill="0.9398" rot="R180"/>
-<pad name="PA7" x="-7.62" y="-13.97" drill="0.9398" rot="R180"/>
-<pad name="VBUS" x="-10.16" y="8.89" drill="0.9398" rot="R180"/>
-<pad name="GND_L" x="-10.16" y="6.35" drill="0.9398" rot="R180"/>
-<pad name="PD0" x="-10.16" y="3.81" drill="0.9398" rot="R180"/>
-<pad name="PD1" x="-10.16" y="1.27" drill="0.9398" rot="R180"/>
-<pad name="PD2" x="-10.16" y="-1.27" drill="0.9398" rot="R180"/>
-<pad name="PD3" x="-10.16" y="-3.81" drill="0.9398" rot="R180"/>
-<pad name="PE1" x="-10.16" y="-6.35" drill="0.9398" rot="R180"/>
-<pad name="PE2" x="-10.16" y="-8.89" drill="0.9398" rot="R180"/>
-<pad name="PE3" x="-10.16" y="-11.43" drill="0.9398" rot="R180"/>
-<pad name="PF1" x="-10.16" y="-13.97" drill="0.9398" rot="R180"/>
-<pad name="PF2" x="-50.8" y="8.89" drill="0.9398" rot="R180"/>
-<pad name="PF3" x="-50.8" y="6.35" drill="0.9398" rot="R270"/>
-<pad name="PB3" x="-50.8" y="3.81" drill="0.9398" rot="R180"/>
-<pad name="PC4" x="-50.8" y="1.27" drill="0.9398" rot="R180"/>
-<pad name="PC5" x="-50.8" y="-1.27" drill="0.9398" rot="R180"/>
-<pad name="PC6" x="-50.8" y="-3.81" drill="0.9398" rot="R180"/>
-<pad name="PC7" x="-50.8" y="-6.35" drill="0.9398" rot="R180"/>
-<pad name="PD6" x="-50.8" y="-8.89" drill="0.9398" rot="R180"/>
-<pad name="PD7" x="-50.8" y="-11.43" drill="0.9398" rot="R180"/>
-<pad name="PF4" x="-50.8" y="-13.97" drill="0.9398" rot="R180"/>
-<pad name="GND_R" x="-53.34" y="8.89" drill="0.9398" rot="R180"/>
-<pad name="PB2" x="-53.34" y="6.35" drill="0.9398" rot="R180"/>
-<pad name="PE0" x="-53.34" y="3.81" drill="0.9398" rot="R180"/>
-<pad name="PF0" x="-53.34" y="1.27" drill="0.9398" rot="R180"/>
-<pad name="RST" x="-53.34" y="-1.27" drill="0.9398" rot="R180"/>
-<pad name="PB7" x="-53.34" y="-3.81" drill="0.9398" rot="R180"/>
-<pad name="PB6" x="-53.34" y="-6.35" drill="0.9398" rot="R180"/>
-<pad name="PA4" x="-53.34" y="-8.89" drill="0.9398" rot="R180"/>
-<pad name="PA3" x="-53.34" y="-11.43" drill="0.9398" rot="R180"/>
-<pad name="PA2" x="-53.34" y="-13.97" drill="0.9398" rot="R180"/>
+<pad name="+3.3V" x="-7.62" y="8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB5" x="-7.62" y="6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB0" x="-7.62" y="3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB1" x="-7.62" y="1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE4" x="-7.62" y="-1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE5" x="-7.62" y="-3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB4" x="-7.62" y="-6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA5" x="-7.62" y="-8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA6" x="-7.62" y="-11.43" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA7" x="-7.62" y="-13.97" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="VBUS" x="-10.16" y="8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="GND_L" x="-10.16" y="6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD0" x="-10.16" y="3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD1" x="-10.16" y="1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD2" x="-10.16" y="-1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD3" x="-10.16" y="-3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE1" x="-10.16" y="-6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE2" x="-10.16" y="-8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE3" x="-10.16" y="-11.43" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PF1" x="-10.16" y="-13.97" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PF2" x="-50.8" y="8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PF3" x="-50.8" y="6.35" drill="0.9398" diameter="1.9304" rot="R270"/>
+<pad name="PB3" x="-50.8" y="3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PC4" x="-50.8" y="1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PC5" x="-50.8" y="-1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PC6" x="-50.8" y="-3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PC7" x="-50.8" y="-6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD6" x="-50.8" y="-8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PD7" x="-50.8" y="-11.43" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PF4" x="-50.8" y="-13.97" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="GND_R" x="-53.34" y="8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB2" x="-53.34" y="6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PE0" x="-53.34" y="3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PF0" x="-53.34" y="1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="RST" x="-53.34" y="-1.27" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB7" x="-53.34" y="-3.81" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PB6" x="-53.34" y="-6.35" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA4" x="-53.34" y="-8.89" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA3" x="-53.34" y="-11.43" drill="0.9398" diameter="1.9304" rot="R180"/>
+<pad name="PA2" x="-53.34" y="-13.97" drill="0.9398" diameter="1.9304" rot="R180"/>
 <dimension x1="-6.35" y1="8.89" x2="-6.35" y2="6.35" x3="-5.08" y3="7.62" textsize="1.27" layer="21" unit="mil"/>
 <dimension x1="-7.62" y1="10.16" x2="-10.16" y2="10.16" x3="-8.89" y3="13.97" textsize="1.27" layer="21" unit="mil"/>
 <dimension x1="-10.16" y1="11.43" x2="-50.8" y2="11.43" x3="-30.48" y3="21.59" textsize="1.27" layer="21" unit="mil"/>
@@ -744,17 +744,6 @@ With credits to this (https://github.com/adafruit/Adafruit-Mini-Analog-Thumbstic
 <wire x1="193.04" y1="50.8" x2="193.04" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$28" class="0">
-<segment>
-<pinref part="LEFTJOYSTICK" gate="G$1" pin="X"/>
-<wire x1="-27.94" y1="5.08" x2="-40.64" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="LAUNCHPAD" gate="G$1" pin="PB6"/>
-<wire x1="106.68" y1="7.62" x2="109.22" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="7.62" x2="109.22" y2="-53.34" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="-53.34" x2="-40.64" y2="-53.34" width="0.1524" layer="91"/>
-<wire x1="-40.64" y1="-53.34" x2="-40.64" y2="5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$31" class="0">
 <segment>
 <pinref part="LEFTJOYSTICK" gate="G$1" pin="VCCX"/>
@@ -822,17 +811,6 @@ With credits to this (https://github.com/adafruit/Adafruit-Mini-Analog-Thumbstic
 <wire x1="127" y1="154.94" x2="127" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="LAUNCHPAD" gate="G$1" pin="PF4"/>
 <wire x1="127" y1="-17.78" x2="106.68" y2="-17.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$34" class="0">
-<segment>
-<pinref part="LEFTJOYSTICK" gate="G$1" pin="Y"/>
-<wire x1="-15.24" y1="25.4" x2="0" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="0" y1="25.4" x2="0" y2="-55.88" width="0.1524" layer="91"/>
-<wire x1="0" y1="-55.88" x2="119.38" y2="-55.88" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="-55.88" x2="119.38" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="LAUNCHPAD" gate="G$1" pin="PB7"/>
-<wire x1="119.38" y1="17.78" x2="106.68" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -905,6 +883,33 @@ With credits to this (https://github.com/adafruit/Adafruit-Mini-Analog-Thumbstic
 <wire x1="139.7" y1="38.1" x2="139.7" y2="-2.54" width="0.1524" layer="91"/>
 <pinref part="LAUNCHPAD" gate="G$1" pin="PA4"/>
 <wire x1="139.7" y1="-2.54" x2="106.68" y2="-2.54" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="LAUNCHPAD" gate="G$1" pin="PB6"/>
+<wire x1="106.68" y1="7.62" x2="109.22" y2="7.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="LEFTJOYSTICK" gate="G$1" pin="X"/>
+<wire x1="-27.94" y1="5.08" x2="-43.18" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="5.08" x2="-43.18" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="-25.4" x2="35.56" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="-25.4" x2="35.56" y2="27.94" width="0.1524" layer="91"/>
+<pinref part="LAUNCHPAD" gate="G$1" pin="PD2"/>
+<wire x1="35.56" y1="27.94" x2="50.8" y2="27.94" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="LAUNCHPAD" gate="G$1" pin="PD3"/>
+<wire x1="50.8" y1="17.78" x2="5.08" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="17.78" x2="5.08" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="LEFTJOYSTICK" gate="G$1" pin="Y"/>
+<wire x1="5.08" y1="30.48" x2="-15.24" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="30.48" x2="-15.24" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

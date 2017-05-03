@@ -585,18 +585,20 @@ With round pins</description>
 <packages>
 <package name="18650CCEBAY">
 <description>Package for this (http://www.ebay.com/itm/172158430467?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT)</description>
-<polygon width="0.127" layer="21">
-<vertex x="-7" y="5"/>
-<vertex x="-7" y="-6"/>
-<vertex x="20" y="-6"/>
-<vertex x="20" y="5"/>
-</polygon>
-<pad name="OUT+" x="18" y="4" drill="0.8" shape="square"/>
-<pad name="B+" x="18" y="2" drill="0.8" shape="square"/>
-<pad name="OUT-" x="18" y="-5" drill="0.8" shape="square"/>
-<pad name="B-" x="18" y="-3" drill="0.8" shape="square"/>
-<pad name="CHARGE+" x="-6" y="4" drill="0.8" shape="square"/>
-<pad name="CHARGE-" x="-6" y="-5" drill="0.8" shape="square"/>
+<wire x1="-10" y1="7" x2="17" y2="7" width="0.127" layer="21"/>
+<wire x1="17" y1="7" x2="17" y2="-10" width="0.127" layer="21"/>
+<wire x1="17" y1="-10" x2="-10" y2="-10" width="0.127" layer="21"/>
+<wire x1="-10" y1="-10" x2="-10" y2="7" width="0.127" layer="21"/>
+<pad name="CHARGE+" x="-8.1" y="5.35" drill="1" diameter="1.6764"/>
+<dimension x1="-8.05" y1="4.85" x2="-8.05" y2="-8.5" x3="14" y3="-1.825" textsize="1.27" layer="21"/>
+<pad name="CHARGE-" x="-8.05" y="-8.9" drill="1" diameter="1.6764"/>
+<dimension x1="-7.6" y1="5.35" x2="14.35" y2="5.35" x3="3.375" y3="-8" textsize="1.27" layer="21"/>
+<pad name="OUT+" x="14.9" y="5.35" drill="1" diameter="1.6764"/>
+<pad name="OUT-" x="14.95" y="-8.9" drill="1" diameter="1.6764"/>
+<dimension x1="14.95" y1="4.9" x2="14.95" y2="2.4" x3="12" y3="3.65" textsize="1.27" layer="21"/>
+<pad name="B+" x="14.9" y="1.95" drill="1" diameter="1.6764"/>
+<dimension x1="15" y1="-8.4" x2="15" y2="-5.9" x3="21" y3="-7.15" textsize="1.27" layer="21"/>
+<pad name="B-" x="14.95" y="-5.45" drill="1" diameter="1.6764"/>
 </package>
 </packages>
 <symbols>
@@ -642,17 +644,19 @@ With round pins</description>
 <packages>
 <package name="MT3608_EBAY">
 <description>Package for an MT3608 Regulator (specifically, this one: http://www.ebay.com/itm/122256626389?_trksid=p2060353.m2749.l2649&amp;ssPageName=STRK%3AMEBIDX%3AIT)</description>
-<polygon width="0.127" layer="21">
-<vertex x="-5" y="6"/>
-<vertex x="-5" y="-5"/>
-<vertex x="25" y="-5"/>
-<vertex x="25" y="6"/>
-</polygon>
-<pad name="VIN-" x="-3.5" y="-4.05" drill="1" shape="square"/>
-<pad name="VIN+" x="-3.5" y="5.05" drill="1" shape="square"/>
-<pad name="OUT-" x="23.5" y="-4.05" drill="1" shape="square"/>
-<pad name="OUT+" x="23.5" y="5.05" drill="1" shape="square"/>
 <text x="-3.81" y="-7.62" size="1.27" layer="21">&gt;NAME</text>
+<wire x1="-5" y1="9" x2="25" y2="9" width="0.127" layer="21"/>
+<wire x1="25" y1="9" x2="25" y2="-8" width="0.127" layer="21"/>
+<wire x1="25" y1="-8" x2="-5" y2="-8" width="0.127" layer="21"/>
+<wire x1="-5" y1="-8" x2="-5" y2="9" width="0.127" layer="21"/>
+<dimension x1="-5" y1="9" x2="25" y2="9" x3="10" y3="11" textsize="1.27" layer="21"/>
+<dimension x1="-5" y1="9" x2="-5" y2="-8" x3="-9" y3="0.5" textsize="1.27" layer="21"/>
+<pad name="VIN+" x="-3.4" y="7.8" drill="1" diameter="1.6764"/>
+<pad name="OUT+" x="22.2" y="7.8" drill="1" diameter="1.6764" rot="R90"/>
+<dimension x1="-3" y1="8" x2="21.75" y2="8" x3="9.375" y3="7" textsize="1.27" layer="21"/>
+<dimension x1="-3.4" y1="7.3" x2="-3.35" y2="-5.35" x3="30.96794375" y3="1.110740625" textsize="1.27" layer="21"/>
+<pad name="VIN-" x="-3.45" y="-5.7" drill="1" diameter="1.6764"/>
+<pad name="OUT-" x="22.15" y="-5.7" drill="1" diameter="1.6764" rot="R90"/>
 </package>
 </packages>
 <symbols>

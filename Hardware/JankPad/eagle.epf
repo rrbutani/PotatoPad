@@ -353,7 +353,7 @@ UsedLibrary="C:/Users/Rahul Butani/Documents/eagle/AdafruitJoystick.lbr"
 
 [Win_1]
 Type="Board Editor"
-Loc="-9 -38 1190 561"
+Loc="0 0 1199 599"
 State=0
 Number=1
 File="top_PCB_v1.brd"
