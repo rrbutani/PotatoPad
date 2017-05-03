@@ -101,6 +101,9 @@ int main(void){
 				// break;	possibly use botton to restart
 			}
 			drawScreen();
+			playSound(2);
+			playSound(0);
+			playSound(1);
 		}
 		// Update player speed using joystick input
 //		updateSpeed();

@@ -3962,6 +3962,7 @@ void drawScreen(void) {
 	renderEnemy();
 	if (++refresh == 60) {
 		ST7735_DrawBitmap(0,159,HUD.texture,HUD.height,HUD.width);
+		renderGun();
 		refresh = 0;
 	}
 	updateHUD();

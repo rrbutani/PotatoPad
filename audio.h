@@ -9,7 +9,7 @@
 #define enemyHurt 		1
 #define pistol				2
 #define enemyDeath		3
-#define bounce				4
+#define playerDeath		4
 
 void audioInit(void);
 

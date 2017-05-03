@@ -7,7 +7,7 @@
 #include <stdint.h>
 // --UUU-- Declare state variables for FiFo
 //        size, buffer, put and get indexes
-#define size 4
+#define size 5
 static uint8_t putIndex;
 static uint8_t getIndex;
 static uint8_t buffer[size];

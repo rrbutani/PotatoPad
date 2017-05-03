@@ -35,13 +35,9 @@ static UINT numBytesRead = 0;
 static uint32_t songSize = 0, sfxSize=0;
 static uint16_t songBuffer[songBufferSize], sfxBuffer[sfxBufferSize];
 
-static uint8_t playing;
-
 static void initSongBuffer()
 {
 //  printf("Audio Buffer Size: %d\n", audioBufferSize);
-  
-	SD_OPEN();
 	
 	Fresult = f_open(&SongHandle, "d_e1m1.AUD", FA_READ);
   if(Fresult == FR_OK)
@@ -57,8 +53,6 @@ static void initSongBuffer()
   {
 //    printf("reading card didn't work...");
   }
-	
-	SD_CLOSE();
 }
 
 static void initSfxBuffer(TCHAR *sfxName)
@@ -106,21 +100,27 @@ static boolean populateSfxBuffer(void)
 	valueCount += sfxBufferSize;
 	
 	if(valueCount > sfxSize)
+	{
+		valueCount = 0;
+		f_close(&SfxHandle);
 		return false;
+	}
 	
 	Fresult = f_read(&SfxHandle, &sfxBuffer, 2 * sfxBufferSize, &numBytesRead);
+	SD_CLOSE();
 	
 	return true;
 }
 
 void audioInit(void) {
-	FiFo_Init();
-	
 	pwmHardwareInit();
 	
-  if(f_mount(&g_sFatFs, "", 0))
-    printf("SD Card Mount Error.");
+//  if(f_mount(&g_sFatFs, "", 0))
+//    printf("SD Card Mount Error.");
 	
+	f_mount(&g_sFatFs, "", 0);
+	
+	FiFo_Init();
 	initSongBuffer();
 	
 	SYSCTL_RCGCTIMER_R |= 0x01;		// Only using Timer0
@@ -143,8 +143,6 @@ void audioInit(void) {
 	NVIC_EN0_R = 1 << 19 | 1 << 20;	// Enable interrupt for Timer0
 	TIMER0_CTL_R |= 0x01;    // Enable Timer0A
 	//TIMER0_CTL_R = 0x0101;    // Enable Timer0B
-		
-	playing = 0;
 }
 
 //*****playSound*****
@@ -164,29 +162,62 @@ void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT; // Acknowledge Timer0A
 	static uint32_t songIdx = 0;
 	static uint32_t sfxIdx  = 0;
-  
-  //printf(".");
+  static boolean sfxPlaying = false;
+	static uint16_t sfxValue = 0;
+	
+	
+	if(sfxPlaying)
+	{
+		if(++sfxIdx == sfxBufferSize)
+		{
+			sfxPlaying = populateSfxBuffer();
+			sfxIdx = 0;
+		}
+		sfxValue = sfxBuffer[sfxIdx];
+	}
+	else
+	{
+		char newSfx;
+		if(FiFo_Get(&newSfx))
+		{
+			sfxPlaying = true;
+			switch(newSfx)
+			{
+				case playerHurt	: initSfxBuffer("pain.aud");
+													break;
+				case enemyHurt	: initSfxBuffer("ehurt.aud");
+													break;
+				case pistol			: initSfxBuffer("pistol.aud");
+													break;
+				case enemyDeath	: initSfxBuffer("edeath.aud");
+													break;
+				case playerDeath: initSfxBuffer("death.aud");
+													break;
+			}
+		}
+		sfxValue = 0;
+	}
   
 	if(++songIdx == songBufferSize)
 	{
-		populateBuffer();
+		populateSongBuffer();
 		songIdx = 0;
 	}
 		
-	audioValueOut((songBuffer[i]));
+	audioValueOut((songBuffer[songIdx])/2 + (sfxValue)/2);
 }
 
-void Timer0B_Handler(void){
-  TIMER0_ICR_R = TIMER_ICR_TBTOCINT; // Acknowledge Timer0B
-	static uint32_t i = 0;
-  
-  //printf(".");
-  
-	if(++i == songBufferSize)
-	{
-		populateBuffer();
-		i = 0;
-	}
-		
-	audioValueOut((audioBuffer[i]));
-}
+//void Timer0B_Handler(void){
+//  TIMER0_ICR_R = TIMER_ICR_TBTOCINT; // Acknowledge Timer0B
+//	static uint32_t i = 0;
+//  
+//  //printf(".");
+//  
+//	if(++i == songBufferSize)
+//	{
+//		populateBuffer();
+//		i = 0;
+//	}
+//		
+//	audioValueOut((audioBuffer[i]));
+//}
