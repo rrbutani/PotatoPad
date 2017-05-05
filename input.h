@@ -8,7 +8,7 @@
 #define deadZoneEnd		136
 
 #define maxSpeed			5
-#define maxAngularSpeed			0.05f
+#define maxAngularSpeed			0.08f
 
 extern Player player;
 extern uint8_t shooting;
