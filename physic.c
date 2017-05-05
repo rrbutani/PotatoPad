@@ -6,8 +6,6 @@
 
 #include <stdint.h>
 #include <math.h>
-#include "types.h"
-#include "macros.h"
 #include "common.h"
 #include "physic.h"
 #include "audio.h"

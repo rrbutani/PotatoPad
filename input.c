@@ -8,11 +8,11 @@
 
 #include "contrib/tm4c123gh6pm.h"
 #include "drivers/ADC.h"
-#include "types.h"
+#include "common.h"
 #include "audio.h"
 #include "input.h"
 
-static uint8_t disabled;
+static boolean disabled;
 
 void inputInit(void) {
 	ADC_Init();
@@ -38,7 +38,7 @@ void inputInit(void) {
 	NVIC_PRI7_R = (NVIC_PRI7_R & 0xFF00FFFF) | 0x00600000; // Set priority to 3
 	NVIC_EN0_R = 1 << 30;
 		
-	disabled = 1;
+	disabled = true;
 }
 
 void updateSpeed(void) {
@@ -55,11 +55,11 @@ void updateSpeed(void) {
 }
 
 void disableInput(void) {
-	disabled = 1;
+	disabled = true;
 }
 
 void enableInput(void) {
-	disabled = 0;
+	disabled = false;
 }
 
 void GPIOPortF_Handler(void) {
@@ -75,7 +75,7 @@ void GPIOPortF_Handler(void) {
 	if (triggered & 0x04) {
 	}
 	if (triggered & 0x08) {
-		shooting = 1;
+		player.shooting = true;
 		playSound(pistol);
 	}
 	if (triggered & 0x10) {

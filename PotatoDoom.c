@@ -11,7 +11,6 @@
 #include "contrib/tm4c123gh6pm.h"
 #include "contrib/PLL.h"
 #include "contrib/FPU.h"
-#include "types.h"
 #include "common.h"
 #include "graphic.h"
 #include "physic.h"
@@ -24,11 +23,10 @@ void EnableInterrupts(void);
 // Global variables
 Player player;	// 1056, -3520	start, 1032, -3232 court
 Enemy enemyList[] = {{2200,-3112,20,0},{2240,-3480,20,0},{1832,-3216,20,0},{2040,-2328,20,0},{2040,-2635,20,0},{2264,-4016,20,0},{2736,-2680,20,0},{2992,-3088,20,0},{3272,-3360,20,0},{3688,-3216,20,0},{3288,-3816,20,0},{2912,-4448,20,0},{3064,-4448,20,0},{144,-3144,20,0},{144,-3328,20,0},{-424,-3520,20,0},{-424,-2952,20,0},{-624,-3200,20,0}};
-uint8_t shooting;	// Flag for player firing
 float pcos, psin;
 
 // Private variables
-static uint8_t ready;
+static boolean ready;
 	
 static void playerInit(void) {
 	player.x = 1056;
@@ -41,7 +39,7 @@ static void playerInit(void) {
 	player.armor = 100;
 	player.score = 0;
 	player.running = 1;
-	shooting = 0;
+	player.shooting = false;
 }
 
 // SysTick used to maintain framerate
@@ -53,7 +51,7 @@ static void SysTickInit(void) {
 }
 
 void SysTick_Handler(void) {
-	ready = 1;
+	ready = true;
 }
 
 int main(void){
@@ -62,7 +60,7 @@ int main(void){
 	
 	playerInit();
 	audioInit();
-	DisableInterrupts();
+//	DisableInterrupts();
 	graphicInit();
 	inputInit();
 	EnableInterrupts();
@@ -81,12 +79,12 @@ int main(void){
 	
 	SysTickInit();
 	enableInput();
-	ready = 0;
+	ready = false;
 
 	while(1) {
 		if (ready) {
 			GPIO_PORTF_DATA_R ^= 0x02;	// Heartbeat
-			ready = 0;
+			ready = false;
 			player.angle += player.angularSpeed;
 			pcos = cos(player.angle);
 			psin = sin(player.angle);

@@ -14,7 +14,6 @@
 // Feb 22, 2016
 // added PB0 as a choice for SDC CS
 #include <stdint.h>
-#include <stdio.h>
 #include "../../contrib/tm4c123gh6pm.h"
 #include "integer.h"
 #include "diskio.h"
@@ -296,7 +295,6 @@ static int wait_ready(UINT wt){
 static void deselect(void){
   CS_HIGH();       /* CS = H */
   xchg_spi(0xFF);  /* Dummy clock (force DO hi-z for multiple slave SPI) */
-	TFT_CS = TFT_CS_LOW;
 }
 
 
@@ -690,9 +688,4 @@ void Timer5_Init(void){
 void Timer5A_Handler(void){
   TIMER5_ICR_R = 0x00000001;       // acknowledge timer5A timeout
   disk_timerproc();
-}
-
-void diskError(char *errtype, int32_t code, int32_t block)
-{
-  printf("SD Card Error: %c; Code: %d; Block %d", *errtype, code, block);
 }

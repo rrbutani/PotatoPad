@@ -11,8 +11,6 @@
 
 #include "contrib/tm4c123gh6pm.h"
 #include "drivers/ST7735/ST7735.h"
-#include "types.h"
-#include "macros.h"
 #include "common.h"
 #include "graphic.h"
 #include "audio.h"
@@ -2559,7 +2557,7 @@ static uint8_t segRendered;		// Number of segment rendered, capped at maxSeg
 static uint8_t zBufferCount;
 static uint16_t zBuffer[W-1];	// Z buffer so segment behind object rendered are discarded
 static uint8_t wasShooting;
-static uint8_t playingTitle;
+static boolean playingTitle;
 //static uint8_t refresh;
 
 // Menu texture
@@ -3909,7 +3907,7 @@ static void updateHUD(void);
 //*****displayTitle*****
 // Display the title screen until player start
 void displayTitle(void) {
-	playingTitle = 1;
+	playingTitle = true;
 	ST7735_DrawBitmap((H+32-title.height)/2,W-(W-title.width)/2,title.texture,title.height,title.width);
 	while (GPIO_PORTF_DATA_R & 0x08) {
 		player.angle += 0.01f;
@@ -3927,7 +3925,7 @@ void displayTitle(void) {
 //			ST7735_DrawBitmap((H+32-title.height)/2,W-(W-title.width)/2,title.texture,title.height,title.width);
 //		}	
 	}
-	playingTitle = 0;
+	playingTitle = false;
 	player.angle = PI/2;
 	pcos = cos(player.angle);
 	psin = sin(player.angle);
@@ -3966,16 +3964,16 @@ void drawScreen(void) {
 //	}
 	updateHUD();
 	// Stopped shooting
-	if (wasShooting != shooting) {
+	if (wasShooting != player.shooting) {
 		wasShooting--;
 		if (wasShooting == 0)
 			renderGun();
 		//ST7735_DrawBitmap(32,92,gun.texture,gun.height,gun.width);
 	}
-	if (shooting)	{
+	if (player.shooting)	{
 		renderGunFire();
 		wasShooting = 5;
-		shooting = 0;
+		player.shooting = false;
 	}
 }
 
@@ -4056,7 +4054,7 @@ static void renderEnemy() {
 			xOffset += xScale;
 		}
 		
-		if (visible && shooting) {
+		if (visible && player.shooting) {
 			if (ty1 < 25 && ty1 >= 0)	{
 				enemyList[index].health -= 5;
 				if (enemyList[index].health <= 0)	{

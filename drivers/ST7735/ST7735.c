@@ -177,7 +177,7 @@ uint16_t StTextColor = ST7735_YELLOW;
 #define SSI_SR_RNE              0x00000004  // SSI Receive FIFO Not Empty
 #define SSI_CPSR_CPSDVSR_M      0x000000FF  // SSI Clock Prescale Divisor
 #define SSI_CC_CS_M             0x0000000F  // SSI Baud Clock Source
-#define SSI_CC_CS_SYSPLL        0x00000000  
+#define SSI_CC_CS_SYSPLL        0x00000000
 #define SSI_CC_CS_PIOSC         0x00000005  // PIOSC
 #define SYSCTL_RCGCGPIO_R       (*((volatile uint32_t *)0x400FE608))
 #define SYSCTL_RCGCGPIO_R3      0x00000008  // GPIO Port D Run Mode Clock
@@ -524,36 +524,33 @@ static int16_t _height = ST7735_TFTHEIGHT;
 // transmitted.
 // NOTE: These functions will crash or stall indefinitely if
 // the SSI0 module is not initialized and enabled.
+void static writecommand(unsigned char c) {
+  volatile uint32_t response;
+                                        // wait until SSI0 not busy/transmit FIFO empty
+  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
+  SDC_CS = SDC_CS_HIGH;
+  TFT_CS = TFT_CS_LOW;
+  DC = DC_COMMAND;
+  SSI0_DR_R = c;                        // data out
+  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
+  TFT_CS = TFT_CS_HIGH;
+  response = SSI0_DR_R;                 // acknowledge response
+}
 
-//void static writecommand(unsigned char c) {
-//  volatile uint32_t response;
-//                                        // wait until SSI0 not busy/transmit FIFO empty
-//  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
-//  SDC_CS = SDC_CS_HIGH;
-//  TFT_CS = TFT_CS_LOW;
-//  DC = DC_COMMAND;
-//  SSI0_DR_R = c;                        // data out
-//  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
-//  TFT_CS = TFT_CS_HIGH;
-//  response = SSI0_DR_R;                 // acknowledge response
-//}
 
+void static writedata(unsigned char c) {
+  volatile uint32_t response;
+                                        // wait until SSI0 not busy/transmit FIFO empty
+  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
+  SDC_CS = SDC_CS_HIGH;
+  TFT_CS = TFT_CS_LOW;
+  DC = DC_DATA;
+  SSI0_DR_R = c;                        // data out
+  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
+  TFT_CS = TFT_CS_HIGH;
+  response = SSI0_DR_R;                 // acknowledge response
+}
 
-//void static writedata(unsigned char c) {
-//  volatile uint32_t response;
-//                                        // wait until SSI0 not busy/transmit FIFO empty
-//  while((SSI0_SR_R&SSI_SR_BSY)==SSI_SR_BSY){};
-//  SDC_CS = SDC_CS_HIGH;
-//  TFT_CS = TFT_CS_LOW;
-//  DC = DC_DATA;
-//  SSI0_DR_R = c;                        // data out
-//  while((SSI0_SR_R&SSI_SR_RNE)==0){};   // wait until response
-//  TFT_CS = TFT_CS_HIGH;
-//  response = SSI0_DR_R;                 // acknowledge response
-//}
-
-void writecommand (unsigned char c);
-void writedata (unsigned char c);
 
 // delay function from sysctl.c
 // which delays 3*ulCount cycles
@@ -808,12 +805,12 @@ void static commonInit(const uint8_t *cmdList) {
   SSI0_CR1_R &= ~SSI_CR1_SSE;           // disable SSI
   SSI0_CR1_R &= ~SSI_CR1_MS;            // master mode
                                         // configure for clock from source PIOSC for baud clock source
-//  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
-	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
+//  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;	// 16 MHz
+	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;	// 80 MHz
                                         // clock divider for 8 MHz SSIClk (16 MHz PIOSC/2)
                                         // PIOSC/(CPSDVSR*(1+SCR))
                                         // 16/(2*(1+0)) = 8 MHz
-  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+4; // must be even number
+  SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; // must be even number
   SSI0_CR0_R &= ~(SSI_CR0_SCR_M |       // SCR = 0 (8 Mbps data rate)
                   SSI_CR0_SPH |         // SPH = 0
                   SSI_CR0_SPO);         // SPO = 0
@@ -983,7 +980,7 @@ void ST7735_DrawFastHLineTexture(int16_t x, int16_t y, int16_t w, uint8_t xOffse
 		//yOffset = yOffset > 127 ? 0 : yOffset;	not needed because constant height
   }
 }
-	
+
 //------------ST7735_FillScreen------------
 // Fill the screen with the given color.
 // Requires 40,971 bytes of transmission

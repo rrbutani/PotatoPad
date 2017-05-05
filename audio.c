@@ -11,15 +11,16 @@
 #include "drivers/sd_SPI/diskio.h"
 #include "drivers/sd_SPI/ff.h"
 #include "drivers/ST7735/ST7735.h"
+#include "common.h"
 #include "Fifo.h"
 #include "audio.h"
 
-#define SD_CLOSE() SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+4; \
-	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
-#define SD_OPEN() 	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; \
-  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
-
-typedef enum { false, true } boolean;
+//#define SD_CLOSE() SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+4; \
+//	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
+//#define SD_OPEN() 	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; \
+//  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
+#define SD_CLOSE()	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
+#define SD_OPEN() 	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
 
 static FATFS g_sFatFs;
 static FIL SongHandle, SfxHandle;

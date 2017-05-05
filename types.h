@@ -3,6 +3,8 @@
 // Contains all the structs used by PotatoDoom
 // Steven Zhu
 
+typedef enum { false, true } boolean;
+
 typedef struct {
 	int16_t x;
 	int16_t y;
@@ -14,6 +16,7 @@ typedef struct {
 	int8_t armor;
 	uint16_t score;
 	uint8_t running;	// Increase speed if running
+	boolean shooting;	// Indicate whether playing shooting
 } Player;
 
 typedef struct {

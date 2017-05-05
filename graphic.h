@@ -30,7 +30,6 @@
 #define nodeCount 235 // sizeof(nodeList) / 28 - 1
 
 extern Player player;
-extern uint8_t shooting;
 extern float pcos, psin;
 extern Enemy enemyList[];
 extern uint8_t collisionCount;
