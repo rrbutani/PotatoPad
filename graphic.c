@@ -4058,13 +4058,13 @@ static void renderEnemy() {
 			if (ty1 < 25 && ty1 >= 0)	{
 				enemyList[index].health -= 5;
 				if (enemyList[index].health <= 0)	{
-					playSound(enemyDeath);
+					playSFX(enemyDeath);
 					player.armor += 25;
 					player.score += 10;
 					
 					if (player.armor > 100)	player.armor = 100;
 				} else {
-					playSound(enemyHurt);
+					playSFX(enemyHurt);
 				}
 			}
 		}
@@ -4088,6 +4088,7 @@ void displayEnd(uint8_t input) {
       ST7735_DrawBitmap(38,119,numberTexture[player.score % 1000 / 100],16,14);
       ST7735_DrawBitmap(38,133,numberTexture[player.score % 100 / 10],16,14);
       ST7735_DrawBitmap(38,147,numberTexture[player.score % 10],16,14);
+      playSong("QUEEN.AUD");
       while(1){  
 //      ST7735_DrawBitmap(38,105,numberTexture[player.score % 10000 / 1000],16,14);
 //      ST7735_DrawBitmap(38,119,numberTexture[player.score % 1000 / 100],16,14);

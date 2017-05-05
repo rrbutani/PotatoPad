@@ -14,57 +14,63 @@
 #include "common.h"
 #include "Fifo.h"
 #include "audio.h"
+#include "SfxData.h"
 
 //#define SD_CLOSE() SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+4; \
 //	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
 //#define SD_OPEN() 	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+2; \
 //  SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
-#define SD_CLOSE()	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;
-#define SD_OPEN() 	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC;
+#define SD_CLOSE()	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL
+#define SD_OPEN() 	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_PIOSC
+
+// Sound Effects we currently have
+sfx playerHurt  = {playerHurtSFX, sizeof(playerHurtSFX)};
+sfx enemyHurt   = {enemyHurtSFX, sizeof(enemyHurtSFX)};
+sfx pistol      = {pistolSFX, sizeof(pistolSFX)};
+sfx enemyDeath  = {enemyDeathSFX, sizeof(enemyDeathSFX)};
+sfx playerDeath = {playerDeathSFX, sizeof(playerDeathSFX)};
+
+// Array of Channels
+static Channel audioChannels[maxAudioChannels];
+
+static boolean SD_MOUNTED = false;
 
 static FATFS g_sFatFs;
-static FIL SongHandle, SfxHandle;
+static FIL SongHandle;
 static FRESULT Fresult;
 static UINT numBytesRead = 0;
 
-static uint32_t songSize = 0, sfxSize=0;
-static uint16_t songBuffer[songBufferSize], sfxBuffer[sfxBufferSize];
+static uint32_t songSize = 0, songPlayerIdx;
+static uint16_t songBuffer[songBufferSize];
 
-static void initSongBuffer()
+static uint8_t numChannelsPlaying;
+
+static void populateSongBuffer(void);
+
+static void initSongBuffer(TCHAR *songName)
 {
-//  printf("Audio Buffer Size: %d\n", audioBufferSize);
-	
-	Fresult = f_open(&SongHandle, "d_e1m1.AUD", FA_READ);
+	if(SD_MOUNTED)
+    SD_OPEN();
+  else
+    SD_MOUNTED = true;
+  
+	Fresult = f_open(&SongHandle, songName, FA_READ);
   if(Fresult == FR_OK)
   {
     Fresult = f_read(&SongHandle, &songSize, 4, &numBytesRead);
-//    printf("Read audio file; size is %lu\n",(long unsigned)audioSize);
+
     if(numBytesRead == 4 && Fresult == FR_OK)
-    {
       Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
-    }
   }
   else
   {
-//    printf("reading card didn't work...");
+    // printf("reading card didn't work...");
+    initSongBuffer("FUN.AUD");
   }
-}
-
-static void initSfxBuffer(TCHAR *sfxName)
-{
-	SD_OPEN();
-	
-	Fresult = f_open(&SfxHandle, sfxName, FA_READ);
-	if(Fresult == FR_OK)
-	{
-		Fresult = f_read(&SfxHandle, &sfxSize, 4, &numBytesRead);
-		if(numBytesRead == 4 && Fresult == FR_OK)
-		{
-			Fresult = f_read(&SfxHandle, &sfxBuffer, 2 * sfxBufferSize, &numBytesRead);
-		}
-	}
-	
-	SD_CLOSE();
+  
+  populateSongBuffer();
+  
+  SD_CLOSE();
 }
 
 static void populateSongBuffer(void)
@@ -77,34 +83,66 @@ static void populateSongBuffer(void)
   if(valueCount > songSize)
   {
     valueCount = 0;
-		f_close(&SongHandle);
-    initSongBuffer();
-	}
+    f_lseek(&SongHandle, 4); // Move back to start of file
+    Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
+  }
   else
     Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
 	
+  songPlayerIdx = 0;
+  
 	SD_CLOSE();
 }
 
-// Returns false once the sound effect is finished.
-static boolean populateSfxBuffer(void)
+//static void initSfxBuffer(TCHAR *sfxName)
+//{
+//	SD_OPEN();
+//	
+//	Fresult = f_open(&SfxHandle, sfxName, FA_READ);
+//	if(Fresult == FR_OK)
+//	{
+//		Fresult = f_read(&SfxHandle, &sfxSize, 4, &numBytesRead);
+//		if(numBytesRead == 4 && Fresult == FR_OK)
+//		{
+//			Fresult = f_read(&SfxHandle, &sfxBuffer, 2 * sfxBufferSize, &numBytesRead);
+//		}
+//	}
+//	
+//	SD_CLOSE();
+//}
+
+
+
+//// Returns false once the sound effect is finished.
+//static boolean populateSfxBuffer(void)
+//{
+//	static uint32_t valueCount = 0;
+//	SD_OPEN();
+//	
+//	valueCount += sfxBufferSize;
+//	
+//	if(valueCount > sfxSize)
+//	{
+//		valueCount = 0;
+//		f_close(&SfxHandle);
+//		return false;
+//	}
+//	
+//	Fresult = f_read(&SfxHandle, &sfxBuffer, 2 * sfxBufferSize, &numBytesRead);
+//	SD_CLOSE();
+//	
+//	return true;
+//}
+
+
+void initAudioChannels()
 {
-	static uint32_t valueCount = 0;
-	SD_OPEN();
-	
-	valueCount += sfxBufferSize;
-	
-	if(valueCount > sfxSize)
-	{
-		valueCount = 0;
-		f_close(&SfxHandle);
-		return false;
-	}
-	
-	Fresult = f_read(&SfxHandle, &sfxBuffer, 2 * sfxBufferSize, &numBytesRead);
-	SD_CLOSE();
-	
-	return true;
+  for(uint8_t i = 0; i < maxAudioChannels; i++)
+  {
+    audioChannels[i] = (Channel){false, pistol, 0};
+  }
+  
+  numChannelsPlaying = 0;
 }
 
 void audioInit(void) {
@@ -116,7 +154,7 @@ void audioInit(void) {
 	f_mount(&g_sFatFs, "", 0);
 	
 	FiFo_Init();
-	initSongBuffer();
+	initSongBuffer("d_e1m1.AUD");
 	
 	SYSCTL_RCGCTIMER_R |= 0x01;		// Only using Timer0
 	while ((SYSCTL_RCGCTIMER_R & 0x01) == 0) {}
@@ -140,11 +178,33 @@ void audioInit(void) {
 	//TIMER0_CTL_R = 0x0101;    // Enable Timer0B
 }
 
-//*****playSound*****
-// Plays sound effect, return if already playing one
-// Input: 0 for player hurt, 1 for enemy hurt, 2 for pistol, 3 for monster death
-void playSound(uint8_t sound) {
-	FiFo_Put(sound);
+// *****playSFX*****
+// Plays sound effect, returns if we have too many sound effects playing
+// Input: a sound effect struct
+void playSFX(sfx soundEffect)
+{
+  // If we're out of empty channels, return
+  if(numChannelsPlaying == maxAudioChannels)
+    return;
+  
+  uint8_t i = 0;
+  
+  // Find the next empty audio channel
+  while(audioChannels[i].playing == true)
+    i++;
+  
+  audioChannels[i] = (Channel){true, soundEffect, 0};
+  numChannelsPlaying++;
+  
+  return;
+}
+
+// *****playSong******
+// Plays a song; replaces the current song.
+// Input: the name of a song that corresponds to a file on the SD Card
+void playSong(char *songName)
+{
+  initSongBuffer(songName);
 }
 
 // *****startMusic*****
@@ -153,53 +213,45 @@ void toggleMusic(void) {
 	TIMER0_CTL_R ^= 0x01;    // Enable Timer0A
 }
 
+// To be called @ 7.805 KHz
+uint16_t sfxCollectiveAudioOut(void)
+{
+  uint32_t sum = 0;
+  
+  for(uint8_t i = 0; i < maxAudioChannels; i++)
+  {
+      if(audioChannels[i].playing)
+      {
+        if(++audioChannels[i].counter == audioChannels[i].soundEffect.audioArraySize)
+        {
+          audioChannels[i].playing = false;
+          numChannelsPlaying--;
+        }
+        sum += audioChannels[i].soundEffect.audioValuesArray[audioChannels[i].counter];
+      }
+  }
+  
+  // Scale up to 1024; 1/2 of our maximum output value/volume
+  return (uint16_t)(2 * sum);
+}
+
 void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT; // Acknowledge Timer0A
-	static uint32_t songIdx = 0;
-	static uint32_t sfxIdx  = 0;
-  static boolean sfxPlaying = false;
+	static uint8_t sfxCounter = 0;
 	static uint16_t sfxValue = 0;
 	
-	
-	if(sfxPlaying)
-	{
-		if(++sfxIdx == sfxBufferSize)
-		{
-			sfxPlaying = populateSfxBuffer();
-			sfxIdx = 0;
-		}
-		sfxValue = sfxBuffer[sfxIdx];
-	}
-	else
-	{
-		char newSfx;
-		if(FiFo_Get(&newSfx))
-		{
-			sfxPlaying = true;
-			switch(newSfx)
-			{
-				case playerHurt	: initSfxBuffer("pain.aud");
-													break;
-				case enemyHurt	: initSfxBuffer("ehurt.aud");
-													break;
-				case pistol			: initSfxBuffer("pistol.aud");
-													break;
-				case enemyDeath	: initSfxBuffer("edeath.aud");
-													break;
-				case playerDeath: initSfxBuffer("death.aud");
-													break;
-			}
-		}
-		sfxValue = 0;
-	}
+	if(!sfxCounter--)
+  {  
+    sfxValue = sfxCollectiveAudioOut();
+    sfxCounter = 4;
+  }
   
-	if(++songIdx == songBufferSize)
+	if(++songPlayerIdx == songBufferSize)
 	{
 		populateSongBuffer();
-		songIdx = 0;
 	}
 		
-	audioValueOut((songBuffer[songIdx])/2 + (sfxValue)/2);
+	audioValueOut((songBuffer[songPlayerIdx])/2 + (sfxValue));
 }
 
 //void Timer0B_Handler(void){

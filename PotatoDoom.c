@@ -97,7 +97,7 @@ int main(void){
 			}		
 			updateHealth();
 			if (player.health < 0) {
-				playSound(playerDeath);
+				playSFX(playerDeath);
 				player.health = 0;
 //        displayEnd(0);
 				// break;	possibly use botton to restart

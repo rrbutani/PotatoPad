@@ -76,7 +76,7 @@ void GPIOPortF_Handler(void) {
 	}
 	if (triggered & 0x08) {
 		player.shooting = true;
-		playSound(pistol);
+		playSFX(pistol);
 	}
 	if (triggered & 0x10) {
 		toggleMusic();

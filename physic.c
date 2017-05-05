@@ -67,7 +67,7 @@ void updateHealth(void) {
 				enemyRenderList[enemyRenderCount++] = i;
 			if (enemyList[i].cooldown == 0) {
 				enemyList[i].cooldown = firingCooldown;
-				playSound(playerHurt);
+				playSFX(playerHurt);
 				if (player.armor > 0)
 					player.armor -= 1;
 				else
