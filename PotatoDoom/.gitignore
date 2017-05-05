@@ -1,0 +1,26 @@
+# Build Files #
+*.axf
+*.build_log
+*.crf
+*.o
+
+# Linker Files #
+*.dep
+*.d
+*.map
+
+# Keil uVision Files #
+*.uvgui*
+#*.uvopt
+*.uvgui.*
+
+# Log Files #
+*.htm
+*.plg
+
+# Misc #
+*.lst
+*.lnp
+*.bak
+*.iex
+~*
