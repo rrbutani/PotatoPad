@@ -1,7 +1,7 @@
 # Mandatory settings
 
-name: JankPad
-baseurl: "/JankPad" 
+name: PotatoPad
+baseurl: "/PotatoPad" 
 paginate: 25
 url: "rrbutani.github.io" # add your site url (format: http://example.com/)
 blog_theme: dark # Or use light
@@ -17,7 +17,7 @@ social:
   dribbble: # Add your Dribbble handle
   facebook: # Add your Facebook handle
   flickr: # Add your Flickr handle
-  github: rrbutani/JankPad
+  github: rrbutani/PotatoPad
   linkedin: # Add your LinkedIn handle
   twitter: # Add your Twitter handle
   email: # Add your Email address
