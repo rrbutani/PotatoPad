@@ -10,9 +10,10 @@
 *.map
 
 # Keil uVision Files #
-*.uvgui
-*.uvopt
-*.upproj
+*.uvgui*
+#*.uvopt
+*.sct
+*.uvgui.*
 
 # Log Files #
 *.htm
@@ -22,4 +23,5 @@
 *.lst
 *.lnp
 *.bak
+*.iex
 ~*
