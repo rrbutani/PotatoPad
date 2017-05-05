@@ -95,8 +95,8 @@ int main(void){
 				displayEnd(1);
 				// break;	possibly use botton to restart
 			}		
-			if (player.health % 20 == 0)
-				playSFX(playerHurt);
+//			if (player.health % 20 == 0)
+//				playSFX(playerHurt);
 			if (player.health < 0) {
 				playSFX(playerDeath);
 				player.health = 0;
