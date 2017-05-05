@@ -94,8 +94,9 @@ int main(void){
 			if (player.y < -4592) {
 				displayEnd(1);
 				// break;	possibly use botton to restart
-			}		
-			updateHealth();
+			}
+			if (player.health % 20 == 0)
+				playSound(playerHurt);
 			if (player.health < 0) {
 				playSound(playerDeath);
 				player.health = 0;

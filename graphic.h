@@ -19,15 +19,24 @@
 #define maxSeg	128
 
 // Defines for texture list for flexibility
-#define wall 0
-#define door 1
-#define browngnd 2
+#define startan3	0
+#define door3	1
+#define browngnd	2
+#define lite3	3
+#define	brown1	4
+#define	stargr1	5
+#define	comptile	6
+#define	doortrak	7
+#define support2	8
+#define techwall	9
 
 // Floor and ceiling color
 #define floor 0xC618	// lightgray
 #define ceiling 0x7BEF		// darkgray
 
 #define nodeCount 235 // sizeof(nodeList) / 28 - 1
+
+#define refreshRate	120	// Rate at which HUD refresh to correct any mistakes
 
 extern Player player;
 extern float pcos, psin;

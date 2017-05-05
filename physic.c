@@ -17,9 +17,9 @@ Seg collisionList[maxCollision];	// List of segment to check against for collisi
 // Checks every segment in collisionList against player move
 // If collide, rebound at normal to collided segment
 void movePlayer(void) {
-	uint8_t radius = player.speed > 0 ? collisionRange : -collisionRange;
-	int8_t pdx = (player.speed*player.running + radius) * pcos;
-	int8_t pdy = (player.speed*player.running + radius) * psin;
+	int8_t radius = player.speed > 0 ? collisionRange : -collisionRange;
+	float pdx = (player.speed*player.running + collisionRange) * pcos;
+	float pdy = (player.speed*player.running + collisionRange) * psin;
 	for (uint8_t i = 0; i < collisionCount; i++) {
 		Vertex v1 = vertexList[collisionList[i].startVertex];
 		Vertex v2 = vertexList[collisionList[i].endVertex];
@@ -29,11 +29,13 @@ void movePlayer(void) {
 		// Check player movement		
 		if (((crossProduct((player.x-v1.x),(player.y-v1.y),dx,dy) > 0) != (crossProduct((player.x+pdx-v1.x),(player.y+pdy-v1.y),dx,dy) > 0)) &&
 			((crossProduct((v1.x-player.x),(v1.y-player.y),pdx,pdy) > 0) != (crossProduct((v2.x-player.x),(v2.y-player.y),pdx,pdy) > 0)))	{
-			float hyp = sqrt(dx*dx+dy*dy);
-			player.x -= dy / hyp * rebound;
-			player.y -= dx / hyp * rebound;
+//			float hyp = sqrt(dx*dx+dy*dy);
+//			player.x -= dy / hyp * rebound;
+//			player.y -= dx / hyp * rebound;
 			return;
 		}
+		if (sqrt((v1.x-player.x-pdx)*(v1.x-player.x-pdx)+(v1.y-player.y-pdy)*(v1.y-player.y-pdy)) < cornerCollisionRange)	return;
+		if (sqrt((v2.x-player.x-pdx)*(v2.x-player.x-pdx)+(v2.y-player.y-pdy)*(v2.y-player.y-pdy)) < cornerCollisionRange)	return;
 	}
 	
 	player.x += player.speed*player.running * pcos;
@@ -63,11 +65,11 @@ void updateHealth(void) {
 		}
 		
 		if (inView) {
-			if (enemyRenderCount < maxEnemy)
-				enemyRenderList[enemyRenderCount++] = i;
+//			if (enemyRenderCount < maxEnemy)
+			enemyRenderList[enemyRenderCount++] = i;
 			if (enemyList[i].cooldown == 0) {
 				enemyList[i].cooldown = firingCooldown;
-				playSound(playerHurt);
+//				playSound(playerHurt);
 				if (player.armor > 0)
 					player.armor -= 1;
 				else

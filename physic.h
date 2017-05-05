@@ -5,7 +5,8 @@
 // Steven Zhu
 
 // Collision defines
-#define collisionRange 10	// Increase collision detection range
+#define collisionRange 20	// Increase collision detection range
+#define cornerCollisionRange	5	// Corner collision
 #define rebound	2
 
 // Line of sight defines
