@@ -72,7 +72,7 @@ void GPIOPortF_Handler(void) {
 		else
 			player.running = 2;
 	} 
-	if (triggered & 0x04) {
+	if (triggered & 0x04) { // This button (game reset) is handled in displayEnd
 	}
 	if (triggered & 0x08) {
 		player.shooting = true;

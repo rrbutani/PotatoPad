@@ -22,12 +22,33 @@ void EnableInterrupts(void);
 
 // Global variables
 Player player;	// 1056, -3520	start, 1032, -3232 court
-Enemy enemyList[] = {{2200,-3112,20,0},{2240,-3480,20,0},{1832,-3216,20,0},{2040,-2328,20,0},{2040,-2635,20,0},{2264,-4016,20,0},{2736,-2680,20,0},{2992,-3088,20,0},{3272,-3360,20,0},{3688,-3216,20,0},{3288,-3816,20,0},{2912,-4448,20,0},{3064,-4448,20,0},{144,-3144,20,0},{144,-3328,20,0},{-424,-3520,20,0},{-424,-2952,20,0},{-624,-3200,20,0}};
+Enemy enemyList[18];
 float pcos, psin;
 
 // Private variables
 static boolean ready;
-	
+
+static void enemyInit(void) {
+  enemyList[0] = (Enemy){2200,-3112,20,0};
+  enemyList[1] = (Enemy){2240,-3480,20,0};
+  enemyList[2] = (Enemy){1832,-3216,20,0};
+  enemyList[3] = (Enemy){2040,-2328,20,0};
+  enemyList[4] = (Enemy){2040,-2635,20,0};
+  enemyList[5] = (Enemy){2264,-4016,20,0};
+  enemyList[6] = (Enemy){2736,-2680,20,0};
+  enemyList[7] = (Enemy){2992,-3088,20,0};
+  enemyList[8] = (Enemy){3272,-3360,20,0};
+  enemyList[9] = (Enemy){3688,-3216,20,0};
+  enemyList[10] = (Enemy){3288,-3816,20,0};
+  enemyList[11] = (Enemy){2912,-4448,20,0};
+  enemyList[12] = (Enemy){3064,-4448,20,0};
+  enemyList[13] = (Enemy){144,-3144,20,0};
+  enemyList[14] = (Enemy){144,-3328,20,0};
+  enemyList[15] = (Enemy){-424,-3520,20,0};
+  enemyList[16] = (Enemy){-424,-2952,20,0};
+  enemyList[17] = (Enemy){-624,-3200,20,0};
+}
+  
 static void playerInit(void) {
 	player.x = 1056;
 	player.y = -3520;
@@ -40,6 +61,11 @@ static void playerInit(void) {
 	player.score = 0;
 	player.running = 1;
 	player.shooting = false;
+}
+
+void gameInit(void) {
+  enemyInit();
+  playerInit();
 }
 
 // SysTick used to maintain framerate
@@ -58,7 +84,7 @@ int main(void){
 	PLL_Init(); 		// Set clock to 80MHz	
 	FPULazyStackingEnable();
 	
-	playerInit();
+	gameInit();
 	audioInit();
 //	DisableInterrupts();
 	graphicInit();
@@ -74,37 +100,40 @@ int main(void){
 //	pcos = cos(player.angle);
 //	psin = sin(player.angle);
 //	uint16_t counter = 0;
+//  player.health = 2;
 
 	displayTitle();
 	
 	SysTickInit();
 	enableInput();
 	ready = false;
-
-	while(1) {
-		if (ready) {
-			GPIO_PORTF_DATA_R ^= 0x02;	// Heartbeat
-			ready = false;
-			player.angle += player.angularSpeed;
-			pcos = cos(player.angle);
-			psin = sin(player.angle);
-			movePlayer();
-			drawScreen();
-			// Completion requirement
-			if (player.y < -4592) {
-				displayEnd(1);
-				// break;	possibly use botton to restart
-			}		
-//			if (player.health % 20 == 0)
-//				playSFX(playerHurt);
-			if (player.health < 0) {
-				playSFX(playerDeath);
-				player.health = 0;
-//        displayEnd(0);
-				// break;	possibly use botton to restart
-			}
-		}
-		// Update player speed using joystick input
-		updateSpeed();
-	}
+  while(1) {
+    while(1) {
+      if (ready) {
+        GPIO_PORTF_DATA_R ^= 0x02;	// Heartbeat
+        ready = false;
+        player.angle += player.angularSpeed;
+        pcos = cos(player.angle);
+        psin = sin(player.angle);
+        movePlayer();
+        drawScreen();
+        // Completion requirement
+        if (player.y < -4592) {
+          displayEnd(1);
+          break; // Restart once button is pressed
+        }		
+  //			if (player.health % 20 == 0)
+  //				playSFX(playerHurt);
+        if (player.health < 0) {
+          playSFX(playerDeath);
+          player.health = 0;
+         displayEnd(0);
+          break; // Restart once button is pressed
+        }
+      }
+      // Update player speed using joystick input
+      updateSpeed();
+    }
+    gameInit(); // Restart game
+  }
 }

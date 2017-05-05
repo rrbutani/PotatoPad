@@ -20,7 +20,7 @@ function WavConv(filename,precision)
   # 2. Downsample it, to get it to the frequency you want (11.025 kHz):
   # 39025 for music
   # 7805 (1/5th) for sfx fo
-  Spls = mydownsample(Spls, round(fs/7805));#39025));
+  Spls = mydownsample(Spls, round(fs/39025));
   # 3. Adjust the samples (originals are fractions between -1 and 1) to range between 0 and 15 (4-bit)
   #    If you want to change it to 6-bit uncomment the 6-bit 
   Spls = round((Spls+ 1)* (2^precision-1)/2); 

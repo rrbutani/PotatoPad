@@ -255,16 +255,25 @@ void displayEnd(uint8_t input) {
       ST7735_DrawBitmap(38,133,numberTexture[player.score % 100 / 10],16,14);
       ST7735_DrawBitmap(38,147,numberTexture[player.score % 10],16,14);
       
-      if(player.score > 100)
-        playSong("FUN.AUD");
+      if(input && player.score > 100)
+        playSong("FUN.AUD", false);
+      else if(input)
+        playSong("QUEEN.AUD", false);
       else
-        playSong("QUEEN.AUD");
+        playSong("WOMP.AUD", false); // If player has lost
       
       while(1){  
 //      ST7735_DrawBitmap(38,105,numberTexture[player.score % 10000 / 1000],16,14);
 //      ST7735_DrawBitmap(38,119,numberTexture[player.score % 1000 / 100],16,14);
 //      ST7735_DrawBitmap(38,133,numberTexture[player.score % 100 / 10],16,14);
 //      ST7735_DrawBitmap(38,147,numberTexture[player.score % 10],16,14);
+        
+        if (!(GPIO_PORTF_DATA_R & 0x04)) // Negative Logic (?)
+        {
+          refresh = refreshRate-1;
+          playSong("d_e1m1.AUD", true);
+          return;
+        }
       }
 }
 

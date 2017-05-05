@@ -43,7 +43,7 @@ void playSFX(sfx soundEffect);
 // *****playSong******
 // Plays a song; replaces the current song.
 // Input: the name of a song that corresponds to a file on the SD Card
-void playSong(char *songName);
+void playSong(char *songName, boolean loop);
 
 // *****toggleMusic*****
 // Toggle background music

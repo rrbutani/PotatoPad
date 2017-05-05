@@ -1,7 +1,7 @@
 #!/bin/python
 
-inputFile="death.txt"
-outputFile="death.aud"
+inputFile="../converted_audio/intermediary/womp.txt"
+outputFile="../converted_audio/womp.AUD"
 dacBits=11
 
 ###############################################################################

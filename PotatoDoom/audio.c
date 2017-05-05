@@ -35,6 +35,8 @@ static Channel audioChannels[maxAudioChannels];
 
 static boolean SD_MOUNTED = false;
 
+static boolean songEnabled = true, loopSong = true;
+
 static FATFS g_sFatFs;
 static FIL SongHandle;
 static FRESULT Fresult;
@@ -82,9 +84,14 @@ static void populateSongBuffer(void)
   
   if(valueCount > songSize)
   {
-    valueCount = 0;
-    f_lseek(&SongHandle, 4); // Move back to start of file
-    Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
+    if(loopSong)
+    {
+      valueCount = 0;
+      f_lseek(&SongHandle, 4); // Move back to start of file
+      Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
+    }
+    else
+      songEnabled = false;
   }
   else
     Fresult = f_read(&SongHandle, &songBuffer, 2 * songBufferSize, &numBytesRead);
@@ -202,9 +209,11 @@ void playSFX(sfx soundEffect)
 // *****playSong******
 // Plays a song; replaces the current song.
 // Input: the name of a song that corresponds to a file on the SD Card
-void playSong(char *songName)
+void playSong(char *songName, boolean loop)
 {
   initSongBuffer(songName);
+  songEnabled = true;
+  loopSong = loop;
 }
 
 // *****startMusic*****
@@ -246,12 +255,17 @@ void Timer0A_Handler(void){
     sfxCounter = 4;
   }
   
-	if(++songPlayerIdx == songBufferSize)
-	{
-		populateSongBuffer();
-	}
-		
-	audioValueOut((songBuffer[songPlayerIdx])/2 + (sfxValue));
+  if(songEnabled)
+  {
+    if(++songPlayerIdx == songBufferSize)
+    {
+      populateSongBuffer();
+    }
+      
+    audioValueOut((songBuffer[songPlayerIdx])/2 + (sfxValue));
+  }
+  else
+    audioValueOut(sfxValue);
 }
 
 //void Timer0B_Handler(void){
