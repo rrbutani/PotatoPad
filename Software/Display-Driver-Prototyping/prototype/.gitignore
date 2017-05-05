@@ -12,7 +12,6 @@
 # Keil uVision Files #
 *.uvgui*
 #*.uvopt
-*.sct
 *.uvgui.*
 
 # Log Files #

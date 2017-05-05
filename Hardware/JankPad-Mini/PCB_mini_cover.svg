@@ -1,0 +1,2730 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.094488189"
+   height="1052.36220472"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="top_PCB_mini_cover.svg">
+  <metadata
+     id="metadata1291">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1536"
+     inkscape:window-height="801"
+     id="namedview1289"
+     showgrid="false"
+     inkscape:zoom="5.12"
+     inkscape:cx="286.38558"
+     inkscape:cy="43.265144"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g541" />
+  <desc
+     id="desc4">C:\Users\steve\Downloads\top_PCB_mini.dxf - scale = 1.000000, origin = (0.000000, 0.000000), auto = False</desc>
+  <defs
+     id="defs6">
+    <marker
+       refY="0.0"
+       refX="0.0"
+       style="overflow:visible"
+       id="DistanceX"
+       orient="auto">
+      <path
+         style="stroke:#000000; stroke-width:0.5"
+         d="M 3,-3 L -3,3 M 0,-5 L  0,5"
+         id="path9" />
+    </marker>
+    <pattern
+       height="8"
+       width="8"
+       patternUnits="userSpaceOnUse"
+       y="0"
+       x="0"
+       id="Hatch">
+      <path
+         linecap="square"
+         stroke="#000000"
+         stroke-width="0.25"
+         d="M8 4 l-4,4"
+         id="path12" />
+      <path
+         linecap="square"
+         stroke="#000000"
+         stroke-width="0.25"
+         d="M6 2 l-4,4"
+         id="path14" />
+      <path
+         linecap="square"
+         stroke="#000000"
+         stroke-width="0.25"
+         d="M4 0 l-4,4"
+         id="path16" />
+    </pattern>
+    <symbol
+       id="RECT" />
+    <symbol
+       id="PIE" />
+    <symbol
+       id="OCTAGONP" />
+    <symbol
+       id="SQUAREP" />
+    <symbol
+       id="ROUNDP" />
+    <symbol
+       id="ANNULUSP" />
+    <symbol
+       id="THERMALP" />
+    <symbol
+       id="OCTAGONV" />
+    <symbol
+       id="SQUAREV" />
+    <symbol
+       id="ROUNDV" />
+    <symbol
+       id="ANNULUSV" />
+    <symbol
+       id="THERMALV" />
+    <symbol
+       id="LONGP100" />
+  </defs>
+  <g
+     inkscape:label="1"
+     inkscape:groupmode="layer"
+     id="g31">
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 0.000000,848.622047 0.000000,1016.929134"
+       id="path35" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 35.433071,1052.362205 356.102362,1052.362205"
+       id="path39" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 391.535433,1016.929134 391.535433,848.622047"
+       id="path43" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 356.102362,813.188976 35.433071,813.188976"
+       id="path47" />
+  </g>
+  <g
+     inkscape:label="16"
+     inkscape:groupmode="layer"
+     id="g49">
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 0.000000,848.622047 0.000000,1016.929134"
+       id="path53" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 35.433071,1052.362205 356.102362,1052.362205"
+       id="path57" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 391.535433,1016.929134 391.535433,848.622047"
+       id="path61" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 356.102362,813.188976 35.433071,813.188976"
+       id="path65" />
+  </g>
+  <g
+     inkscape:label="17"
+     inkscape:groupmode="layer"
+     id="g67">
+    <use
+       y="-123.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use69" />
+    <use
+       y="-123.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use71" />
+    <use
+       y="-132.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use73" />
+    <use
+       y="-132.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use75" />
+    <use
+       y="-159.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use77" />
+    <use
+       y="-159.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use79" />
+    <use
+       y="-78.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use81" />
+    <use
+       y="-78.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use83" />
+    <use
+       y="-87.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use85" />
+    <use
+       y="-87.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use87" />
+    <use
+       y="-105.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use89" />
+    <use
+       y="-105.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use91" />
+    <use
+       y="-141.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use93" />
+    <use
+       y="-141.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use95" />
+    <use
+       y="-96.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use97" />
+    <use
+       y="-96.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use99" />
+    <use
+       y="-114.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use101" />
+    <use
+       y="-114.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use103" />
+    <use
+       y="-150.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use105" />
+    <use
+       y="-150.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use107" />
+    <use
+       y="-76.001102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use109" />
+    <use
+       y="-76.001102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use111" />
+    <use
+       y="-76.001102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use113" />
+    <use
+       y="-76.001102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use115" />
+    <use
+       y="-58.361102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use117" />
+    <use
+       y="-58.361102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use119" />
+    <use
+       y="-58.361102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use121" />
+    <use
+       y="-58.361102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use123" />
+    <use
+       y="-40.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use125" />
+    <use
+       y="-40.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use127" />
+    <use
+       y="-49.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use129" />
+    <use
+       y="-49.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use131" />
+    <use
+       y="-202.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use133" />
+    <use
+       y="-202.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use135" />
+    <use
+       y="-202.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use137" />
+    <use
+       y="-202.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use139" />
+    <use
+       y="-202.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use141" />
+    <use
+       y="-202.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use143" />
+    <use
+       y="-202.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use145" />
+    <use
+       y="-202.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use147" />
+    <use
+       y="-40.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use149" />
+    <use
+       y="-40.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use151" />
+    <use
+       y="-40.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use153" />
+    <use
+       y="-40.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use155" />
+    <use
+       y="-40.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use157" />
+    <use
+       y="-40.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use159" />
+    <use
+       y="-40.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use161" />
+    <use
+       y="-40.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use163" />
+    <use
+       y="-40.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use165" />
+    <use
+       y="-40.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use167" />
+    <use
+       y="-202.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use169" />
+    <use
+       y="-202.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use171" />
+    <use
+       y="-193.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use173" />
+    <use
+       y="-193.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use175" />
+    <use
+       y="-40.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use177" />
+    <use
+       y="-40.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use179" />
+    <use
+       y="-40.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use181" />
+    <use
+       y="-40.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use183" />
+    <use
+       y="-202.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use185" />
+    <use
+       y="-202.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use187" />
+    <use
+       y="-202.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use189" />
+    <use
+       y="-202.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use191" />
+    <use
+       y="-193.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use193" />
+    <use
+       y="-193.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use195" />
+    <use
+       y="-193.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use197" />
+    <use
+       y="-193.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use199" />
+    <use
+       y="-193.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use201" />
+    <use
+       y="-193.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use203" />
+    <use
+       y="-193.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use205" />
+    <use
+       y="-193.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use207" />
+    <use
+       y="-49.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use209" />
+    <use
+       y="-49.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use211" />
+    <use
+       y="-49.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use213" />
+    <use
+       y="-49.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use215" />
+    <use
+       y="-49.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use217" />
+    <use
+       y="-49.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use219" />
+    <use
+       y="-49.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use221" />
+    <use
+       y="-49.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use223" />
+    <use
+       y="-193.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use225" />
+    <use
+       y="-193.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use227" />
+    <use
+       y="-193.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use229" />
+    <use
+       y="-193.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use231" />
+    <use
+       y="-202.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use233" />
+    <use
+       y="-202.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use235" />
+    <use
+       y="-49.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use237" />
+    <use
+       y="-49.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use239" />
+    <use
+       y="-49.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use241" />
+    <use
+       y="-49.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use243" />
+    <use
+       y="-49.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use245" />
+    <use
+       y="-49.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use247" />
+    <use
+       y="-40.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use249" />
+    <use
+       y="-40.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use251" />
+    <use
+       y="-40.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use253" />
+    <use
+       y="-40.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use255" />
+    <use
+       y="-202.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use257" />
+    <use
+       y="-202.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use259" />
+    <use
+       y="-49.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use261" />
+    <use
+       y="-49.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use263" />
+    <use
+       y="-193.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use265" />
+    <use
+       y="-193.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use267" />
+    <use
+       y="-193.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use269" />
+    <use
+       y="-193.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use271" />
+    <use
+       y="-193.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use273" />
+    <use
+       y="-193.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use275" />
+    <use
+       y="-202.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use277" />
+    <use
+       y="-202.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use279" />
+    <use
+       y="-49.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use281" />
+    <use
+       y="-49.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use283" />
+    <use
+       y="-142.151811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use285" />
+    <use
+       y="-142.151811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use287" />
+    <use
+       y="-97.871811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use289" />
+    <use
+       y="-97.871811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use291" />
+    <use
+       y="-142.151811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use293" />
+    <use
+       y="-142.151811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use295" />
+    <use
+       y="-97.871811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use297" />
+    <use
+       y="-97.871811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use299" />
+    <use
+       y="-115.405512"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use301" />
+    <use
+       y="-115.405512"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use303" />
+    <use
+       y="-154.381890"
+       x="358.618110"
+       xlink:href="#LONGP100"
+       id="use305" />
+    <use
+       y="-154.381890"
+       x="358.618110"
+       xlink:href="#LONGP100"
+       id="use307" />
+    <use
+       y="-129.578740"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use309" />
+    <use
+       y="-129.578740"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use311" />
+    <use
+       y="-154.381890"
+       x="344.444882"
+       xlink:href="#LONGP100"
+       id="use313" />
+    <use
+       y="-154.381890"
+       x="344.444882"
+       xlink:href="#LONGP100"
+       id="use315" />
+    <use
+       y="-122.492126"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use317" />
+    <use
+       y="-122.492126"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use319" />
+    <use
+       y="-154.381890"
+       x="351.531496"
+       xlink:href="#LONGP100"
+       id="use321" />
+    <use
+       y="-154.381890"
+       x="351.531496"
+       xlink:href="#LONGP100"
+       id="use323" />
+    <use
+       y="-142.151811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use325" />
+    <use
+       y="-142.151811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use327" />
+    <use
+       y="-97.871811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use329" />
+    <use
+       y="-97.871811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use331" />
+    <use
+       y="-142.151811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use333" />
+    <use
+       y="-142.151811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use335" />
+    <use
+       y="-97.871811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use337" />
+    <use
+       y="-97.871811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use339" />
+    <use
+       y="-181.662520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use341" />
+    <use
+       y="-181.662520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use343" />
+    <use
+       y="-181.662520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use345" />
+    <use
+       y="-181.662520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use347" />
+    <use
+       y="-164.022520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use349" />
+    <use
+       y="-164.022520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use351" />
+    <use
+       y="-164.022520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use353" />
+    <use
+       y="-164.022520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use355" />
+  </g>
+  <g
+     inkscape:label="18"
+     inkscape:groupmode="layer"
+     id="g357">
+    <use
+       y="-81.496063"
+       x="269.291339"
+       xlink:href="#ROUNDV"
+       id="use359" />
+    <use
+       y="-81.496063"
+       x="269.291339"
+       xlink:href="#ROUNDV"
+       id="use361" />
+    <use
+       y="-104.527559"
+       x="260.433071"
+       xlink:href="#ROUNDV"
+       id="use363" />
+    <use
+       y="-104.527559"
+       x="260.433071"
+       xlink:href="#ROUNDV"
+       id="use365" />
+    <use
+       y="-125.787402"
+       x="201.968504"
+       xlink:href="#ROUNDV"
+       id="use367" />
+    <use
+       y="-125.787402"
+       x="201.968504"
+       xlink:href="#ROUNDV"
+       id="use369" />
+    <use
+       y="-35.433071"
+       x="150.590551"
+       xlink:href="#ROUNDV"
+       id="use371" />
+    <use
+       y="-35.433071"
+       x="150.590551"
+       xlink:href="#ROUNDV"
+       id="use373" />
+    <use
+       y="-143.503937"
+       x="214.370079"
+       xlink:href="#ROUNDV"
+       id="use375" />
+    <use
+       y="-143.503937"
+       x="214.370079"
+       xlink:href="#ROUNDV"
+       id="use377" />
+    <use
+       y="-116.929134"
+       x="251.574803"
+       xlink:href="#ROUNDV"
+       id="use379" />
+    <use
+       y="-116.929134"
+       x="251.574803"
+       xlink:href="#ROUNDV"
+       id="use381" />
+    <use
+       y="-152.362205"
+       x="226.771654"
+       xlink:href="#ROUNDV"
+       id="use383" />
+    <use
+       y="-152.362205"
+       x="226.771654"
+       xlink:href="#ROUNDV"
+       id="use385" />
+    <use
+       y="-113.385827"
+       x="239.173228"
+       xlink:href="#ROUNDV"
+       id="use387" />
+    <use
+       y="-113.385827"
+       x="239.173228"
+       xlink:href="#ROUNDV"
+       id="use389" />
+    <use
+       y="-193.783465"
+       x="90.248031"
+       xlink:href="#ROUNDV"
+       id="use391" />
+    <use
+       y="-193.783465"
+       x="90.248031"
+       xlink:href="#ROUNDV"
+       id="use393" />
+    <use
+       y="-63.779528"
+       x="244.488189"
+       xlink:href="#ROUNDV"
+       id="use395" />
+    <use
+       y="-63.779528"
+       x="244.488189"
+       xlink:href="#ROUNDV"
+       id="use397" />
+    <use
+       y="-70.866142"
+       x="253.346457"
+       xlink:href="#ROUNDV"
+       id="use399" />
+    <use
+       y="-70.866142"
+       x="253.346457"
+       xlink:href="#ROUNDV"
+       id="use401" />
+    <use
+       y="-212.598425"
+       x="58.464567"
+       xlink:href="#ROUNDV"
+       id="use403" />
+    <use
+       y="-212.598425"
+       x="58.464567"
+       xlink:href="#ROUNDV"
+       id="use405" />
+    <use
+       y="-184.251969"
+       x="97.440945"
+       xlink:href="#ROUNDV"
+       id="use407" />
+    <use
+       y="-184.251969"
+       x="97.440945"
+       xlink:href="#ROUNDV"
+       id="use409" />
+    <use
+       y="-72.637795"
+       x="361.417323"
+       xlink:href="#ROUNDV"
+       id="use411" />
+    <use
+       y="-72.637795"
+       x="361.417323"
+       xlink:href="#ROUNDV"
+       id="use413" />
+    <use
+       y="-74.409449"
+       x="88.582677"
+       xlink:href="#ROUNDV"
+       id="use415" />
+    <use
+       y="-74.409449"
+       x="88.582677"
+       xlink:href="#ROUNDV"
+       id="use417" />
+    <use
+       y="-58.464567"
+       x="132.874016"
+       xlink:href="#ROUNDV"
+       id="use419" />
+    <use
+       y="-58.464567"
+       x="132.874016"
+       xlink:href="#ROUNDV"
+       id="use421" />
+    <use
+       y="-159.448819"
+       x="292.322835"
+       xlink:href="#ROUNDV"
+       id="use423" />
+    <use
+       y="-159.448819"
+       x="292.322835"
+       xlink:href="#ROUNDV"
+       id="use425" />
+    <use
+       y="-161.220472"
+       x="131.102362"
+       xlink:href="#ROUNDV"
+       id="use427" />
+    <use
+       y="-161.220472"
+       x="131.102362"
+       xlink:href="#ROUNDV"
+       id="use429" />
+  </g>
+  <g
+     inkscape:label="19"
+     inkscape:groupmode="layer"
+     id="g431" />
+  <g
+     inkscape:label="20"
+     inkscape:groupmode="layer"
+     id="g435">
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 35.433071,813.188976 A 35.433071,35.433071 -0.000000 0 0 0.000000,848.622047"
+       id="path437" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 35.433071,813.188976 356.102362,813.188976"
+       id="path439" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 391.535433,848.622047 A 35.433071,35.433071 -0.000000 0 0 356.102362,813.188976"
+       id="path441" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 391.535433,848.622047 391.535433,1016.929134"
+       id="path443" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 356.102362,1052.362205 A 35.433071,35.433071 -0.000000 0 0 391.535433,1016.929134"
+       id="path445" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 356.102362,1052.362205 35.433071,1052.362205"
+       id="path447" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 0.000000,1016.929134 A 35.433071,35.433071 -0.000000 0 0 35.433071,1052.362205"
+       id="path449" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 0.000000,1016.929134 0.000000,848.622047"
+       id="path451" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 21.614173,1034.645669 A 3.897638,3.897638 -0.000000 1 0 13.818898,1034.645669 3.897638,3.897638 -0.000000 1 0 21.614173,1034.645669 z"
+       id="path453" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 21.614173,830.905512 A 3.897638,3.897638 -0.000000 1 0 13.818898,830.905512 3.897638,3.897638 -0.000000 1 0 21.614173,830.905512 z"
+       id="path455" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 377.716535,830.905512 A 3.897638,3.897638 -0.000000 1 0 369.921260,830.905512 3.897638,3.897638 -0.000000 1 0 377.716535,830.905512 z"
+       id="path457" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 377.716535,1034.645669 A 3.897638,3.897638 -0.000000 1 0 369.921260,1034.645669 3.897638,3.897638 -0.000000 1 0 377.716535,1034.645669 z"
+       id="path459" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 115.866142,985.411417 A 3.897638,3.897638 -0.000000 1 0 108.070866,985.411417 3.897638,3.897638 -0.000000 1 0 115.866142,985.411417 z"
+       id="path465" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 115.866142,881.911417 A 3.897638,3.897638 -0.000000 1 0 108.070866,881.911417 3.897638,3.897638 -0.000000 1 0 115.866142,881.911417 z"
+       id="path467" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 295.866142,881.911417 A 3.897638,3.897638 -0.000000 1 0 288.070866,881.911417 3.897638,3.897638 -0.000000 1 0 295.866142,881.911417 z"
+       id="path469" />
+    <path
+       style="stroke:#000000;fill:none"
+       d="M 295.866142,985.411417 A 3.897638,3.897638 -0.000000 1 0 288.070866,985.411417 3.897638,3.897638 -0.000000 1 0 295.866142,985.411417 z"
+       id="path471" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1"
+       id="rect4619"
+       width="66.330025"
+       height="64.100433"
+       x="319.38745"
+       y="890.71759" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1"
+       id="rect4621"
+       width="79.70752"
+       height="29.541946"
+       x="217.94153"
+       y="992.72089" />
+  </g>
+  <g
+     inkscape:label="21"
+     inkscape:groupmode="layer"
+     id="g493">
+    <use
+       y="-88.781102"
+       x="57.846260"
+       xlink:href="#RECT"
+       id="use495" />
+    <use
+       y="-88.781102"
+       x="33.996260"
+       xlink:href="#RECT"
+       id="use497" />
+    <use
+       y="-45.581102"
+       x="57.846260"
+       xlink:href="#RECT"
+       id="use499" />
+    <use
+       y="-45.581102"
+       x="33.996260"
+       xlink:href="#RECT"
+       id="use501" />
+    <use
+       y="-131.936811"
+       x="48.522047"
+       xlink:href="#RECT"
+       id="use503" />
+    <use
+       y="-108.086811"
+       x="48.522047"
+       xlink:href="#RECT"
+       id="use505" />
+    <use
+       y="-131.936811"
+       x="91.722047"
+       xlink:href="#RECT"
+       id="use507" />
+    <use
+       y="-108.086811"
+       x="91.722047"
+       xlink:href="#RECT"
+       id="use509" />
+    <use
+       y="-131.936811"
+       x="-0.162992"
+       xlink:href="#RECT"
+       id="use511" />
+    <use
+       y="-108.086811"
+       x="-0.162992"
+       xlink:href="#RECT"
+       id="use513" />
+    <use
+       y="-131.936811"
+       x="43.037008"
+       xlink:href="#RECT"
+       id="use515" />
+    <use
+       y="-108.086811"
+       x="43.037008"
+       xlink:href="#RECT"
+       id="use517" />
+    <use
+       y="-194.442520"
+       x="57.846260"
+       xlink:href="#RECT"
+       id="use519" />
+    <use
+       y="-194.442520"
+       x="33.996260"
+       xlink:href="#RECT"
+       id="use521" />
+    <use
+       y="-151.242520"
+       x="57.846260"
+       xlink:href="#RECT"
+       id="use523" />
+    <use
+       y="-151.242520"
+       x="33.996260"
+       xlink:href="#RECT"
+       id="use525" />
+  </g>
+  <g
+     inkscape:label="22"
+     inkscape:groupmode="layer"
+     id="g527" />
+  <g
+     inkscape:label="23"
+     inkscape:groupmode="layer"
+     id="g529">
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect5440"
+       width="48.493385"
+       height="40.132458"
+       x="21.738413"
+       y="859.50342" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect5440-2"
+       width="48.493385"
+       height="40.132458"
+       x="21.548555"
+       y="963.91516" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect5460"
+       width="88.286896"
+       height="65.426895"
+       x="0.7882759"
+       y="899.43665" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="135.58345"
+       y="554.17181"
+       id="text6219"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6221"
+         x="135.58345"
+         y="554.17181"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Comic Sans MS';-inkscape-font-specification:'Comic Sans MS, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">PotatoDoom</tspan><tspan
+         sodipodi:role="line"
+         x="135.58345"
+         y="604.17181"
+         id="tspan6223" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="192.33931"
+       y="632.21112"
+       id="text6225"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6227"
+         x="192.33931"
+         y="632.21112"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:125%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">Steven Zhu &amp; Rahul Butani</tspan><tspan
+         sodipodi:role="line"
+         x="192.33931"
+         y="646.27362"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:125%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+         id="tspan6229" /></text>
+  </g>
+  <g
+     inkscape:label="24"
+     inkscape:groupmode="layer"
+     id="g541" />
+  <g
+     inkscape:label="25"
+     inkscape:groupmode="layer"
+     id="g547" />
+  <g
+     inkscape:label="26"
+     inkscape:groupmode="layer"
+     id="g549" />
+  <g
+     inkscape:label="27"
+     inkscape:groupmode="layer"
+     id="g551" />
+  <g
+     inkscape:label="28"
+     inkscape:groupmode="layer"
+     id="g553" />
+  <g
+     inkscape:label="29"
+     inkscape:groupmode="layer"
+     id="g555">
+    <use
+       y="-123.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use557" />
+    <use
+       y="-132.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use559" />
+    <use
+       y="-159.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use561" />
+    <use
+       y="-78.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use563" />
+    <use
+       y="-87.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use565" />
+    <use
+       y="-105.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use567" />
+    <use
+       y="-141.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use569" />
+    <use
+       y="-96.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use571" />
+    <use
+       y="-114.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use573" />
+    <use
+       y="-150.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use575" />
+    <use
+       y="-76.001102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use577" />
+    <use
+       y="-76.001102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use579" />
+    <use
+       y="-58.361102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use581" />
+    <use
+       y="-58.361102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use583" />
+    <use
+       y="-40.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use585" />
+    <use
+       y="-49.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use587" />
+    <use
+       y="-202.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use589" />
+    <use
+       y="-202.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use591" />
+    <use
+       y="-202.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use593" />
+    <use
+       y="-202.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use595" />
+    <use
+       y="-40.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use597" />
+    <use
+       y="-40.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use599" />
+    <use
+       y="-40.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use601" />
+    <use
+       y="-40.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use603" />
+    <use
+       y="-40.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use605" />
+    <use
+       y="-202.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use607" />
+    <use
+       y="-193.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use609" />
+    <use
+       y="-40.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use611" />
+    <use
+       y="-40.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use613" />
+    <use
+       y="-202.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use615" />
+    <use
+       y="-202.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use617" />
+    <use
+       y="-193.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use619" />
+    <use
+       y="-193.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use621" />
+    <use
+       y="-193.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use623" />
+    <use
+       y="-193.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use625" />
+    <use
+       y="-49.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use627" />
+    <use
+       y="-49.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use629" />
+    <use
+       y="-49.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use631" />
+    <use
+       y="-49.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use633" />
+    <use
+       y="-193.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use635" />
+    <use
+       y="-193.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use637" />
+    <use
+       y="-202.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use639" />
+    <use
+       y="-49.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use641" />
+    <use
+       y="-49.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use643" />
+    <use
+       y="-49.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use645" />
+    <use
+       y="-40.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use647" />
+    <use
+       y="-40.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use649" />
+    <use
+       y="-202.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use651" />
+    <use
+       y="-49.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use653" />
+    <use
+       y="-193.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use655" />
+    <use
+       y="-193.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use657" />
+    <use
+       y="-193.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use659" />
+    <use
+       y="-202.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use661" />
+    <use
+       y="-49.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use663" />
+    <use
+       y="-142.151811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use665" />
+    <use
+       y="-97.871811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use667" />
+    <use
+       y="-142.151811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use669" />
+    <use
+       y="-97.871811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use671" />
+    <use
+       y="-115.405512"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use673" />
+    <use
+       y="-154.381890"
+       x="358.618110"
+       xlink:href="#LONGP100"
+       id="use675" />
+    <use
+       y="-129.578740"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use677" />
+    <use
+       y="-154.381890"
+       x="344.444882"
+       xlink:href="#LONGP100"
+       id="use679" />
+    <use
+       y="-122.492126"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use681" />
+    <use
+       y="-154.381890"
+       x="351.531496"
+       xlink:href="#LONGP100"
+       id="use683" />
+    <use
+       y="-142.151811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use685" />
+    <use
+       y="-97.871811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use687" />
+    <use
+       y="-142.151811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use689" />
+    <use
+       y="-97.871811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use691" />
+    <use
+       y="-181.662520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use693" />
+    <use
+       y="-181.662520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use695" />
+    <use
+       y="-164.022520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use697" />
+    <use
+       y="-164.022520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use699" />
+    <use
+       y="-81.496063"
+       x="269.291339"
+       xlink:href="#ROUNDV"
+       id="use701" />
+    <use
+       y="-104.527559"
+       x="260.433071"
+       xlink:href="#ROUNDV"
+       id="use703" />
+    <use
+       y="-125.787402"
+       x="201.968504"
+       xlink:href="#ROUNDV"
+       id="use705" />
+    <use
+       y="-35.433071"
+       x="150.590551"
+       xlink:href="#ROUNDV"
+       id="use707" />
+    <use
+       y="-143.503937"
+       x="214.370079"
+       xlink:href="#ROUNDV"
+       id="use709" />
+    <use
+       y="-116.929134"
+       x="251.574803"
+       xlink:href="#ROUNDV"
+       id="use711" />
+    <use
+       y="-152.362205"
+       x="226.771654"
+       xlink:href="#ROUNDV"
+       id="use713" />
+    <use
+       y="-113.385827"
+       x="239.173228"
+       xlink:href="#ROUNDV"
+       id="use715" />
+    <use
+       y="-193.783465"
+       x="90.248031"
+       xlink:href="#ROUNDV"
+       id="use717" />
+    <use
+       y="-63.779528"
+       x="244.488189"
+       xlink:href="#ROUNDV"
+       id="use719" />
+    <use
+       y="-70.866142"
+       x="253.346457"
+       xlink:href="#ROUNDV"
+       id="use721" />
+    <use
+       y="-212.598425"
+       x="58.464567"
+       xlink:href="#ROUNDV"
+       id="use723" />
+    <use
+       y="-184.251969"
+       x="97.440945"
+       xlink:href="#ROUNDV"
+       id="use725" />
+    <use
+       y="-72.637795"
+       x="361.417323"
+       xlink:href="#ROUNDV"
+       id="use727" />
+    <use
+       y="-74.409449"
+       x="88.582677"
+       xlink:href="#ROUNDV"
+       id="use729" />
+    <use
+       y="-58.464567"
+       x="132.874016"
+       xlink:href="#ROUNDV"
+       id="use731" />
+    <use
+       y="-159.448819"
+       x="292.322835"
+       xlink:href="#ROUNDV"
+       id="use733" />
+    <use
+       y="-161.220472"
+       x="131.102362"
+       xlink:href="#ROUNDV"
+       id="use735" />
+  </g>
+  <g
+     inkscape:label="30"
+     inkscape:groupmode="layer"
+     id="g737">
+    <use
+       y="-123.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use739" />
+    <use
+       y="-132.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use741" />
+    <use
+       y="-159.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use743" />
+    <use
+       y="-78.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use745" />
+    <use
+       y="-87.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use747" />
+    <use
+       y="-105.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use749" />
+    <use
+       y="-141.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use751" />
+    <use
+       y="-96.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use753" />
+    <use
+       y="-114.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use755" />
+    <use
+       y="-150.200787"
+       x="111.968504"
+       xlink:href="#OCTAGONP"
+       id="use757" />
+    <use
+       y="-76.001102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use759" />
+    <use
+       y="-76.001102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use761" />
+    <use
+       y="-58.361102"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use763" />
+    <use
+       y="-58.361102"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use765" />
+    <use
+       y="-40.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use767" />
+    <use
+       y="-49.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use769" />
+    <use
+       y="-202.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use771" />
+    <use
+       y="-202.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use773" />
+    <use
+       y="-202.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use775" />
+    <use
+       y="-202.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use777" />
+    <use
+       y="-40.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use779" />
+    <use
+       y="-40.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use781" />
+    <use
+       y="-40.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use783" />
+    <use
+       y="-40.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use785" />
+    <use
+       y="-40.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use787" />
+    <use
+       y="-202.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use789" />
+    <use
+       y="-193.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use791" />
+    <use
+       y="-40.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use793" />
+    <use
+       y="-40.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use795" />
+    <use
+       y="-202.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use797" />
+    <use
+       y="-202.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use799" />
+    <use
+       y="-193.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use801" />
+    <use
+       y="-193.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use803" />
+    <use
+       y="-193.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use805" />
+    <use
+       y="-193.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use807" />
+    <use
+       y="-49.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use809" />
+    <use
+       y="-49.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use811" />
+    <use
+       y="-49.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use813" />
+    <use
+       y="-49.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use815" />
+    <use
+       y="-193.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use817" />
+    <use
+       y="-193.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use819" />
+    <use
+       y="-202.677165"
+       x="225.885827"
+       xlink:href="#ROUNDP"
+       id="use821" />
+    <use
+       y="-49.677165"
+       x="261.885827"
+       xlink:href="#ROUNDP"
+       id="use823" />
+    <use
+       y="-49.677165"
+       x="270.885827"
+       xlink:href="#ROUNDP"
+       id="use825" />
+    <use
+       y="-49.677165"
+       x="279.885827"
+       xlink:href="#ROUNDP"
+       id="use827" />
+    <use
+       y="-40.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use829" />
+    <use
+       y="-40.677165"
+       x="252.885827"
+       xlink:href="#ROUNDP"
+       id="use831" />
+    <use
+       y="-202.677165"
+       x="234.885827"
+       xlink:href="#ROUNDP"
+       id="use833" />
+    <use
+       y="-49.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use835" />
+    <use
+       y="-193.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use837" />
+    <use
+       y="-193.677165"
+       x="216.885827"
+       xlink:href="#ROUNDP"
+       id="use839" />
+    <use
+       y="-193.677165"
+       x="288.885827"
+       xlink:href="#ROUNDP"
+       id="use841" />
+    <use
+       y="-202.677165"
+       x="243.885827"
+       xlink:href="#ROUNDP"
+       id="use843" />
+    <use
+       y="-49.677165"
+       x="207.885827"
+       xlink:href="#ROUNDP"
+       id="use845" />
+    <use
+       y="-142.151811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use847" />
+    <use
+       y="-97.871811"
+       x="61.302047"
+       xlink:href="#LONGP100"
+       id="use849" />
+    <use
+       y="-142.151811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use851" />
+    <use
+       y="-97.871811"
+       x="78.942047"
+       xlink:href="#LONGP100"
+       id="use853" />
+    <use
+       y="-115.405512"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use855" />
+    <use
+       y="-154.381890"
+       x="358.618110"
+       xlink:href="#LONGP100"
+       id="use857" />
+    <use
+       y="-129.578740"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use859" />
+    <use
+       y="-154.381890"
+       x="344.444882"
+       xlink:href="#LONGP100"
+       id="use861" />
+    <use
+       y="-122.492126"
+       x="383.421260"
+       xlink:href="#LONGP100"
+       id="use863" />
+    <use
+       y="-154.381890"
+       x="351.531496"
+       xlink:href="#LONGP100"
+       id="use865" />
+    <use
+       y="-142.151811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use867" />
+    <use
+       y="-97.871811"
+       x="12.617008"
+       xlink:href="#LONGP100"
+       id="use869" />
+    <use
+       y="-142.151811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use871" />
+    <use
+       y="-97.871811"
+       x="30.257008"
+       xlink:href="#LONGP100"
+       id="use873" />
+    <use
+       y="-181.662520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use875" />
+    <use
+       y="-181.662520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use877" />
+    <use
+       y="-164.022520"
+       x="68.061260"
+       xlink:href="#LONGP100"
+       id="use879" />
+    <use
+       y="-164.022520"
+       x="23.781260"
+       xlink:href="#LONGP100"
+       id="use881" />
+    <use
+       y="-81.496063"
+       x="269.291339"
+       xlink:href="#ROUNDV"
+       id="use883" />
+    <use
+       y="-104.527559"
+       x="260.433071"
+       xlink:href="#ROUNDV"
+       id="use885" />
+    <use
+       y="-125.787402"
+       x="201.968504"
+       xlink:href="#ROUNDV"
+       id="use887" />
+    <use
+       y="-35.433071"
+       x="150.590551"
+       xlink:href="#ROUNDV"
+       id="use889" />
+    <use
+       y="-143.503937"
+       x="214.370079"
+       xlink:href="#ROUNDV"
+       id="use891" />
+    <use
+       y="-116.929134"
+       x="251.574803"
+       xlink:href="#ROUNDV"
+       id="use893" />
+    <use
+       y="-152.362205"
+       x="226.771654"
+       xlink:href="#ROUNDV"
+       id="use895" />
+    <use
+       y="-113.385827"
+       x="239.173228"
+       xlink:href="#ROUNDV"
+       id="use897" />
+    <use
+       y="-193.783465"
+       x="90.248031"
+       xlink:href="#ROUNDV"
+       id="use899" />
+    <use
+       y="-63.779528"
+       x="244.488189"
+       xlink:href="#ROUNDV"
+       id="use901" />
+    <use
+       y="-70.866142"
+       x="253.346457"
+       xlink:href="#ROUNDV"
+       id="use903" />
+    <use
+       y="-212.598425"
+       x="58.464567"
+       xlink:href="#ROUNDV"
+       id="use905" />
+    <use
+       y="-184.251969"
+       x="97.440945"
+       xlink:href="#ROUNDV"
+       id="use907" />
+    <use
+       y="-72.637795"
+       x="361.417323"
+       xlink:href="#ROUNDV"
+       id="use909" />
+    <use
+       y="-74.409449"
+       x="88.582677"
+       xlink:href="#ROUNDV"
+       id="use911" />
+    <use
+       y="-58.464567"
+       x="132.874016"
+       xlink:href="#ROUNDV"
+       id="use913" />
+    <use
+       y="-159.448819"
+       x="292.322835"
+       xlink:href="#ROUNDV"
+       id="use915" />
+    <use
+       y="-161.220472"
+       x="131.102362"
+       xlink:href="#ROUNDV"
+       id="use917" />
+  </g>
+  <g
+     inkscape:label="31"
+     inkscape:groupmode="layer"
+     id="g919" />
+  <g
+     inkscape:label="32"
+     inkscape:groupmode="layer"
+     id="g921" />
+  <g
+     inkscape:label="33"
+     inkscape:groupmode="layer"
+     id="g923" />
+  <g
+     inkscape:label="34"
+     inkscape:groupmode="layer"
+     id="g925" />
+  <g
+     inkscape:label="35"
+     inkscape:groupmode="layer"
+     id="g927" />
+  <g
+     inkscape:label="36"
+     inkscape:groupmode="layer"
+     id="g929" />
+  <g
+     inkscape:label="37"
+     inkscape:groupmode="layer"
+     id="g931" />
+  <g
+     inkscape:label="38"
+     inkscape:groupmode="layer"
+     id="g933" />
+  <g
+     inkscape:label="39"
+     inkscape:groupmode="layer"
+     id="g935" />
+  <g
+     inkscape:label="40"
+     inkscape:groupmode="layer"
+     id="g937" />
+  <g
+     inkscape:label="41"
+     inkscape:groupmode="layer"
+     id="g939" />
+  <g
+     inkscape:label="42"
+     inkscape:groupmode="layer"
+     id="g941" />
+  <g
+     inkscape:label="43"
+     inkscape:groupmode="layer"
+     id="g943" />
+  <g
+     inkscape:label="44"
+     inkscape:groupmode="layer"
+     id="g945">
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect4629"
+       width="63.543064"
+       height="61.313465"
+       x="321.05966"
+       y="895.1767" />
+  </g>
+  <g
+     inkscape:label="45"
+     inkscape:groupmode="layer"
+     id="g1127" />
+  <g
+     inkscape:label="46"
+     inkscape:groupmode="layer"
+     id="g1129" />
+  <g
+     inkscape:label="47"
+     inkscape:groupmode="layer"
+     id="g1131" />
+  <g
+     inkscape:label="48"
+     inkscape:groupmode="layer"
+     id="g1133" />
+  <g
+     inkscape:label="49"
+     inkscape:groupmode="layer"
+     id="g1135" />
+  <g
+     inkscape:label="52"
+     inkscape:groupmode="layer"
+     id="g1137">
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 102.968504,985.411417 A 9.000000,9.000000 -0.000000 0 0 111.968504,994.411417"
+       id="path1139" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 102.968504,985.411417 102.968504,881.911417"
+       id="path1141" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 111.968504,872.911417 A 9.000000,9.000000 -0.000000 0 0 102.968504,881.911417"
+       id="path1143" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 111.968504,872.911417 291.968504,872.911417"
+       id="path1145" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 300.968504,881.911417 A 9.000000,9.000000 -0.000000 0 0 291.968504,872.911417"
+       id="path1147" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 300.968504,881.911417 300.968504,985.411417"
+       id="path1149" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 291.968504,994.411417 A 9.000000,9.000000 -0.000000 0 0 300.968504,985.411417"
+       id="path1151" />
+    <path
+       style="stroke:#828282;fill:none"
+       d="M 291.968504,994.411417 111.968504,994.411417"
+       id="path1153" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 54.904017,518.10311 0,168.30705"
+       id="path35-9" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 90.337088,721.84326 320.669292,0"
+       id="path39-6" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 446.43945,686.41016 0,-168.30705"
+       id="path43-8" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 411.00638,482.67004 -320.669292,0"
+       id="path47-2" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 54.904017,518.10311 0,168.30705"
+       id="path53-4" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 90.337088,721.84326 320.669292,0"
+       id="path57-1" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 446.43945,686.41016 0,-168.30705"
+       id="path61-5" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 411.00638,482.67004 -320.669292,0"
+       id="path65-4" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="M 90.337088,482.67004 A 35.433071,35.433071 0 0 0 54.904017,518.10311"
+       id="path437-6" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 90.337088,482.67004 320.669292,0"
+       id="path439-4" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="M 446.43945,518.10311 A 35.433071,35.433071 0 0 0 411.00638,482.67004"
+       id="path441-3" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 446.43945,518.10311 0,168.30705"
+       id="path443-6" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 411.00638,721.84326 a 35.433071,35.433071 0 0 0 35.43307,-35.4331"
+       id="path445-0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 411.00638,721.84326 -320.669292,0"
+       id="path447-9" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 54.904017,686.41016 a 35.433071,35.433071 0 0 0 35.433071,35.4331"
+       id="path449-6" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 54.904017,686.41016 0,-168.30705"
+       id="path451-4" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 76.51819,704.12676 a 3.897638,3.897638 0 1 0 -7.795275,0 3.897638,3.897638 0 1 0 7.795275,0 z"
+       id="path453-8" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 76.51819,500.38657 a 3.897638,3.897638 0 1 0 -7.795275,0 3.897638,3.897638 0 1 0 7.795275,0 z"
+       id="path455-6" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 432.62056,500.38657 a 3.89764,3.89764 0 1 0 -7.79528,0 3.89764,3.89764 0 1 0 7.79528,0 z"
+       id="path457-2" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000"
+       d="m 432.62056,704.12676 a 3.89764,3.89764 0 1 0 -7.79528,0 3.89764,3.89764 0 1 0 7.79528,0 z"
+       id="path459-3" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1"
+       id="rect4621-6"
+       width="79.70752"
+       height="29.541946"
+       x="272.84555"
+       y="662.20197" />
+  </g>
+  <g
+     inkscape:label="101"
+     inkscape:groupmode="layer"
+     id="g1155" />
+  <g
+     inkscape:label="102"
+     inkscape:groupmode="layer"
+     id="g1157" />
+  <g
+     inkscape:label="103"
+     inkscape:groupmode="layer"
+     id="g1159" />
+  <g
+     inkscape:label="104"
+     inkscape:groupmode="layer"
+     id="g1161" />
+  <g
+     inkscape:label="105"
+     inkscape:groupmode="layer"
+     id="g1163" />
+  <g
+     inkscape:label="106"
+     inkscape:groupmode="layer"
+     id="g1165" />
+  <g
+     inkscape:label="107"
+     inkscape:groupmode="layer"
+     id="g1167" />
+  <g
+     inkscape:label="108"
+     inkscape:groupmode="layer"
+     id="g1169" />
+  <g
+     inkscape:label="109"
+     inkscape:groupmode="layer"
+     id="g1171" />
+  <g
+     inkscape:label="110"
+     inkscape:groupmode="layer"
+     id="g1173" />
+  <g
+     inkscape:label="111"
+     inkscape:groupmode="layer"
+     id="g1175" />
+  <g
+     inkscape:label="112"
+     inkscape:groupmode="layer"
+     id="g1177" />
+  <g
+     inkscape:label="113"
+     inkscape:groupmode="layer"
+     id="g1179" />
+  <g
+     inkscape:label="114"
+     inkscape:groupmode="layer"
+     id="g1181" />
+  <g
+     inkscape:label="115"
+     inkscape:groupmode="layer"
+     id="g1183" />
+  <g
+     inkscape:label="116"
+     inkscape:groupmode="layer"
+     id="g1185" />
+  <g
+     inkscape:label="118"
+     inkscape:groupmode="layer"
+     id="g1187" />
+  <g
+     inkscape:label="121"
+     inkscape:groupmode="layer"
+     id="g1189" />
+  <g
+     inkscape:label="122"
+     inkscape:groupmode="layer"
+     id="g1191" />
+  <g
+     inkscape:label="123"
+     inkscape:groupmode="layer"
+     id="g1193" />
+  <g
+     inkscape:label="124"
+     inkscape:groupmode="layer"
+     id="g1195" />
+  <g
+     inkscape:label="125"
+     inkscape:groupmode="layer"
+     id="g1197" />
+  <g
+     inkscape:label="126"
+     inkscape:groupmode="layer"
+     id="g1199" />
+  <g
+     inkscape:label="127"
+     inkscape:groupmode="layer"
+     id="g1201" />
+  <g
+     inkscape:label="128"
+     inkscape:groupmode="layer"
+     id="g1203" />
+  <g
+     inkscape:label="129"
+     inkscape:groupmode="layer"
+     id="g1205" />
+  <g
+     inkscape:label="131"
+     inkscape:groupmode="layer"
+     id="g1207" />
+  <g
+     inkscape:label="132"
+     inkscape:groupmode="layer"
+     id="g1209" />
+  <g
+     inkscape:label="144"
+     inkscape:groupmode="layer"
+     id="g1211" />
+  <g
+     inkscape:label="150"
+     inkscape:groupmode="layer"
+     id="g1213" />
+  <g
+     inkscape:label="151"
+     inkscape:groupmode="layer"
+     id="g1215" />
+  <g
+     inkscape:label="152"
+     inkscape:groupmode="layer"
+     id="g1217" />
+  <g
+     inkscape:label="153"
+     inkscape:groupmode="layer"
+     id="g1219" />
+  <g
+     inkscape:label="154"
+     inkscape:groupmode="layer"
+     id="g1221" />
+  <g
+     inkscape:label="155"
+     inkscape:groupmode="layer"
+     id="g1223" />
+  <g
+     inkscape:label="199"
+     inkscape:groupmode="layer"
+     id="g1225" />
+  <g
+     inkscape:label="200"
+     inkscape:groupmode="layer"
+     id="g1227" />
+  <g
+     inkscape:label="201"
+     inkscape:groupmode="layer"
+     id="g1229" />
+  <g
+     inkscape:label="202"
+     inkscape:groupmode="layer"
+     id="g1231" />
+  <g
+     inkscape:label="203"
+     inkscape:groupmode="layer"
+     id="g1233" />
+  <g
+     inkscape:label="204"
+     inkscape:groupmode="layer"
+     id="g1235" />
+  <g
+     inkscape:label="205"
+     inkscape:groupmode="layer"
+     id="g1237" />
+  <g
+     inkscape:label="206"
+     inkscape:groupmode="layer"
+     id="g1239" />
+  <g
+     inkscape:label="207"
+     inkscape:groupmode="layer"
+     id="g1241" />
+  <g
+     inkscape:label="208"
+     inkscape:groupmode="layer"
+     id="g1243" />
+  <g
+     inkscape:label="209"
+     inkscape:groupmode="layer"
+     id="g1245" />
+  <g
+     inkscape:label="210"
+     inkscape:groupmode="layer"
+     id="g1247" />
+  <g
+     inkscape:label="211"
+     inkscape:groupmode="layer"
+     id="g1249" />
+  <g
+     inkscape:label="212"
+     inkscape:groupmode="layer"
+     id="g1251" />
+  <g
+     inkscape:label="213"
+     inkscape:groupmode="layer"
+     id="g1253" />
+  <g
+     inkscape:label="214"
+     inkscape:groupmode="layer"
+     id="g1255" />
+  <g
+     inkscape:label="215"
+     inkscape:groupmode="layer"
+     id="g1257" />
+  <g
+     inkscape:label="216"
+     inkscape:groupmode="layer"
+     id="g1259" />
+  <g
+     inkscape:label="225"
+     inkscape:groupmode="layer"
+     id="g1261" />
+  <g
+     inkscape:label="226"
+     inkscape:groupmode="layer"
+     id="g1263" />
+  <g
+     inkscape:label="227"
+     inkscape:groupmode="layer"
+     id="g1265" />
+  <g
+     inkscape:label="228"
+     inkscape:groupmode="layer"
+     id="g1267" />
+  <g
+     inkscape:label="229"
+     inkscape:groupmode="layer"
+     id="g1269" />
+  <g
+     inkscape:label="230"
+     inkscape:groupmode="layer"
+     id="g1271" />
+  <g
+     inkscape:label="231"
+     inkscape:groupmode="layer"
+     id="g1273" />
+  <g
+     inkscape:label="232"
+     inkscape:groupmode="layer"
+     id="g1275" />
+  <g
+     inkscape:label="233"
+     inkscape:groupmode="layer"
+     id="g1277" />
+  <g
+     inkscape:label="248"
+     inkscape:groupmode="layer"
+     id="g1279" />
+  <g
+     inkscape:label="249"
+     inkscape:groupmode="layer"
+     id="g1281" />
+  <g
+     inkscape:label="254"
+     inkscape:groupmode="layer"
+     id="g1283" />
+  <g
+     inkscape:label="255"
+     inkscape:groupmode="layer"
+     id="g1285" />
+  <g
+     inkscape:label="0"
+     inkscape:groupmode="layer"
+     id="g1287" />
+</svg>
