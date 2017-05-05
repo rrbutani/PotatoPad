@@ -186,7 +186,7 @@ static void renderEnemy() {
 		float yScale = (float)tx1/focalY;
 		int16_t x1 = range((-ty1 / xScale + W/2),0,W-1);
 		int16_t x2 = range((-ty2 / xScale + W/2),0,W-1);
-		if (tx1 > zBuffer[x1] && tx1 > zBuffer[x2])	return;
+//		if (tx1 > zBuffer[x1] && tx1 > zBuffer[x2])	return;
 		int16_t y1 = range((-player.z / yScale + H/2),0,H-1);
 		
 		uint8_t visible = 0;
@@ -245,9 +245,12 @@ void displayEnd(uint8_t input) {
       switch(input) {
         case 0:
           ST7735_DrawBitmap(80,W-(W-death.width)/2,death.texture,death.height,death.width);
+          playSong("WOMP.AUD", false);
           break;
         case 1:
           ST7735_DrawBitmap(80,W-(W-victory.width)/2,victory.texture,victory.height,victory.width);
+          if(player.score > 100)
+            playSong("FUN.AUD", false);
       }
       ST7735_DrawBitmap(30,85,score.texture,score.height,score.width);
       ST7735_DrawBitmap(38,105,numberTexture[player.score % 10000 / 1000],16,14);
@@ -255,26 +258,22 @@ void displayEnd(uint8_t input) {
       ST7735_DrawBitmap(38,133,numberTexture[player.score % 100 / 10],16,14);
       ST7735_DrawBitmap(38,147,numberTexture[player.score % 10],16,14);
       
-      if(input && player.score > 100)
-        playSong("FUN.AUD", false);
-      else if(input)
-        playSong("QUEEN.AUD", false);
-      else
-        playSong("WOMP.AUD", false); // If player has lost
+//      if(input && player.score > 100)
+//        playSong("FUN.AUD", false);
+//      else if(!input)
+//        playSong("QUEEN.AUD", false);
+//      else
+//        playSong("WOMP.AUD", false); // If player has lost
       
-      while(1){  
+      while((GPIO_PORTF_DATA_R & 0x04)){  
 //      ST7735_DrawBitmap(38,105,numberTexture[player.score % 10000 / 1000],16,14);
 //      ST7735_DrawBitmap(38,119,numberTexture[player.score % 1000 / 100],16,14);
 //      ST7735_DrawBitmap(38,133,numberTexture[player.score % 100 / 10],16,14);
 //      ST7735_DrawBitmap(38,147,numberTexture[player.score % 10],16,14);
-        
-        if (!(GPIO_PORTF_DATA_R & 0x04)) // Negative Logic (?)
-        {
-          refresh = refreshRate-1;
-          playSong("d_e1m1.AUD", true);
-          return;
-        }
       }
+      
+      refresh = refreshRate-1;
+      playSong("d_e1m1.AUD", true);
 }
 
 //*****renderGun*****
@@ -382,16 +381,17 @@ static uint8_t renderSubSector(uint16_t subsectorIndex) {
 			if (crossProduct(dx,dy,-xFOV,-yFOV) == 0)	continue;	// parallel to FOV
 			cx1 = tx1 + t2 * dx;
 			cy1 = ty1 + t2 * dy;
+      leftClipped = 1;
 			clipped = (uint8_t)sqrt(t1*t1*dx*dx + t1*t1*dy*dy);
 		}
 		if (ty2 > tx2*tanFOV) {
-			if (ty1 > tx1*tanFOV) continue;		// Both outside of frustrum
+//			if (ty1 > tx1*tanFOV) continue;		// Both outside of frustrum
 			if (crossProduct(dx,dy,xFOV,yFOV) == 0)	continue;	// parallel to FOV
 			cx2 = tx1 + t1 * dx;
 			cy2 = ty1 + t1 * dy;
 		}
 		if (ty2 < -tx2*tanFOV) {
-			if (ty1 < -tx1*tanFOV) continue;	// Both outside of frustrum
+//			if (ty1 < -tx1*tanFOV) continue;	// Both outside of frustrum
 			if (crossProduct(dx,dy,-xFOV,-yFOV) == 0)	continue;	// parallel to FOV
 			cx2 = tx1 + t2 * dx;
 			cy2 = ty1 + t2 * dy;
@@ -417,8 +417,8 @@ static uint8_t renderSubSector(uint16_t subsectorIndex) {
 		x2 = range(x2, 0, W-1);
 		float bottomIncrement = (double)(y2Bottom-y1Bottom) / (x2 - x1);
 		float topIncrement = (double)(y2Top-y1Top) / (x2 - x1);
-		int16_t cdx = cx2 - cx1;
-		int16_t cdy = cy2 - cy1;
+		float cdx = cx2 - cx1;
+		float cdy = cy2 - cy1;
 
 		uint8_t textHeight = textures[patchIndex].height;
 		uint8_t textWidth = textures[patchIndex].width;
