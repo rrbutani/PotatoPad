@@ -5,10 +5,8 @@
 // Rahul Butani
 // April 30th, 2017
 
+#include "../contrib/tm4c123gh6pm.h"
 #include "pwm.h"
-
-//#include "../../contrib/tm4c123gh6pm.h"
-#include "tm4c123gh6pm.h"
 
 void pwmHardwareInit()
 {

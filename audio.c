@@ -5,18 +5,12 @@
 // May 2, 2017
 
 #include <stdio.h>
-#include "tm4c123gh6pm.h"
+#include "contrib/tm4c123gh6pm.h"
 
-//#include "drivers/pwm/pwm.h"
-//#include "drivers/sd_SPI/diskio.h"
-//#include "drivers/sd_SPI/ff.h"
-//#include "drivers/ST7735/ST7735.h"
-
-#include "ST7735.h"
-
-#include "pwm.h"
-#include "diskio.h"
-#include "ff.h"
+#include "drivers/pwm.h"
+#include "drivers/sd_SPI/diskio.h"
+#include "drivers/sd_SPI/ff.h"
+#include "drivers/ST7735/ST7735.h"
 #include "Fifo.h"
 #include "audio.h"
 

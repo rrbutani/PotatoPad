@@ -8,19 +8,18 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "tm4c123gh6pm.h"
-#include "PLL.h"
-#include "FPU.h"
+#include "contrib/tm4c123gh6pm.h"
+#include "contrib/PLL.h"
+#include "contrib/FPU.h"
 #include "types.h"
+#include "common.h"
 #include "graphic.h"
 #include "physic.h"
 #include "input.h"
 #include "audio.h"
 
+void DisableInterrupts(void);
 void EnableInterrupts(void);
-
-#define PI	3.1415927f	//3.14159265358979323846
-#define enemyCount 18	// Number of enemy
 
 // Global variables
 Player player;	// 1056, -3520	start, 1032, -3232 court
@@ -60,14 +59,16 @@ void SysTick_Handler(void) {
 int main(void){
 	PLL_Init(); 		// Set clock to 80MHz	
 	FPULazyStackingEnable();
+	
 	playerInit();
 	audioInit();
+	DisableInterrupts();
 	graphicInit();
 	inputInit();
 	EnableInterrupts();
 	
 	// temp debug variables
-	player.speed = 1;
+//	player.speed = 1;
 //	angularSpeed = -0.02;
 //	player.x = 1740;
 //	player.y = -3240;
@@ -79,6 +80,7 @@ int main(void){
 	displayTitle();
 	
 	SysTickInit();
+	enableInput();
 	ready = 0;
 
 	while(1) {
@@ -89,6 +91,7 @@ int main(void){
 			pcos = cos(player.angle);
 			psin = sin(player.angle);
 			movePlayer();
+			drawScreen();
 			// Completion requirement
 			if (player.y < -4592) {
 				displayEnd(1);
@@ -96,16 +99,13 @@ int main(void){
 			}		
 			updateHealth();
 			if (player.health < 0) {
-				player.health = 100;
-				//displayEnd(0);
+				playSound(playerDeath);
+				player.health = 0;
+//        displayEnd(0);
 				// break;	possibly use botton to restart
 			}
-			drawScreen();
-			playSound(2);
-			playSound(0);
-			playSound(1);
 		}
 		// Update player speed using joystick input
-//		updateSpeed();
+		updateSpeed();
 	}
 }

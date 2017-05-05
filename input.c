@@ -6,9 +6,9 @@
 
 #include <stdint.h>
 
-#include "tm4c123gh6pm.h"
+#include "contrib/tm4c123gh6pm.h"
+#include "drivers/ADC.h"
 #include "types.h"
-#include "ADC.h"
 #include "audio.h"
 #include "input.h"
 
@@ -47,11 +47,11 @@ void updateSpeed(void) {
 	if (data[0] > deadZoneStart && data[0] < deadZoneEnd)
 		player.speed = 0;
 	else
-		player.speed = (float)(data[0]-128) * maxSpeed / 128;
+		player.speed = (float)(128-data[0]) * maxSpeed / 128;
 	if (data[1] > deadZoneStart && data[1] < deadZoneEnd)
 		player.angularSpeed = 0;
 	else
-		player.angularSpeed = (float)(data[1]-128) * maxAngularSpeed / 128;
+		player.angularSpeed = (float)(128-data[1]) * maxAngularSpeed / 128;
 }
 
 void disableInput(void) {

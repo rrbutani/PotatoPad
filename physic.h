@@ -5,19 +5,11 @@
 // Steven Zhu
 
 // Collision defines
-#ifndef COLLISION_DEF
-#define maxCollision	32	// number of segment to check for collision
-#endif
-#define detectionMultiplier 5	// Increase collision detection range
 #define collisionRange 10	// Increase collision detection range
 #define rebound	2
 
 // Line of sight defines
 #define maxRange 1500
-
-#ifndef enemyCount
-#define enemyCount 18	// Number of enemy
-#endif
 
 #define firingCooldown	30	// Firing cooldown for enemies
 

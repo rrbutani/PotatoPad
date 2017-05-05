@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>graphic</TargetName>
+      <TargetName>PotatoDoom</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -170,7 +170,7 @@
             <Capability>1</Capability>
             <DriverSelection>4097</DriverSelection>
           </Flash1>
-          <bUseTDR>0</bUseTDR>
+          <bUseTDR>1</bUseTDR>
           <Flash2>BIN\lmidk-agdi.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -411,31 +411,6 @@
               <FilePath>.\startup.s</FilePath>
             </File>
             <File>
-              <FileName>PLL.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PLL.c</FilePath>
-            </File>
-            <File>
-              <FileName>ST7735.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ST7735.c</FilePath>
-            </File>
-            <File>
-              <FileName>LCD.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\LCD.s</FilePath>
-            </File>
-            <File>
-              <FileName>Print.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\Print.s</FilePath>
-            </File>
-            <File>
-              <FileName>fpu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\fpu.c</FilePath>
-            </File>
-            <File>
               <FileName>graphic.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\graphic.c</FilePath>
@@ -446,29 +421,9 @@
               <FilePath>.\physic.c</FilePath>
             </File>
             <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC.c</FilePath>
-            </File>
-            <File>
               <FileName>input.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\input.c</FilePath>
-            </File>
-            <File>
-              <FileName>pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>ff.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ff.c</FilePath>
-            </File>
-            <File>
-              <FileName>diskio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\diskio.c</FilePath>
             </File>
             <File>
               <FileName>FiFo.c</FileName>
@@ -484,6 +439,66 @@
               <FileName>PotatoDoom.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\PotatoDoom.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Contribution</GroupName>
+          <Files>
+            <File>
+              <FileName>fpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\contrib\fpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>PLL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\contrib\PLL.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\contrib\UART.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\sd_SPI\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\sd_SPI\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ST7735.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\ST7735\ST7735.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\drivers\ST7735\LCD.s</FilePath>
+            </File>
+            <File>
+              <FileName>Print.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\drivers\ST7735\Print.s</FilePath>
             </File>
           </Files>
         </Group>

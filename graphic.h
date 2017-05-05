@@ -29,16 +29,6 @@
 
 #define nodeCount 235 // sizeof(nodeList) / 28 - 1
 
-// Collision defines
-#ifndef COLLISION_DEF
-#define detectionMultiplier 5	// Increase collision detection range
-#define maxCollision	32	// number of segment to check for collision
-#endif
-
-#ifndef enemyCount
-#define enemyCount 18	// Number of enemy
-#endif
-
 extern Player player;
 extern uint8_t shooting;
 extern float pcos, psin;
