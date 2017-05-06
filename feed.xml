@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>PotatoPad</title>
+    <description></description>
+    <link>rrbutani.github.io</link>
+    <atom:link href="rrbutani.github.io/PotatoPad/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Public Release</title>
+        <description>The end/a new beginning</description>
+        <pubDate>Fri, 05 May 2017 00:00:00 -0500</pubDate>
+        <link>rrbutani.github.io/PotatoPad/posts/public-release</link>
+        <guid isPermaLink="true">rrbutani.github.io/PotatoPad/posts/public-release</guid>
+      </item>
+    
+      <item>
+        <title>First post</title>
+        <description>Welcome to the blag!</description>
+        <pubDate>Sat, 25 Mar 2017 00:00:00 -0500</pubDate>
+        <link>rrbutani.github.io/PotatoPad/posts/first-post</link>
+        <guid isPermaLink="true">rrbutani.github.io/PotatoPad/posts/first-post</guid>
+      </item>
+    
+  </channel>
+</rss>
